@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+.idea/.idea.api.dir/.idea/workspace.xml
+.idea/.idea.api.dir/.idea/projectSettingsUpdater.xml
+.idea/.idea.api.dir/.idea/indexLayout.xml
+.idea/.idea.api.dir/.idea/aws.xml
