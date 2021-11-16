@@ -1,0 +1,39 @@
+openapi: 3.1.0
+info:
+  title: Management API
+  description: Api specification for manges customer interactions.
+  version: '1.0'
+servers:
+  - url: https://{gigya-domain}/api/mng
+    variables:
+      gigya-domain:
+        default: admin.gigya.com
+        enum:
+          - admin.gigya.com
+          - admin.eu1.gigya.com
+          - admin.au1.gigya.com
+        description: giya domains
+paths:
+  /interactions:
+    $ref: mng-interaction\interactions@templates.yaml
+  /interactions/{template}:
+    $ref: mng-interaction\interactions@templates@{template}.yaml
+
+
+  /subscribtions:
+    $ref: mng-subscription\subscriptions.yaml 
+    
+  /subscribtions/{subscriptionId}:
+    $ref: mng-subscription\subscribtions@{subscriptionId}.yaml
+
+  /subscribtions/{subscriptionId}/fields:
+    $ref: mng-subscription\subscribtions@{subscriptionId}@fields.yaml
+
+  /template/{subscriptionId}/fields/{fieldId}:
+    $ref: mng-subscription\subscribtions@{subscriptionId}@fields@{fieldId}.yaml
+    
+  /subscribtions/{subscriptionId}/fields/channel:
+    $ref: mng-subscription\subscribtions@{subscriptionId}@fields@channel.yaml
+    
+    
+tags: []

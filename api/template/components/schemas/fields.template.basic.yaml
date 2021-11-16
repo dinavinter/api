@@ -1,0 +1,19 @@
+properties:
+  type:
+    type: string
+    enum:
+      - string
+      - boolean
+      - integer
+      - number
+      
+  default: 
+    type: "#/properties/type"
+    
+  widget:
+    type: string
+
+  format:
+    type: string
+x-tags:
+  - field-template

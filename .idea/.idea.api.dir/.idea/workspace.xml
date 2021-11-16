@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e206f023-fe88-4492-a97c-27fc228e7fe7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.redocly.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/account-subscribtion/channels.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/account-subscribtion/channels@option2.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/account-subscribtion/optin@channel.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/account-subscribtion/optin@list.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/account-subscribtion/optout@channel.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/account-subscribtion/optout@list.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/examples/signup-interaction-email-lite.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/examples/signup-interaction-ex.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/examples/signup-interaction-mobile-otp.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/examples/signup-interaction-selector.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/responses/errors.bad_request.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/responses/errors.forbidden.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/responses/errors.not_found.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/responses/errors.service_unavailable.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/Link.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/basic-error.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/channel.email.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/channel.sms.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/channels.schema.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/channels.schema2.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.email.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.phone_number.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.profile.firstName.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.profile.lastName.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.profile.nickname.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.sections.consents.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.sections.data.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.sections.identity.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.sections.profile.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.sections.subscriptions.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.template.basic.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.template.boolean.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.template.channel.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.template.object.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.template.select.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.template.string.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.template.subscription.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/fields.template.subscription_list.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/identity.email.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/identity.mobile.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/interaction.template.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/template.outcomes.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/components/schemas/template.schema.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/interaction.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/mng-interaction/interactions@templates.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/mng-interaction/interactions@templates@{template}.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/mng-subscription/subscribtions@{subscriptionId}.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/mng-subscription/subscribtions@{subscriptionId}@fields.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/mng-subscription/subscribtions@{subscriptionId}@fields@channel.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/mng-subscription/subscribtions@{subscriptionId}@fields@{fieldId}.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/mng-subscription/subscriptions.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/subscribtions-api.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/subscriptions-api.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/subscriptions-mng-api.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/widdershins.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/widdershins/widdershins.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="2118Ok1KKEaTkhk7kdtgQ9XA2xt" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e206f023-fe88-4492-a97c-27fc228e7fe7" name="Changes" comment="" />
+      <created>1637097203279</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1637097203279</updated>
+      <workItem from="1637097205229" duration="1055000" />
+      <workItem from="1637098495289" duration="7946000" />
+    </task>
+    <task id="LOCAL-00001" summary="index">
+      <created>1637103680273</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1637103680273</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="index" />
+    <option name="LAST_COMMIT_MESSAGE" value="index" />
+  </component>
+</project>

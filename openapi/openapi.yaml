@@ -1,0 +1,29 @@
+openapi: 3.1.0
+info:
+  title: Account Subscribtions Api
+  description: Api specification for manges customer interactions.
+  version: '1.0'
+servers:
+  - url: 'https://{gigya-domain}/me'
+    variables:
+      gigya-domain:
+        default: admin.gigya.com
+        enum:
+          - admin.gigya.com
+          - admin.eu1.gigya.com
+          - admin.au1.gigya.com
+        description: giya domains
+paths:
+  /channels:
+    $ref: paths\channels.yaml
+  /channels-option2:
+    $ref: paths\channels-option2.yaml
+  '/channels/{channel}/lists/{list}/opt-in':
+    $ref: 'paths\channels@{channel}@lists@{list}@opt-in.yaml'
+  '/channels/{channel}/lists/{list}/opt-out':
+    $ref: 'paths\channels@{channel}@lists@{list}@opt-out.yaml'
+  '/channels/{channel}/opt-in':
+    $ref: 'paths\channels@{channel}@opt-in.yaml'
+  '/channels/{channel}/opt-out':
+    $ref: 'paths\channels@{channel}@opt-out.yaml'
+tags: []
