@@ -13,7 +13,8 @@
     "start": "openapi preview-docs main",
     "workflow-build": "redoc-cli bundle openapi/workflow.yaml -t ./docs/index.html -o public/workflow.html",
     "channel-build": "redoc-cli bundle openapi/openapi.yaml -t ./docs/index.html -o public/index.html",
-    "build": "npm run workflow-build && npm run channel-build",
+    "workflow-elsa-build": "redoc-cli bundle openapi/openapi.yaml -t ./docs/index.html -o public/elsa.html",
+    "build": "npm run workflow-build && npm run channel-build && npm run workflow-elsa-build",
     "test": "openapi lint",
 
     "deploy": "npm run build && gh-pages -d public -t true" 

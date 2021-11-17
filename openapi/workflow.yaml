@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: Elsa
+  title: User Jurney Phase 1
   version: v1
 paths:
   /v1/workflow-instances/bulk/cancel:
