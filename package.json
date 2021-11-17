@@ -11,10 +11,10 @@
   "private": true,
   "scripts": {
     "start": "openapi preview-docs main",
-    "build": "redoc-cli bundle -o dist",
+    "build": "redoc-cli bundle openapi/openapi.yaml -t ./docs/index.html -o public/index.html",
     "test": "openapi lint",
 
-    "deploy": "npm run build && gh-pages -d dist -t true" 
+    "deploy": "npm run build && gh-pages -d public -t true" 
 
   }
 }
