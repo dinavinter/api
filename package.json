@@ -5,15 +5,16 @@
     "@redocly/openapi-cli": "^1.0.0-beta.69" 
   },
   "devDependencies": {
-    "gh-pages" : "latest"
+    "gh-pages" : "latest",
+    "redoc-cli" : "latest"
   },
   "private": true,
   "scripts": {
     "start": "openapi preview-docs main",
-    "build": "openapi bundle -o dist",
+    "build": "redoc-cli bundle -o dist",
     "test": "openapi lint",
 
-    "deploy": "gh-pages -d dist -t true" 
+    "deploy": "npm run build && gh-pages -d dist -t true" 
 
   }
 }

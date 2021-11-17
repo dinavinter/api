@@ -40,12 +40,12 @@ $defs:
           - opt-out
           - noticed
       status-updated:
-        type: date
-        readonly: true 
+        type: integer
+        readOnly: true 
       interaction-id:
-        descreption: Corrolation id to the interaction which the status was updated with , i.e. callId
+        description: Corrolation id to the interaction which the status was updated with , i.e. callId
         type: string
-        readonly: true
+        readOnly: true
         examples: 
           - <call id>
           - <interaction - id>

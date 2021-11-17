@@ -2,11 +2,10 @@ summary: OptIn subscribtion channel
 post:
   parameters:
     - in: path
-      name: channel
-      enum:
+      name: channel 
+      examples:
         - sms
         - email
-      example: sms
   tags:
     - Channel
   summary: Opt-In all subscribtion channel
