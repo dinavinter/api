@@ -33,13 +33,13 @@ put:
       $ref: ..\..\shared\errors\service_unavailable.yaml
 get:
   tags:
-    - Subscription
+    - Config
   operationId: GetSubscriptionField
   description: Gets the specified subscription field.
   summary: Gets the specified subscription field.
   parameters:
     - in: path
-      name: subscriptionId
+      name: list
       example: newslatter
     - in: path
       name: fieldId

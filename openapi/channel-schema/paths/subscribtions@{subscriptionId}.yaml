@@ -2,14 +2,14 @@ get:
   tags:
     - Config
   operationId: GetSubscriptionTemplate
-  summary: Gets subscription definition
+  summary: Gets subscription list schema
   parameters:
     - in: path
       name: list
       example: newslatter
   responses:
     '200':
-      description: Subscription template
+      description: schema
       content:
         application/json:
           schema:
@@ -25,9 +25,9 @@ get:
 put:
   tags:
     - Config
-  summary: Updates subscription template.
+  summary: Updates subscription list schema.
   operationId: UpdateSubscription
-  description: Update subscription template
+  description: Update subscription list schema
   parameters:
     - in: path
       name: list
@@ -39,7 +39,7 @@ put:
           $ref: ..\components\schemas\fields.template.subscription.yaml
   responses:
     '200':
-      description: Subscription template was updated successfully
+      description: Subscription list schema was updated successfully
       content:
         application/json:
           schema:

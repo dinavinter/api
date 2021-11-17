@@ -1,0 +1,28 @@
+properties: 
+  email:
+    $ref: "#/$defs/status"
+  sms:
+    $ref: "#/$defs/status" 
+
+additionalProperties:
+  pattern: ^(email.*|sms.*)
+  $ref: "#/$defs/status"  
+      
+    
+   
+ 
+$defs:
+  channel:
+    properties: 
+      communication:
+        allOf:
+          - $ref: "#/$defs/status"
+          - additionalProperties:
+              $ref: "#/$defs/status"
+          
+      
+  status:
+    type: object
+    title: opt in status
+    $ref: .\channels.schema.yaml/#/$defs/status
+ 

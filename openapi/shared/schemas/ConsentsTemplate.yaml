@@ -1,0 +1,13 @@
+title:  Consents Fields
+description: Consents to collect during interaction.
+type: object
+properties:
+  properties:
+    type: object
+    additionalProperties:
+      $ref: .\BooleanTemplate.yaml
+  required:
+    type: array
+    items:
+      type: string
+

@@ -1,0 +1,93 @@
+
+type: object
+anyOf:
+  - title: 'channel selector'
+    $ref: "#/$defs/selector"
+  - title: 'only mobile'
+    allOf:
+      - $ref: .\identity.mobile.yaml
+      - $ref: "#/$defs/opt-in-sms" 
+  - title: 'only email'
+    allOf:
+      - $ref: .\identity.email.yaml
+      - $ref: "#/$defs/opt-in-email" 
+ 
+    maxProperties: 5
+required: subscribed
+ 
+$defs:
+
+  opt-in:
+    type: object
+    $ref: "#/$defs/opt-in-field"
+    oneOf:
+      - title: 'by channel'
+        $ref: "#/$defs/selector"
+      - title: 'const'
+        $ref: "#/$defs/opt-in-field" 
+     
+  opt-in-field:
+    properties:
+      properties:
+        additionalProperties:
+          $ref: .\fields.template.boolean.yaml
+          pattern: ^(subscriptions.*)
+          
+  opt-in-sms:
+    properties:
+      properties:
+        additionalProperties:
+          $ref: .\fields.template.boolean.yaml
+          pattern: ^(subscriptions.sms.*)
+
+  opt-in-email:
+    properties:
+      properties:
+        additionalProperties:
+          $ref: .\fields.template.boolean.yaml
+          pattern: ^(subscriptions.email.*)
+ 
+  selector:
+    type: object
+    properties:
+      channel: 
+        $ref: .\fields.template.channel.yaml/#/$defs/channel
+      oneOf:
+        type: array
+        items:
+          anyOf:
+            - title: 'if-channel-sms'
+              allOf:
+                - $ref: .\fields.template.channel.yaml/#/$defs/if-channel-sms
+                - properties:
+                    then:
+                      $ref: "#/$defs/opt-in-sms"
+            - title: 'if-channel-email'
+              allOf:
+                - $ref: .\fields.template.channel.yaml/#/$defs/if-channel-email
+                - properties:
+                    then:
+                      $ref: "#/$defs/opt-in-email"
+
+
+
+  channel-email:
+    title: 'if-channel-email'
+    allOf:
+      - $ref: .\fields.template.channel.yaml/#/$defs/if-channel-email
+      - properties:
+          then:
+            $ref: "#/$defs/opt-in-email"
+
+  channel-sms:
+    title: 'if-channel-sms'
+    allOf:
+      - $ref: .\fields.template.channel.yaml/#/$defs/if-channel-sms
+      - properties:
+          then:
+            $ref: "#/$defs/opt-in-sms"
+                  
+  
+
+  
+      

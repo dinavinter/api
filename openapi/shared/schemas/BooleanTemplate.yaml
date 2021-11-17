@@ -1,0 +1,6 @@
+allOf:
+  - $ref: .\FieldTemplate.yaml
+  - properties:
+      type:
+        type: string
+        const: boolean

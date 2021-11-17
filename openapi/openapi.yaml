@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: Account Subscribtions Api
-  description: Api specification for manges customer interactions.
+  description: Api manges customer channel lists.
   version: '1.0'
 servers:
   - url: 'https://{gigya-domain}/me'
@@ -15,15 +15,19 @@ servers:
         description: giya domains
 paths:
   /channels:
-    $ref: paths\channels.yaml
+    $ref: account-subscription\paths\channels.yaml
   /channels-option2:
-    $ref: paths\channels-option2.yaml
+    $ref: account-subscription\paths\channels@option2.yaml
   '/channels/{channel}/lists/{list}/opt-in':
-    $ref: 'paths\channels@{channel}@lists@{list}@opt-in.yaml'
+    $ref: 'account-subscription\paths\channels@{channel}@lists@{list}@opt-in.yaml'
   '/channels/{channel}/lists/{list}/opt-out':
-    $ref: 'paths\channels@{channel}@lists@{list}@opt-out.yaml'
+    $ref: 'account-subscription\paths\channels@{channel}@lists@{list}@opt-out.yaml'
   '/channels/{channel}/opt-in':
-    $ref: 'paths\channels@{channel}@opt-in.yaml'
+    $ref: 'account-subscription\paths\channels@{channel}@opt-in.yaml'
   '/channels/{channel}/opt-out':
-    $ref: 'paths\channels@{channel}@opt-out.yaml'
+    $ref: 'account-subscription\paths\channels@{channel}@opt-out.yaml'
+    
+    
+ 
+
 tags: []

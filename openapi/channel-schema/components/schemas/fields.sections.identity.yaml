@@ -1,0 +1,18 @@
+type: object
+properties:
+  identity:
+    type: object
+    properties: 
+      dependentRequired: 
+          type: object
+          properties:
+              properties: 
+                type: object
+                additionalProperties:
+                  type: array 
+                  examples:
+                    channel: [ "email" ]
+    anyOf:
+      - $ref: .\identity.mobile.yaml
+      - $ref: .\identity.email.yaml
+    

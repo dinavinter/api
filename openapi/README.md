@@ -1,4 +1,4 @@
-## The `openapi` folder
+np## The `openapi` folder
 
 This folder contains your entrypoint `openapi.yaml`.
 

@@ -33,6 +33,22 @@ paths:
   /channels/{channel}/opt-out:
     $ref: account-subscribtion\optout@channel.yaml
 
+  /subscribtions:
+    $ref: mng-subscription\subscriptions.yaml
+
+  /subscribtions/{list}:
+    $ref: mng-subscription\subscribtions@{subscriptionId}.yaml
+
+  /subscribtions/{list}/fields:
+    $ref: mng-subscription\subscribtions@{subscriptionId}@fields.yaml
+
+  /template/{list}/fields/{fieldId}:
+    $ref: mng-subscription\subscribtions@{subscriptionId}@fields@{fieldId}.yaml
+
+  /subscribtions/{list}/fields/channel:
+    $ref: mng-subscription\subscribtions@{subscriptionId}@fields@channel.yaml
+
+
 
 
 tags: [ ]
