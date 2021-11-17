@@ -2,12 +2,18 @@
   "name": "account-subscribtions-api",
   "version": "1.0.0",
   "dependencies": {
-    "@redocly/openapi-cli": "^1.0.0-beta.69"
+    "@redocly/openapi-cli": "^1.0.0-beta.69" 
+  },
+  "devDependencies": {
+    "gh-pages" : "latest"
   },
   "private": true,
   "scripts": {
-    "start": "openapi preview-docs",
+    "start": "openapi preview-docs main",
     "build": "openapi bundle -o dist",
-    "test": "openapi lint"
+    "test": "openapi lint",
+
+    "deploy": "gh-pages -d dist -t true" 
+
   }
 }
