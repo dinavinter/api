@@ -45,8 +45,49 @@ paths:
     $ref: 'account-subscription\paths\channels@{channel}@opt-in.yaml'
   '/channels/{channel}/opt-out':
     $ref: 'account-subscription\paths\channels@{channel}@opt-out.yaml'
-    
-    
- 
 
-tags: []
+tags:
+  - name: communication
+    x-displayName: Communication
+    description: Operations to update communication properties
+  - name: list
+    x-displayName: Lists
+    description:  Operations to update communication lists of account
+  - name: channel
+    x-displayName: Channel
+    description: Operations to update communication channels 
+
+  - name: channel_model
+    x-displayName:  Channel 
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/channel" />
+  - name: lists_model
+    x-displayName: Lists 
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/lists" showReadOnly={true} showWriteOnly={true} />
+  - name: list_model
+    x-displayName: List
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/list"  showReadOnly={true} showWriteOnly={true} />
+  - name: status_model
+    x-displayName: Status
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/status" showReadOnly={true} showWriteOnly={true} />
+
+x-tagGroups:
+  - name: Communication Management
+    tags:
+      - communication
+      - channel
+      - list
+
+  - name: Models
+    tags:
+      - status_model 
+      - channel_model
+      - list_model
+      - lists_model
+
+ 
+ 
+ 

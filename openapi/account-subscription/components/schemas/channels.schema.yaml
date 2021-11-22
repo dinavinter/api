@@ -7,6 +7,8 @@ properties:
 
 $defs:
   channel:
+    tags:
+      - channel_model
     allOf:
       - $ref: "#/$defs/status"
       - properties:
@@ -14,15 +16,23 @@ $defs:
             $ref: "#/$defs/lists"
 
   lists:
+    tags:
+      - lists_model
     additionalProperties:
-      allOf:
-        - properties:
-            topic:
-              type: string
-              example:
-                newslatter
-        - $ref: "#/$defs/status"
+      $ref: "#/$defs/list"
+  list:
+    tags:
+      - list_model
+    allOf:
+      - properties:
+          topic:
+            type: string
+            example:
+              newslatter
+      - $ref: "#/$defs/status"
   status:
+    tags:
+      - status_model
     properties:
       status:
         type: string

@@ -6,7 +6,7 @@ post:
       example: sms
 
   tags:
-    - Channel
+    - channel
   summary: Opt-Out all subscribtions in channel
   operationId: Communication.Channel.OptOut
   description: Opt-Out communication via the specified channel, effectively opt out all channel's lists.

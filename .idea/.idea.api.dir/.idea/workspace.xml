@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e206f023-fe88-4492-a97c-27fc228e7fe7" name="Changes" comment="des">
+    <list default="true" id="e206f023-fe88-4492-a97c-27fc228e7fe7" name="Changes" comment="not rest">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.api.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/channels.schema.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/channels.schema.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openapi/account-subscription/paths/channels.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/channels.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/account-subscription/paths/channels@{channel}@lists@{list}@opt-in.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/channels@{channel}@lists@{list}@opt-in.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/account-subscription/paths/channels@{channel}@lists@{list}@opt-out.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/channels@{channel}@lists@{list}@opt-out.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/account-subscription/paths/channels@{channel}@opt-in.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/channels@{channel}@opt-in.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/account-subscription/paths/channels@{channel}@opt-out.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/channels@{channel}@opt-out.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/communication.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/communication.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/communication.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/communication.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +69,7 @@
       <workItem from="1637097205229" duration="1055000" />
       <workItem from="1637098495289" duration="19070000" />
       <workItem from="1637241794439" duration="3324000" />
-      <workItem from="1637492055663" duration="16156000" />
+      <workItem from="1637492055663" duration="18598000" />
     </task>
     <task id="LOCAL-00001" summary="index">
       <created>1637103680273</created>
@@ -120,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637584044382</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="not rest">
+      <created>1637585188315</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1637585188315</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +164,7 @@
     <MESSAGE value="communication api" />
     <MESSAGE value="urls" />
     <MESSAGE value="des" />
-    <option name="LAST_COMMIT_MESSAGE" value="des" />
+    <MESSAGE value="not rest" />
+    <option name="LAST_COMMIT_MESSAGE" value="not rest" />
   </component>
 </project>

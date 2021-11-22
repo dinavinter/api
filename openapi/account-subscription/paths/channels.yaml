@@ -1,7 +1,7 @@
 summary:  Update Account's Communication Properties.
 put:
   tags:
-    - Communication
+    - communication
   summary: Update Communication Properties.
   operationId: Communication.Update 
   description:  Update Communication Properties. <br />

@@ -8,7 +8,7 @@ post:
       name: list
       example: newslatter
   tags:
-    - List
+    - list
   summary: OptOut Communication List
   operationId:  Communication.List.OptOut
   description: Opt-Out from the specified communication list

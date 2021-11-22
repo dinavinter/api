@@ -5,7 +5,7 @@ post:
       name: channel 
       example: email
   tags:
-    - Channel
+    - channel
   summary: Opt-In Communication Channel 
   operationId: Communication.Channel.OptIn
   description: Opt-In communication via the specified channel.

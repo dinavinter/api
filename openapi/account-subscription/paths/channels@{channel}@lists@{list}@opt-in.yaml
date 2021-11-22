@@ -8,7 +8,7 @@ post:
       name: list
       example: newslatter
   tags:
-    - List
+    - list
   summary: Opt-In Communication List
   operationId: Communication.List.OptIn
   description: Opt-In to the specified communication list.
