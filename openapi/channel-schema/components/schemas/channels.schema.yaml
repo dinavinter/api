@@ -31,6 +31,19 @@ properties:
        
  
 $defs:
+  channel:
+    properties:
+      list:
+        type: array
+        items:
+          properties:
+            id:
+              type: string
+          allOf:
+            - properties:
+                id:
+                  type: string
+            - $ref: "#/$defs/status"
   status:
     properties:
       status:

@@ -13,6 +13,19 @@ servers:
           - admin.eu1.gigya.com
           - admin.au1.gigya.com
         description: giya domains
+        
+components:
+  securitySchemes:
+    apiKey:
+       $ref: ./shared/securitySchemes/apiKey.yaml
+    oauth: # <---- OAuth flow(authorizationCode, implicit, password or clientCredentials)
+      $ref: ./shared/securitySchemes/oauth.yaml
+
+
+security:
+  - apiKey: [] 
+  - oauth: []
+    
 paths:
   /channels:
     $ref: account-subscription\paths\channels.yaml

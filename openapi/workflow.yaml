@@ -215,15 +215,15 @@ paths:
                 $ref: '#/components/schemas/WorkflowBlueprintModelPagedList'
               example:
                 version: 1
-                tenantId: null
-                isSingleton: false
-                isEnabled: false
-                isPublished: true
-                isLatest: false
-                isDisabled: false
-                variables:
+                tenantId: null # site id / authorization header/ api key
+                isSingleton: false # exclude
+                isEnabled: false  # exclude
+                isPublished: true 
+                isLatest: false # exclude
+                isDisabled: false # exclude
+                variables: # global variables - comments, check if to mvp
                   data: {}
-                contextOptions:
+                contextOptions: 
                   contextType: System.String, mscorlib
                   contextFidelity: Burst
                 persistenceBehavior: Suspended
@@ -868,7 +868,7 @@ paths:
       summary: Creates a new workflow definition or updates an existing one.
       description: Creates a new workflow definition or updates an existing one. If the workflow already exists, a new draft is created and updated with the specified values. Use the Publish field to automatically publish the workflow.
       operationId: WorkflowDefinitions.Post
-      parameters:
+      parameters:  # exclude versions
         - name: GroupVersion
           in: path
           required: true
@@ -887,7 +887,7 @@ paths:
           schema:
             type: integer
             format: int32
-        - name: Status
+        - name: Status  
           in: path
           required: true
           schema:
@@ -1237,27 +1237,27 @@ components:
         type:
           type: string
           nullable: true
-        name:
+        name: # readonly
           type: string
           nullable: true
-        displayName:
+        displayName: # readonly
           type: string
           nullable: true
-        description:
+        description: 
           type: string
           nullable: true
-        persistWorkflow:
+        persistWorkflow: # exclude , readonly, only dev permissions
           type: boolean
-        loadWorkflowContext:
+        loadWorkflowContext:  # exclude , readonly, only dev permissions
           type: boolean
-        saveWorkflowContext:
+        saveWorkflowContext: # exclude
           type: boolean
         properties:
           type: array
           items:
             $ref: '#/components/schemas/ActivityDefinitionProperty'
           nullable: true
-        propertyStorageProviders:
+        propertyStorageProviders: # exclude
           type: object
           additionalProperties:
             type: string
@@ -1267,13 +1267,13 @@ components:
     ActivityDefinitionProperty:
       type: object
       properties:
-        name:
+        name: 
           type: string
           nullable: true
-        syntax:
+        syntax: # only js & literal
           type: string
           nullable: true
-        expressions:
+        expressions: # only js & literal
           type: object
           additionalProperties:
             type: string
@@ -1829,33 +1829,33 @@ components:
         tag:
           type: string
           nullable: true
-        channel:
+        channel: # exclude 
           type: string
           nullable: true
-        variables:
+        variables: # exclude 
           $ref: '#/components/schemas/Variables'
-        contextOptions:
+        contextOptions: # exclude 
           $ref: '#/components/schemas/WorkflowContextOptions'
-        isSingleton:
+        isSingleton: # exclude 
           type: boolean
-        persistenceBehavior:
+        persistenceBehavior: # exclude 
           $ref: '#/components/schemas/WorkflowPersistenceBehavior'
-        deleteCompletedInstances:
+        deleteCompletedInstances: # default: true, exclude
           type: boolean
-        publish:
+        publish:  
           type: boolean
-        activities:
+        activities:  
           type: array
           items:
             $ref: '#/components/schemas/ActivityDefinition'
           nullable: true
-        connections:
+        connections: # change to https://www.w3.org/TR/scxml/
           type: array
           items:
             $ref: '#/components/schemas/ConnectionDefinition'
           nullable: true
       additionalProperties: false
-    ScheduledActivity:
+    ScheduledActivity: # exclude
       type: object
       properties:
         activityId:
