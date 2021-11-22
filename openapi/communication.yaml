@@ -49,14 +49,16 @@ paths:
 tags:
   - name: communication
     x-displayName: Communication
-    description: Operations to update communication properties
+    description: |
+      Operations to update communication properties
+
   - name: list
     x-displayName: Lists
     description:  Operations to update communication lists of account
   - name: channel
     x-displayName: Channel
     description: Operations to update communication channels 
-
+  
   - name: channel_model
     x-displayName:  Channel 
     description: |
