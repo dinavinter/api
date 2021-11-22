@@ -13,7 +13,7 @@
   "private": true,
   "scripts": {
     "start": "openapi preview-docs main",
-    "start-channel": "openapi preview-docs channel",
+    "start-channel": "openapi preview-docs communication",
     "copy-src": "copyfiles -a -f src public",
     "copy-style": "copyfiles stylesheets/** public",
 

@@ -1,4 +1,4 @@
-summary: OptIn subscribtion channel
+summary: Channel Opt-In
 post:
   parameters:
     - in: path
@@ -6,9 +6,9 @@ post:
       example: email
   tags:
     - Channel
-  summary: Opt-In all subscribtion channel
-  operationId: OptInChannel
-  description: Opt-In account to a specific channel, general subscribtions
+  summary: Opt-In Communication Channel 
+  operationId: Communication.Channel.OptIn
+  description: Opt-In communication via the specified channel.
   responses:
     '200':
       description: Account subscribed

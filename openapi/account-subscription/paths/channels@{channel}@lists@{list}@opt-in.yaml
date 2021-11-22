@@ -1,4 +1,4 @@
-summary: OptIn subscribtion list
+summary: Opt-In Communication List
 post:
   parameters:
     - in: path
@@ -9,9 +9,9 @@ post:
       example: newslatter
   tags:
     - List
-  summary: OptIn subscribtion list
-  operationId: Subscribe
-  description: Subscribe account to a specific subscribtion list
+  summary: Opt-In Communication List
+  operationId: Communication.List.OptIn
+  description: Opt-In to the specified communication list.
   responses:
     '200':
       description: Account subscribed
