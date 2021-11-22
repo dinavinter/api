@@ -7,11 +7,11 @@ servers:
   - url: 'https://{gigya-domain}/me'
     variables:
       gigya-domain:
-        default: admin.gigya.com
+        default: accounts.gigya.com
         enum:
-          - admin.gigya.com
-          - admin.eu1.gigya.com
-          - admin.au1.gigya.com
+          - accounts.gigya.com
+          - accounts.eu1.gigya.com
+          - accounts.au1.gigya.com
         description: giya domains
         
 components:
