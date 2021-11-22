@@ -33,10 +33,10 @@ security:
     basic: []
     
 paths:
-#  /channels:
-#    $ref: account-subscription\paths\channels.yaml
   /channels:
-    $ref: account-subscription\paths\channels@option2.yaml
+    $ref: account-subscription\paths\channels.yaml
+#  /channels:
+#    $ref: account-subscription\paths\channels@option2.yaml
   '/channels/{channel}/lists/{list}/opt-in':
     $ref: 'account-subscription\paths\channels@{channel}@lists@{list}@opt-in.yaml'
   '/channels/{channel}/lists/{list}/opt-out':

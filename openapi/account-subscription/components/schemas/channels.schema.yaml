@@ -1,36 +1,27 @@
 properties:
   email:
-    allOf:
-      - $ref: "#/$defs/status"
-      - properties:
-          list:
-            type: array
-            items:
-              allOf:
-                - properties: 
-                    id: 
-                      type: string
-                - $ref: "#/$defs/status"
-  
+    $ref: "#/$defs/channel"
+    
   sms:
+    $ref: "#/$defs/channel" 
+
+$defs:
+  channel:
     allOf:
       - $ref: "#/$defs/status"
       - properties:
           lists:
-            type: array
-            items:
-              properties:
-                id:
-                  type: string
-              allOf:
-                - properties:
-                    id:
-                      type: string
-                - $ref: "#/$defs/status"
-              
-       
- 
-$defs:
+            $ref: "#/$defs/lists"
+
+  lists:
+    additionalProperties:
+      allOf:
+        - properties:
+            topic:
+              type: string
+              example:
+                newslatter
+        - $ref: "#/$defs/status"
   status:
     properties:
       status:

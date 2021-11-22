@@ -3,9 +3,7 @@ post:
   parameters:
     - in: path
       name: channel 
-      examples:
-        - sms
-        - email
+      example: email
   tags:
     - Channel
   summary: Opt-In all subscribtion channel

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e206f023-fe88-4492-a97c-27fc228e7fe7" name="Changes" comment="accounts">
+    <list default="true" id="e206f023-fe88-4492-a97c-27fc228e7fe7" name="Changes" comment="channel">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.api.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/channels.schema.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/channels.schema.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/channels.schema2.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/channels.schema2.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/channel.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/channel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/account-subscription/paths/channels.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/channels.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/channel.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/channel.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +64,7 @@
       <workItem from="1637097205229" duration="1055000" />
       <workItem from="1637098495289" duration="19070000" />
       <workItem from="1637241794439" duration="3324000" />
-      <workItem from="1637492055663" duration="12248000" />
+      <workItem from="1637492055663" duration="13811000" />
     </task>
     <task id="LOCAL-00001" summary="index">
       <created>1637103680273</created>
@@ -94,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637578564070</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="channel">
+      <created>1637580501548</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1637580501548</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -120,6 +127,7 @@
     <MESSAGE value="index" />
     <MESSAGE value="oauth" />
     <MESSAGE value="accounts" />
-    <option name="LAST_COMMIT_MESSAGE" value="accounts" />
+    <MESSAGE value="channel" />
+    <option name="LAST_COMMIT_MESSAGE" value="channel" />
   </component>
 </project>

@@ -1,10 +1,10 @@
-summary:  Update account subscriptions.
+summary:  Update Account's Communication Properties.
 put:
   tags:
-    - Channels
-  summary: Update account's channels.
-  operationId: ChannelsUpdate 
-  description: Update account's channels 
+    - Communication
+  summary: Update Communication Properties.
+  operationId: Communication.Update 
+  description: Update Communication Properties 
   requestBody:
     content:
       application/json:
