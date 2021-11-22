@@ -12,6 +12,8 @@ post:
   summary: OptOut Communication List
   operationId:  Communication.List.OptOut
   description: Opt-Out from the specified communication list
+    <section > (As Not Rest)  ```accounts.communication.list.optOut?list={list}&channel={channel}``` </section  >
+
   responses:
     '200':
       description: Account subscribed

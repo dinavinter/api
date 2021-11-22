@@ -10,6 +10,7 @@ post:
   summary: Opt-Out all subscribtions in channel
   operationId: Communication.Channel.OptOut
   description: Opt-Out communication via the specified channel, effectively opt out all channel's lists.
+    <section > (As Not Rest)  ```accounts.communication.channel.optOut?channel={channel}``` </section  > 
   responses:
     '200':
       description: Account subscribed

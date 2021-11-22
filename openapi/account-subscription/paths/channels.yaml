@@ -4,7 +4,8 @@ put:
     - Communication
   summary: Update Communication Properties.
   operationId: Communication.Update 
-  description: Update Communication Properties 
+  description:  Update Communication Properties. <br />
+    <section> (As Not Rest)  ```accounts.communication.set```  </section  >
   requestBody:
     content:
       application/json:

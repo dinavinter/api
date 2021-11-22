@@ -9,6 +9,8 @@ post:
   summary: Opt-In Communication Channel 
   operationId: Communication.Channel.OptIn
   description: Opt-In communication via the specified channel.
+    <section > (As Not Rest)  ```accounts.communication.channel.optIn?channel={channel}``` </section  >
+
   responses:
     '200':
       description: Account subscribed
