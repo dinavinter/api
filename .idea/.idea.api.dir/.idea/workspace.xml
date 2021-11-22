@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e206f023-fe88-4492-a97c-27fc228e7fe7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/openapi/shared/securitySchemes/apiKey.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/shared/securitySchemes/oauth.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/stylesheets/nav.css" afterDir="false" />
+    <list default="true" id="e206f023-fe88-4492-a97c-27fc228e7fe7" name="Changes" comment="oauth">
+      <change afterPath="$PROJECT_DIR$/openapi/shared/securitySchemes/basic.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openapi/shared/securitySchemes/creds.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openapi/shared/securitySchemes/uid.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.api.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.redocly.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/.redocly.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/openapi/channel-schema/components/schemas/channels.schema.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/channel-schema/components/schemas/channels.schema.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openapi/openapi.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/channel.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openapi/workflow-full.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/openapi/workflow.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/workflow.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/channel.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/channel.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/shared/securitySchemes/oauth.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/shared/securitySchemes/oauth.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/elsa.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/elsa.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/workflow.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/workflow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +68,7 @@
       <workItem from="1637097205229" duration="1055000" />
       <workItem from="1637098495289" duration="19070000" />
       <workItem from="1637241794439" duration="3324000" />
-      <workItem from="1637492055663" duration="7297000" />
+      <workItem from="1637492055663" duration="10476000" />
     </task>
     <task id="LOCAL-00001" summary="index">
       <created>1637103680273</created>
@@ -86,7 +77,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637103680273</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="index">
+      <created>1637575496689</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1637575496689</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,6 +108,7 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="index" />
-    <option name="LAST_COMMIT_MESSAGE" value="index" />
+    <MESSAGE value="oauth" />
+    <option name="LAST_COMMIT_MESSAGE" value="oauth" />
   </component>
 </project>

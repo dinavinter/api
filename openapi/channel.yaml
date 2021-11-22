@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Account Subscribtions Api
+  title: Communication Channel Api
   description: Api manges customer channel lists.
   version: '1.0'
 servers:
@@ -18,13 +18,19 @@ components:
   securitySchemes:
     apiKey:
        $ref: ./shared/securitySchemes/apiKey.yaml
+    uid:
+      $ref: ./shared/securitySchemes/uid.yaml   
+    basic:
+      $ref: ./shared/securitySchemes/basic.yaml
     oauth: # <---- OAuth flow(authorizationCode, implicit, password or clientCredentials)
       $ref: ./shared/securitySchemes/oauth.yaml
 
 
 security:
-  - apiKey: [] 
   - oauth: []
+  - apiKey: []
+    uid: []
+    basic: []
     
 paths:
   /channels:

@@ -1,7 +1,13 @@
-oAuthGigya:    # <---- arbitrary name
-  type: oauth2
-  description: This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)
-  flows:
-    implicit:   
-      authorizationUrl: /oauth2/token
-
+type: oauth2
+description: This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)
+flows:
+  implicit:
+    authorizationUrl: /oauth2/authorize
+  password:
+    tokenUrl: /socialize.login
+  clientCredentials:
+    tokenUrl: /socialize.getToken
+    scopes: 
+      - communication:read
+      - communication:write
+  

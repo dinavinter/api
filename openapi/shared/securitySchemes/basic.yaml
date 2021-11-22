@@ -1,0 +1,5 @@
+type: http
+scheme: basic
+name: Authorization
+in: header
+description: Basic Authorization header using the Basic scheme.

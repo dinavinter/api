@@ -13,16 +13,17 @@
   "private": true,
   "scripts": {
     "start": "openapi preview-docs main",
+    "start-channel": "openapi preview-docs channel",
     "copy-src": "copyfiles -a -f src public",
     "copy-style": "copyfiles stylesheets/** public",
 
     "workflow-build": "redoc-cli bundle openapi/workflow.yaml -t ./docs/index.html -o public/workflow.html",
     "channel-build": "redoc-cli bundle openapi/channel.yaml -t ./docs/index.html -o public/channel.html",
     "workflow-elsa-build": "redoc-cli bundle openapi/elsa.yaml -t ./docs/index.html -o public/elsa.html",
-    "build": "npm run copy-src && npm run copy-style && npm run workflow-build && npm run channel-build && npm run workflow-elsa-build",
+    "build": "npm run copy-src && npm run copy-style && npm run workflow-build && npm run channel-build",
     "test": "openapi lint",
 
-    "deploy": "npm run build && gh-pages -d s -t true" 
+    "deploy": "npm run build && gh-pages -d public -t true" 
 
   }
 }
