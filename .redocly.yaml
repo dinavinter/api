@@ -1,7 +1,7 @@
 # See https://redoc.ly/docs/cli/configuration/ for more information.
 apiDefinitions:
   main: openapi/channel.yaml
-  channel: openapi/channel.yaml
+  communication: openapi/communication.yaml
   workflow: openapi/workflow.yaml
   interaction: openapi/interaction.yaml
 lint:

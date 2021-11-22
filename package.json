@@ -18,7 +18,7 @@
     "copy-style": "copyfiles stylesheets/** public",
 
     "workflow-build": "redoc-cli bundle openapi/workflow.yaml -t ./docs/index.html -o public/workflow.html",
-    "channel-build": "redoc-cli bundle openapi/channel.yaml -t ./docs/index.html -o public/channel.html",
+    "channel-build": "redoc-cli bundle openapi/communication.yaml -t ./docs/index.html -o public/communication.html",
     "workflow-elsa-build": "redoc-cli bundle openapi/elsa.yaml -t ./docs/index.html -o public/elsa.html",
     "build": "npm run copy-src && npm run copy-style && npm run workflow-build && npm run channel-build",
     "test": "openapi lint",
