@@ -2,7 +2,7 @@ summary:  Update account channel.
 put:
   tags:
     - Channels
-  summary: Channels Option2.
+  summary: Communication Channel Lists.
   operationId: ChannelsUpdate-O2 
   description: Update account's channels 
   requestBody:

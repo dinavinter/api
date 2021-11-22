@@ -1,28 +1,30 @@
+type: object
 properties: 
   email:
-    $ref: "#/$defs/status"
-  sms:
-    $ref: "#/$defs/status" 
-
-additionalProperties:
-  pattern: ^(email.*|sms.*)
-  $ref: "#/$defs/status"  
-      
-    
-   
+    $ref: "#/$defs/channel"
+  sms: 
+    $ref: "#/$defs/channel" 
+  lists:
+    $ref: "#/$defs/lists"
  
 $defs:
   channel:
-    properties: 
-      communication:
-        allOf:
-          - $ref: "#/$defs/status"
-          - additionalProperties:
-              $ref: "#/$defs/status"
+    allOf:
+      - $ref: "#/$defs/status"
+#      - properties:
+#          lists:
+#            $ref: "#/$defs/lists"
           
+  lists:
+    additionalProperties:
+      allOf:
+        - properties:
+            channel:
+              enum:
+                - email
+                - sms
+        - $ref: "#/$defs/status"   
       
   status:
-    type: object
-    title: opt in status
     $ref: .\channels.schema.yaml/#/$defs/status
  
