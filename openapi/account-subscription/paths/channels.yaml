@@ -6,7 +6,7 @@ put:
   operationId: Communication.Update 
   description:  Update Communication Properties. <br />
     <section > [Not Rest] ```accounts.communication.set``` </section  >
-    <section > [Rest] ```PUT accounts/{_me}/communication/{v1}/{channel}``` </section  >
+    <section > [Rest] ```PUT accounts/{_me}/communication/{v1}``` </section  >
 
   requestBody:
     content:

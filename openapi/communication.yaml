@@ -65,7 +65,10 @@ tags:
   - name: channel
     x-displayName: Channel
     description: Operations to update communication channels 
-  
+  - name: communication-model
+    x-displayName: Communication
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/communication" />
   - name: channel_model
     x-displayName:  Channel 
     description: |
@@ -92,6 +95,7 @@ x-tagGroups:
 
   - name: Models
     tags:
+      - communication-model
       - status_model 
       - channel_model
       - list_model

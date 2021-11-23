@@ -1,11 +1,15 @@
-properties:
-  email:
-    $ref: "#/$defs/channel"
-    
-  sms:
-    $ref: "#/$defs/channel" 
+$ref: "#/$defs/communication"
 
 $defs:
+  communication:
+    tags:
+      - communication-model
+    properties:
+      email:
+        $ref: "#/$defs/channel"
+
+      sms:
+        $ref: "#/$defs/channel"
   channel:
     tags:
       - channel_model
