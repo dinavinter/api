@@ -5,7 +5,9 @@ put:
   summary: Update Communication Properties.
   operationId: Communication.Update 
   description:  Update Communication Properties. <br />
-    <section> (As Not Rest)  ```accounts.communication.set```  </section  >
+    <section > [Not Rest] ```accounts.communication.set``` </section  >
+    <section > [Rest] ```PUT accounts/{_me}/communication/{v1}/{channel}``` </section  >
+
   requestBody:
     content:
       application/json:
@@ -29,7 +31,8 @@ get:
   summary: Get Communication Properties.
   operationId: Communication.Get 
   description:  Get Communication Properties. <br />
-    <section> (As Not Rest)  ```accounts.communication.get```  </section  > 
+    <section > [Not Rest] ```accounts.communication.get``` </section  >
+    <section > [Rest] ```accounts/{_me}/communication/{v1}/{channel}``` </section  >
   responses:
     '200':
       description: Account's channel updated successfully

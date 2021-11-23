@@ -6,14 +6,18 @@ post:
       example: email
   tags:
     - channel
-  summary: Opt-In Communication Channel 
+  summary: Opt-In Channel
   operationId: Communication.Channel.OptIn
-  description: Opt-In communication via the specified channel.
-    <section > (As Not Rest)  ```accounts.communication.channel.optIn?channel={channel}``` </section  >
-
+  description: Opt-In a communication channel, updates the channel status to 'opt-in'.
+    <section > [Not Rest] ```accounts.communication.channel.opt-in?channel={channel}``` </section  >
+    <section > [Rest] ```POST accounts/{_me}/communication/{v1}/{channel}/opt-in``` </section  > 
   responses:
     '200':
-      description: Account subscribed
+      description: Channel's status updated to 'opt-in'
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\channels.schema.yaml/#/$defs/status
     '400':
       $ref: ..\..\shared\errors\bad_request.yaml
     '401':

@@ -1,10 +1,10 @@
 openapi: 3.1.0
 info:
   title: Communication Channel Api
-  description: Api manges customer channel lists.
+  description: Manage account's communication properties
   version: '1.0'
 servers:
-  - url: 'https://{gigya-domain}/me'
+  - url: 'https://{gigya-domain}/accounts/{_me}/communication/{v1}/'
     variables:
       gigya-domain:
         default: accounts.gigya.com
@@ -33,18 +33,25 @@ security:
     basic: []
     
 paths:
-  /channels:
+  /:
     $ref: account-subscription\paths\channels.yaml
 #  /channels:
 #    $ref: account-subscription\paths\channels@option2.yaml
-  '/channels/{channel}/lists/{list}/opt-in':
+  '/{channel}/lists/{list}/opt-in':
     $ref: 'account-subscription\paths\channels@{channel}@lists@{list}@opt-in.yaml'
-  '/channels/{channel}/lists/{list}/opt-out':
+  '/{channel}/lists/{list}/opt-out':
     $ref: 'account-subscription\paths\channels@{channel}@lists@{list}@opt-out.yaml'
-  '/channels/{channel}/opt-in':
+  '/{channel}/lists/{list}/notice':
+    $ref: 'account-subscription\paths\channels@{channel}@lists@{list}@notice.yaml'
+  '/{channel}/lists/opt-out':
+    $ref: 'account-subscription\paths\channels@{channel}@lists@opt-out.yaml'
+  '/{channel}/opt-in':
     $ref: 'account-subscription\paths\channels@{channel}@opt-in.yaml'
-  '/channels/{channel}/opt-out':
+  '/{channel}/opt-out':
     $ref: 'account-subscription\paths\channels@{channel}@opt-out.yaml'
+  '/{channel}/notice':
+    $ref: 'account-subscription\paths\channels@{channel}@notice.yaml'
+
 
 tags:
   - name: communication

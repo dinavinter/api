@@ -8,18 +8,18 @@ post:
       example: newslatter
   tags:
     - list
-  summary: Opt-Out List
-  operationId:  Communication.List.OptOut
-  description: Opt-Out a communication list, updates the list status to 'opt-out'.
+  summary: Notice List
+  operationId:  Communication.List.Notice
+  description: Notice a communication list, updates the list status to 'noticed'.
     <section > [Not Rest] ```accounts.communication.list.opt-out?list={list}&channel={channel}``` </section  >
-    <section > [Rest] ```POST accounts/{_me}/communication/{v1}/{channel}/lists/{list}/opt-out``` </section  >
+    <section > [Rest] ```accounts/{_me}/communication/{v1}/{channel}/lists/{list}/opt-out``` </section  >
   responses:
     '200':
-      description: List's status updated to 'opt-out'
+      description: List's status updated to 'noticed'
       content:
         application/json:
           schema:
-            $ref: ..\components\schemas\channels.schema.yaml/#/$defs/list 
+            $ref: ..\components\schemas\channels.schema.yaml/#/$defs/list  
     '400':
       $ref: ..\..\shared\errors\bad_request.yaml
     '401':

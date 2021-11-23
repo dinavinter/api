@@ -40,6 +40,10 @@ $defs:
           - opt-in
           - opt-out
           - noticed
+        examples:
+          - opt-in
+          - opt-out
+          - noticed          
       status-updated:
         type: integer
         readOnly: true 

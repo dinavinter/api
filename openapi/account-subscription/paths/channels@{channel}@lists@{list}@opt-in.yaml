@@ -1,4 +1,3 @@
-summary: Opt-In Communication List
 post:
   parameters:
     - in: path
@@ -9,14 +8,19 @@ post:
       example: newslatter
   tags:
     - list
-  summary: Opt-In Communication List
+  summary: Opt-In List
   operationId: Communication.List.OptIn
-  description: Opt-In to the specified communication list.
-   <section > (As Not Rest)  ```accounts.communication.list.optIn?list={list}&channel={channel}``` </section  >
+  description: Opt-In a communication list, updates the list status to 'opt-in'.
+   <section > [Not Rest] ```accounts.communication.list.opt-in?list={list}&channel={channel}``` </section  >
+   <section > [Rest] ```POST accounts/{_me}/communication/{v1}/{channel}/lists/{list}/opt-in``` </section  >
 
   responses:
     '200':
-      description: Account subscribed
+      description: List's status updated to 'opt-in'
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\channels.schema.yaml/#/$defs/list
     '400':
       $ref: ..\..\shared\errors\bad_request.yaml
     '401':

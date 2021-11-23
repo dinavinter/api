@@ -1,0 +1,28 @@
+post:
+  parameters:
+    - in: path
+      name: channel
+      example: sms
+
+  tags:
+    - list
+  summary: Opt-Out Lists 
+  operationId: Communication.Channel.Lists.OptOut
+  description: Opt-Out the entire channel, updates all list statuses to 'opt-out'.
+    <section > [Not Rest] ```accounts.communication.lists.opt-out?channel={channel}``` </section  >
+    <section > [Rest] ```POST accounts/{_me}/communication/{v1}/{channel}/lists/opt-out``` </section  > 
+  responses:
+    '200':
+      description: Channel List's status was updated to 'opt-out'
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\channels.schema.yaml/#/$defs/channel
+    '400':
+      $ref: ..\..\shared\errors\bad_request.yaml
+    '401':
+      $ref: ..\..\shared\errors\requires_authentication.yaml
+    '403':
+      $ref: ..\..\shared\errors\forbidden.yaml
+    '503':
+      $ref: ..\..\shared\errors\service_unavailable.yaml

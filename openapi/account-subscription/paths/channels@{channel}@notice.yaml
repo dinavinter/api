@@ -1,4 +1,4 @@
-summary: Channel Opt-In
+summary: Channel Notice
 post:
   parameters:
     - in: path
@@ -7,14 +7,15 @@ post:
 
   tags:
     - channel
-  summary: Opt-Out Channel
-  operationId: Communication.Channel.OptOut
-  description: Opt-Out a communication channel, updates the channel status to 'opt-out'.
-    <section > [Not Rest] ```accounts.communication.channel.opt-out?channel={channel}``` </section  >
-    <section > [Rest] ```POST accounts/{_me}/communication/{v1}/{channel}/opt-out``` </section  >
+  summary: Notice Channel 
+  operationId: Communication.Channel.Notice
+  description: Notice a communication channel, updates the channel status to 'noticed'.
+    <section > [Not Rest] ```accounts.communication.channel.notice?channel={channel}``` </section  >
+    <section > [Rest] ```POST accounts/{_me}/communication/{v1}/{channel}/notice``` </section  >
+
   responses:
     '200':
-      description: Channel's status updated to 'opt-out'
+      description: Channel's status updated to 'notice'
       content:
         application/json:
           schema:
