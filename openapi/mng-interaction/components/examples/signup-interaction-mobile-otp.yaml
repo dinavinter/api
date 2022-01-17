@@ -1,0 +1,30 @@
+summary: Mobile otp identity
+value:
+  properties:
+    name: anonymus/signup
+    name: signup
+    class: screen-set
+    
+    secuirtyRequirment:
+      - anonymus:write
+      - me:write
+   
+    type: anonymus
+       
+    schema:
+      properties:
+        property1:
+          type: string
+        data.property2:
+          type: string
+        profile.lastName:
+          type: string
+        identity:
+          type: object
+          x-auth-methods:    
+          properties:
+             phonenumber:
+              type: string
+              x-verification-method: otp
+              x-identifier-type: mobile 
+  

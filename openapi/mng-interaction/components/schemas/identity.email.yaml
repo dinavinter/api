@@ -1,0 +1,18 @@
+type: object
+title: email identity      
+properties:
+  properties:
+    allOf:
+      - $ref: .\fields.email.yaml
+    
+  x-identifier:
+    readonly: true
+    enum:
+      - email
+      
+  x-verification-method:
+    enum:
+      - otp
+      - link
+      - auto-bind
+ 

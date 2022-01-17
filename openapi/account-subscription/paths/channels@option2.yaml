@@ -1,7 +1,7 @@
 summary:  Update account channel.
 put:
   tags:
-    - Channels
+    - Communication-2
   summary: Communication Channel Lists.
   operationId: ChannelsUpdate-O2 
   description: Update account's channels 
@@ -17,11 +17,6 @@ put:
       content:
         application/json:
           schema:
-            properties:
-              name:
-                type: string
-                example: newslatter
-              schema:
-                $ref: ..\components\schemas\channels.schema2.yaml
+            $ref: ..\components\schemas\channels@cdp.schema.yaml
 
        

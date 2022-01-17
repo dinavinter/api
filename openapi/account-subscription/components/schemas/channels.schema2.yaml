@@ -1,13 +1,17 @@
-type: object
-properties: 
-  email:
-    $ref: "#/$defs/channel"
-  sms: 
-    $ref: "#/$defs/channel" 
-  lists:
-    $ref: "#/$defs/lists"
- 
-$defs:
+$ref: "#/$defs/communication2" 
+$defs: 
+  communication2:
+    tags:
+      - communication-model-2 
+    type: object
+    properties:
+      email:
+        $ref: "#/$defs/channel"
+      sms:
+        $ref: "#/$defs/channel"
+      opt-in:
+        $ref: "#/$defs/lists"
+
   channel:
     allOf:
       - $ref: "#/$defs/status"
@@ -20,11 +24,18 @@ $defs:
       allOf:
         - properties:
             channel:
-              enum:
-                - email
-                - sms
+              type: array
+              items:
+                type: string
+                examples:
+                  - email
+                  - sms
+                enum:
+                  - email
+                  - sms
         - $ref: "#/$defs/status"   
       
   status:
     $ref: .\channels.schema.yaml/#/$defs/status
- 
+  
+  

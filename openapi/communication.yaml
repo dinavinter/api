@@ -52,6 +52,8 @@ paths:
   '/{channel}/notice':
     $ref: 'account-subscription\paths\channels@{channel}@notice.yaml'
 
+  '/channel-as-attribute':
+    $ref: account-subscription\paths\channels@option2.yaml
 
 tags:
   - name: communication
@@ -85,13 +87,29 @@ tags:
     x-displayName: Status
     description: |
       <SchemaDefinition schemaRef="#/components/schemas/status" showReadOnly={true} showWriteOnly={true} />
+  - name: communication-model-2
+    x-displayName: Communication Model 2
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/communication2" showReadOnly={true} showWriteOnly={true} />
+  - name: communication-model-cdp
+    x-displayName: Communication CDP
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/communication-cdp" showReadOnly={true} showWriteOnly={true} />
 
 x-tagGroups:
   - name: Communication Management
     tags:
       - communication
       - channel
-      - list
+      - list 
+  
+  - name: Communication Other
+    tags:
+      - Communication-2
+      - communication-model-cdp
+      - communication-model-2
+
+
 
   - name: Models
     tags:
@@ -100,6 +118,8 @@ x-tagGroups:
       - channel_model
       - list_model
       - lists_model
+      - communication-model-cdp
+      - communication-model-2
 
  
  

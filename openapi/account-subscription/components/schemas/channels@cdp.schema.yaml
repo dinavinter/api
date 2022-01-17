@@ -1,0 +1,33 @@
+$ref: "#/$defs/communication-cdp" 
+$defs:
+  communication-cdp:
+    tags:
+      - communication-model-cdp 
+    type: object
+    properties: 
+      topic:
+        type: string
+        example:
+          newslatter
+      action:
+        type: string
+        enum:
+          - opt-in
+          - opt-out
+          - noticed
+        examples:
+          - opt-in
+          - opt-out
+          - noticed
+      date:
+        type: integer
+        readOnly: true
+      
+      channel-type:
+        enum:
+          - email
+          - sms
+
+      data:
+        additionalProperties: true
+

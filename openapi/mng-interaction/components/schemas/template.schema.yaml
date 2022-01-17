@@ -1,0 +1,26 @@
+$ref: "#/$defs/schema"
+
+$defs:
+  schema:
+    description: A set of key-value pairs that describe the schema input of an intraction.
+    type: object
+    anyOf:
+      - title: subscribtions fields
+        $ref: .\fields.template.subscription.yaml
+      - title: profile fields
+        $ref: .\fields.sections.profile.yaml
+      - title: any field
+        $ref: .\fields.template.object.yaml 
+      
+      - properties:
+          identity:
+            $ref: .\fields.sections.identity.yaml
+          data:
+            $ref: .\fields.sections.data.yaml 
+          profile :
+            $ref: .\fields.sections.profile.yaml
+          subscriptions :
+            $ref: .\fields.sections.subscriptions.yaml
+          consents :
+            $ref: .\fields.sections.consents.yaml
+    required: identity        

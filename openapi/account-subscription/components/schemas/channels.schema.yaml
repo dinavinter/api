@@ -48,10 +48,10 @@ $defs:
           - opt-in
           - opt-out
           - noticed          
-      status-updated:
+      timestamp:
         type: integer
         readOnly: true 
-      interaction-id:
+      interaction:
         description: Corrolation id to the interaction which the status was updated with , i.e. callId
         type: string
         readOnly: true

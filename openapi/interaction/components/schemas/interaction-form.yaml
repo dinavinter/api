@@ -1,0 +1,56 @@
+$ref: "#/$defs/interaction.form"
+
+$defs:
+  interaction.form:
+    tags: 
+      - interaction-form
+     properties:
+        class:
+         type: string
+         example: "state"
+        state:
+          type: object
+          properties:
+            value:
+              type: string
+              example:
+                - draft
+                - binded
+                - completed
+            events:
+              type: object
+              properties:
+                class:
+                  type: string
+                  example: 'form'
+                name:
+                  type: string
+                  example: 'submit'
+                method:
+                  type: string
+                  example: "POST"
+                href:
+                  type: string
+                  example: "/interactions/Sigh-Up/v1/submit"
+                fields:
+                  $ref: '#/components/schemas/template.schema'
+    
+        meta:
+          type: object
+          properties:
+            appName:
+              type: string
+              example: "Sigh-Up"
+            schema:
+              type: string
+              example: "/specs/interaction/components/schemas/SignUpSchema.yaml"
+            title:
+              type: string
+              example: "Sigh Up To Our Junk"
+    
+        context:
+          type: object
+          properties:
+            device-id:
+              type: string
+          additionalProperties: true

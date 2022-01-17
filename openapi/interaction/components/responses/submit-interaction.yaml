@@ -1,0 +1,8 @@
+$ref: "#/interaction-submit-response"
+$defs:
+  interaction-submit-response:    
+    description: Interaction Response
+    content:
+      application/json:
+        schema:
+          $ref: ..\schemas\interaction-form.yaml

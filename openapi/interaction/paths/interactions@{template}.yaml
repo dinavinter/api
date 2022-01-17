@@ -1,0 +1,28 @@
+post:
+  tags:
+    - Runtime
+  operationId: CreateInteractionInstance
+  summary: Create Interaction Instance
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            state:
+              type: object
+              properties:
+                value:
+                  type: string
+                  example:
+                    - draft
+            context:
+              type: object
+              properties: 
+                device-id: 
+                  type: string
+              additionalProperties: true
+
+
+  responses:
+    '200':
+      $ref: ..\components\responses\responses.submit-interaction.yaml
