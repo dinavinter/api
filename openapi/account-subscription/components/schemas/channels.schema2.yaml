@@ -9,8 +9,8 @@ $defs:
         $ref: "#/$defs/channel"
       sms:
         $ref: "#/$defs/channel"
-      opt-in:
-        $ref: "#/$defs/lists"
+    additionalProperties:
+      $ref: "#/$defs/lists"
 
   channel:
     allOf:
@@ -19,21 +19,18 @@ $defs:
 #          lists:
 #            $ref: "#/$defs/lists"
           
-  lists:
-    additionalProperties:
-      allOf:
-        - properties:
-            channel:
-              type: array
-              items:
-                type: string
-                examples:
-                  - email
-                  - sms
-                enum:
-                  - email
-                  - sms
-        - $ref: "#/$defs/status"   
+  lists: 
+    allOf:
+      - properties:
+          channel: 
+            type: array
+            minItems: 1
+            items:
+              type: string
+              enum:
+                - email
+                - sms
+      - $ref: "#/$defs/status"   
       
   status:
     $ref: .\channels.schema.yaml/#/$defs/status

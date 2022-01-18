@@ -2,64 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e206f023-fe88-4492-a97c-27fc228e7fe7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/channels@cdp.schema.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/interaction.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/interaction/components/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/interaction/components/examples/signup-interaction-email-lite.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/interaction/components/examples/signup-interaction-ex.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/interaction/components/examples/signup-interaction-mobile-otp.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/interaction/components/examples/signup-interaction-selector.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/interaction/components/responses/submit-interaction.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/interaction/components/schemas/basic-error.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/interaction/components/schemas/interaction-form.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/interaction/paths/interactions@{template}.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/examples/signup-interaction-email-lite.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/examples/signup-interaction-ex.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/examples/signup-interaction-mobile-otp.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/examples/signup-interaction-selector.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/responses/errors.bad_request.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/responses/errors.forbidden.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/responses/errors.not_found.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/responses/errors.service_unavailable.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/Link.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/basic-error.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/channel.email.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/channel.sms.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/channels.schema.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/channels.schema2.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.email.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.phone_number.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.profile.firstName.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.profile.lastName.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.profile.nickname.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.sections.consents.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.sections.data.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.sections.identity.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.sections.profile.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.sections.subscriptions.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.template.basic.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.template.boolean.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.template.channel.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.template.object.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.template.select.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.template.string.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.template.subscription.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/fields.template.subscription_list.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/identity.email.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/identity.mobile.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/interaction.template.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/template.outcomes.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/components/schemas/template.schema.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/paths/interactions@templates.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/openapi/mng-interaction/paths/interactions@templates@{template}.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.api.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/channels.schema.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/channels.schema.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/channels.schema2.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/channels.schema2.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openapi/account-subscription/paths/channels@option2.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/channels@option2.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openapi/communication.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/communication.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/communication.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/communication.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/interaction.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interaction.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +34,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="Markdown" />
+    <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="yaml&#10;Markdown" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -125,7 +73,7 @@
       <workItem from="1641387681632" duration="4236000" />
       <workItem from="1641824536745" duration="1896000" />
       <workItem from="1642354732792" duration="2674000" />
-      <workItem from="1642433308605" duration="7602000" />
+      <workItem from="1642433308605" duration="17235000" />
     </task>
     <task id="LOCAL-00001" summary="index">
       <created>1637103680273</created>
