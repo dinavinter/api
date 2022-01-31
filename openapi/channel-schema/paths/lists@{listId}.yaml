@@ -1,8 +1,8 @@
 get:
   tags:
     - Config
-  operationId: GetSubscriptionTemplate
-  summary: Gets subscription list schema
+  operationId: GetList
+  summary: Gets the schema
   parameters:
     - in: path
       name: list
@@ -25,9 +25,9 @@ get:
 put:
   tags:
     - Config
-  summary: Updates subscription list schema.
-  operationId: UpdateSubscription
-  description: Update subscription list schema
+  summary: "Updates List Definition".
+  operationId: UpdateList
+  description: Update list sefenition.
   parameters:
     - in: path
       name: list
@@ -39,17 +39,17 @@ put:
           $ref: ..\components\schemas\fields.template.subscription.yaml
   responses:
     '200':
-      description: Subscription list schema was updated successfully
+      description: List was updated successfully
       content:
         application/json:
           schema:
             $ref: ..\components\schemas\fields.template.subscription.yaml
       links:
-        subscriptionLinks:
-          operationId: GetSubscriptionTemplate
+        listLinks:
+          operationId: GetList
           parameters:
-            subscriptionId: $response.body#/subscriptionId
-          description: A refrence to the specific subscription template.
+            listId: $response.body#/listId
+          description: A refrence to the specific list template.
     '400':
       $ref: ..\..\shared\errors\bad_request.yaml
     '401':

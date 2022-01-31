@@ -12,7 +12,7 @@ put:
     content:
       application/json:
         schema:
-          $ref: ..\components\schemas\channels.schema.yaml
+          $ref: ..\components\schemas\communication@actions.yaml
           
   responses:
     '200':
@@ -20,7 +20,7 @@ put:
       content:
         application/json:
           schema:
-            $ref: ..\components\schemas\channels.schema.yaml
+            $ref: ..\components\schemas\communication@actions.yaml
             
                 
 
@@ -33,12 +33,22 @@ get:
   description:  Get Communication Properties. <br />
     <section > [Not Rest] ```accounts.communication.get``` </section  >
     <section > [Rest] ```accounts/{_me}/communication/{v1}/{channel}``` </section  >
+  parameters:
+    - in: query
+      name: selector
+      required: true
+      description: Comma seperated list to specify the communications defentions to retrive.
+      example:
+        news_sms,news_email,deals_sms
+      schema:
+        type: string
+        pattern: ((\S+)(_)(sms+|email+),?)+
   responses:
     '200':
       description: Account's channel updated successfully
       content:
         application/json:
-          schema: 
-             $ref: ..\components\schemas\channels.schema.yaml
+          schema:
+            $ref: ..\components\schemas\communication@actions.yaml
 
        

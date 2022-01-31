@@ -9,7 +9,7 @@ put:
     content:
       application/json:
         schema:
-          $ref: ..\components\schemas\channels.schema2.yaml
+          $ref: ..\components\schemas\channels.schema.yaml
           
   responses:
     '200':

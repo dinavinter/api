@@ -1,0 +1,38 @@
+summary:  Downstream systems example APIS
+post:
+  tags:
+    - marketo 
+  parameters:
+    - in: path
+      name: userid
+
+  summary: marketo UM.
+  description: https://developers.marketo.com/rest-api/endpoint-reference/user-management-endpoint-reference/#!/User_Management/updateUserAttributeUsingPOST
+  operationId: integrations.marketo.um
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            updateUserAttributesRequest	:
+              type: object
+              properties:
+                emailAddress :
+                  type: string
+                optedIn: 
+                  type: boolean
+                  description: Subscriber's current status. subscribed, unsubscribed, cleaned, or pending
+
+
+
+
+
+  responses:
+    '200':
+      description: Actions proceeded successfully
+      
+            
+                
+
+       
+        

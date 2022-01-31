@@ -1,15 +1,18 @@
-$ref: "#/$defs/communication2" 
+$ref: "#/$defs/communication"
 $defs:
-  communication2:
+
+  communication-actions-array:
+    type: array
+    tags:
+      - communication_actions 
+    items:
+      $ref: "#/$defs/communication-action"
+ 
+  communication:
     type: object
     tags:
-      - communication_model
-    patternProperties:
-      "^S_":
-        type: "string"
-      "^I_":
-        type: "integer"
-    additionalProperties:
+      - communication
+    additionalProperties: 
       $ref: "#/$defs/communication-entry"
       pattern: (\S+)(_)(sms+|email+)
     example:
@@ -25,14 +28,14 @@ $defs:
         topic: deals
         channel: email
         status: noticed
-
+    
   communication-entry:
     tags:
       - communication-action-model
     type: object
     properties:
       topic:
-        description: Represents a unique id of a communication list
+        description: Represents a unique id of a communication list 
         type: string
         examples:
           - newslatter
@@ -49,14 +52,14 @@ $defs:
         examples:
           - opt-in
           - opt-out
-          - notice
-
+          - notice 
+      
       channel:
-        description: Specifies user's preferred channel.
+        description: Specifies user's preferred channel. 
         enum:
           - email
           - sms
-
+     
       timestamp:
         type: integer
         readOnly: true
@@ -69,11 +72,11 @@ $defs:
             - <interaction - id>
 
   opt-in:
-    description: "Opt-In to a communication topic, updates the  status to 'opt-in'"
+    description: "Opt-In to a communication topic, updates the  status to 'opt-in'" 
     type: string
     enum:
       - opt-in
-
+        
   opt-out:
     description: "Opt-Out from a communication topic, updates the  status to 'opt-out'"
     type: string

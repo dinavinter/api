@@ -1,0 +1,83 @@
+$ref: "#/$defs/communication-actions"
+$defs:
+
+  communication-actions:
+    type: array
+    tags:
+      - communication_actions
+    items:
+      $ref: "#/$defs/communication-action"
+
+  communication-action:
+    tags:
+      - communication-action-model
+    type: object
+    oneOf:
+      - $ref: "#/$defs/add"
+      - $ref: "#/$defs/remove"
+      - $ref: "#/$defs/replace"
+
+      
+  operation:
+    type: object
+    properties:
+      ref:
+        type: object
+        description: Identifies the target of the operation.
+        properties:
+          type: 
+            type: string
+            description: the type of the target
+            examples:
+              - newslatter
+              - special-offer
+          id:
+            type: string
+            description: the id of the target
+            examples:
+              - newslatter
+              - special-offer
+
+      topic:
+        description: Represents a unique id of a communication list
+        type: string
+        examples:
+          - newslatter
+          - special-offers
+      
+      channel:
+        description: Specifies user's preferred channel.
+        enum:
+          - email
+          - sms
+  add:
+    description: "Add a communication channel to a specific topic"
+    type: object
+    allOf:
+      - $ref: "#/$defs/operation" 
+      - properties:
+          op:
+            enum:
+              - add
+      
+  
+  remove:
+    description: "Removes a communication channel from a specific topic"
+    type: object
+    allOf:
+      - $ref: "#/$defs/operation"
+      - properties:
+          op:
+            enum:
+              - remove
+      
+  replace:
+    description: "Replaces the communication channels of a specific topic"
+    type: object
+    allOf:
+      - $ref: "#/$defs/operation"
+      - properties:
+          op:
+            enum:
+              - replace
+

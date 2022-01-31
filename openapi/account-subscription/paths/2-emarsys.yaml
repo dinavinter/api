@@ -1,0 +1,36 @@
+summary:  Downstream systems example APIS
+post:
+  tags:
+    - emarsys  
+  description: |
+  https://dev.emarsys.com/docs/emarsys-api/b3A6MjQ4OTk4MDc-create-contacts
+  https://dev.emarsys.com/docs/emarsys-api/b3A6MjQ4OTk4Mjc-add-contacts-to-a-contact-list
+  summary: emarsys 
+  operationId: integrations.emarsys
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+              contact_list_id:
+                type: string
+                description: The id of the contact list to add all the identifiable contacts to in the request payload.
+              key_id:
+                type: string
+                description: Identifies the contact by their id, uid, or the name/integer id of a custom field, such as email.
+              contacts:
+                type: array
+                items:
+                  type: object
+                   
+                   
+  responses:
+    '200':
+      description: OK
+
+
+
+
+
+
+ 

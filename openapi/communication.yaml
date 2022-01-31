@@ -33,6 +33,11 @@ security:
     basic: []
     
 paths:
+  '/actions':
+    $ref: 'account-subscription\paths\actions.yaml'
+  '/actions/patch':
+    $ref: 'account-subscription\paths\actions_2.yaml'
+
   /:
     $ref: account-subscription\paths\channels.yaml
 #  /channels:
@@ -51,66 +56,110 @@ paths:
     $ref: 'account-subscription\paths\channels@{channel}@opt-out.yaml'
   '/{channel}/notice':
     $ref: 'account-subscription\paths\channels@{channel}@notice.yaml'
+   
+  '/lists':
+    $ref: 'channel-schema\paths\lists.yaml'
+  '/lists/{listId}':
+    $ref: 'channel-schema\paths\lists@{listId}.yaml'
+  '/lists/{listId}\fields':
+    $ref: 'channel-schema\paths\lists@{listId}@fields.yaml'
+  '/lists/{listId}\fields\channel':
+    $ref: 'channel-schema\paths\lists@{listId}@fields@channel.yaml'
+  '/lists/{listId}\fields\{fieldId}':
+    $ref: 'channel-schema\paths\lists@{listId}@fields@{fieldId}.yaml'
+  '/lists/{listId}?$filter=channel(email)&$expand=Account($select=firstName,email)':
+    $ref: account-subscription\paths\query.yaml 
 
   '/channel-as-attribute':
     $ref: account-subscription\paths\channels@option2.yaml
+  '/integrations/mailchimp/lists/{list_id}':                          
+    $ref: 'account-subscription\paths\mailchimp.yaml'
+  '/integrations/marketo/rest/v1/lists/{listId}/leads.json':
+    $ref: account-subscription\paths\marketo.yaml
+  '/integrations/marketo/userservice/management/v1/users/{userid}/update.json':
+    $ref: account-subscription\paths\marketo-um.yaml
+  '/integrations/emarsys/api/v2/contact':
+    $ref: 'account-subscription\paths\emarsys.yaml'
 
 tags:
   - name: communication
     x-displayName: Communication
     description: |
       Operations to update communication properties
+#  - name: actions
+#    x-displayName: Communication Actions
+#    description: |
+#      Operations to update communication properties
+  - name: integrations
+    x-displayName: Integrations
+    description: |
+      Integrations Open API
+      https://dev.emarsys.com/docs/emarsys-api/b3A6MjQ4OTk4MDc-create-contacts
 
-  - name: list
-    x-displayName: Lists
-    description:  Operations to update communication lists of account
-  - name: channel
-    x-displayName: Channel
-    description: Operations to update communication channels 
-  - name: communication-model
-    x-displayName: Communication
-    description: |
-      <SchemaDefinition schemaRef="#/components/schemas/communication" />
-  - name: channel_model
-    x-displayName:  Channel 
-    description: |
-      <SchemaDefinition schemaRef="#/components/schemas/channel" />
-  - name: lists_model
-    x-displayName: Lists 
-    description: |
-      <SchemaDefinition schemaRef="#/components/schemas/lists" showReadOnly={true} showWriteOnly={true} />
-  - name: list_model
-    x-displayName: List
-    description: |
-      <SchemaDefinition schemaRef="#/components/schemas/list"  showReadOnly={true} showWriteOnly={true} />
-  - name: status_model
-    x-displayName: Status
-    description: |
-      <SchemaDefinition schemaRef="#/components/schemas/status" showReadOnly={true} showWriteOnly={true} />
-  - name: communication-model-2
-    x-displayName: Communication Model 2
-    description: |
-      <SchemaDefinition schemaRef="#/components/schemas/communication2" showReadOnly={true} showWriteOnly={true} />
+#  - name: list
+#    x-displayName: Lists
+#    description:  Operations to update communication lists of account
+#  - name: channel
+#    x-displayName: Channel
+#    description: Operations to update communication channels 
+#  - name: communication-model-2
+#    x-displayName: Communication-2
+#    description: |
+#      <SchemaDefinition schemaRef="#/components/schemas/communication" />
+#  - name: channel_model
+#    x-displayName:  Channel 
+#    description: |
+#      <SchemaDefinition schemaRef="#/components/schemas/channel" />
+#  - name: lists_model
+#    x-displayName: Lists 
+#    description: |
+#      <SchemaDefinition schemaRef="#/components/schemas/lists" showReadOnly={true} showWriteOnly={true} />
+#  - name: list_model
+#    x-displayName: List
+#    description: |
+#      <SchemaDefinition schemaRef="#/components/schemas/list"  showReadOnly={true} showWriteOnly={true} />
+#  - name: status_model
+#    x-displayName: Status
+#    description: |
+#      <SchemaDefinition schemaRef="#/components/schemas/status" showReadOnly={true} showWriteOnly={true} />
+#  - name: communication-model
+#    x-displayName: Communication Model
+#    description: |
+#      <SchemaDefinition schemaRef="#/components/schemas/communication2" showReadOnly={true} showWriteOnly={true} />
   - name: communication-model-cdp
     x-displayName: Communication CDP
     description: |
       <SchemaDefinition schemaRef="#/components/schemas/communication-cdp" showReadOnly={true} showWriteOnly={true} />
 
 x-tagGroups:
-  - name: Communication Management
+  - name: Communication Runtime
     tags:
       - communication
-      - channel
-      - list 
-  
+
+  - name: Communication Management
+    tags:
+      - Config
+      
+  - name: integrations
+    description: |
+      Integrations Open API
+      https://dev.emarsys.com/docs/emarsys-api/b3A6MjQ4OTk4MDc-create-contacts
+
+    tags:
+      - communication-model-cdp
+      - mailchimp  
+      - marketo
+      - emarsys
+      
+      
   - name: Communication Other
     tags:
       - Communication-2
-      - communication-model-cdp
       - communication-model-2
+      - query
 
 
-
+      
   - name: Models
     tags:
       - communication-model
@@ -118,6 +167,8 @@ x-tagGroups:
       - channel_model
       - list_model
       - lists_model
+      - communication-action-model-jsonpatch
+      - communication-action-model
 
  
  

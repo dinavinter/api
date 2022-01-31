@@ -1,0 +1,46 @@
+summary:  Downstream systems example APIS
+post:
+  tags:
+    - marketo 
+  parameters:
+    - in: path
+      name: listId
+      example: abcfsdf
+  description: |
+  Adds a given set of person records to a target static list. There is a limit of 300 lead ids per request.
+  https://developers.marketo.com/rest-api/endpoint-reference/lead-database-endpoint-reference/#!/Static_Lists/addLeadsToListUsingPOST
+
+  summary: marketo lead static list.
+  operationId: integrations.marketo.lead
+  requestBody:
+    content:
+      application/json:
+        schema:
+          properties:
+            id:
+              type: string
+              description: Comma-separated list of lead ids to add to the list
+
+            listOperationRequest:
+              type: object
+              properties:
+                input: 
+                  type: array
+                  items:
+                    properties:
+                      id:
+                        type: string
+
+
+
+
+
+  responses:
+    '200':
+      description: Actions proceeded successfully
+      
+            
+                
+
+       
+        

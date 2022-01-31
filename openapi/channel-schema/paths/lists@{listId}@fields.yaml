@@ -1,8 +1,8 @@
 post:
   tags:
     - Config
-  operationId: CreateSubscriptionField
-  summary: Create Subscription Field
+  operationId: CreateField
+  summary: Create Field
   parameters:
     - in: path
       name: list
@@ -14,24 +14,24 @@ post:
           $ref: ..\components\schemas\fields.template.basic.yaml
   responses:
     '201':
-      description: Add subscription field
+      description: Add field
       content:
         application/json:
           schema:
             $ref: ..\components\schemas\fields.template.basic.yaml
       links:
-        updateSubscriptionField:
-          operationId: UpdateSubscriptionField
+        updateField:
+          operationId: UpdateField
           parameters:
             fieldId: $response.body#/fieldId
-            subscriptionId: $request.path#/subscriptionId
-          description: Updates the specifys subscription field.
-        getSubscriptionField:
-          operationId: UpdateSubscriptionField
+            listId: $request.path#/listId
+          description: Updates the specifys list field.
+        getField:
+          operationId: UpdateField
           parameters:
             fieldId: $response.body#/fieldId
-            subscriptionId: $request.path#/subscriptionId
-          description: Updates the specifys subscription field.
+            listId: $request.path#/listId
+          description: Updates the field.
     '400':
       $ref: ..\..\shared\errors\bad_request.yaml
     '401':

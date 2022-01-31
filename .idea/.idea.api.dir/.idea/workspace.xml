@@ -2,17 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e206f023-fe88-4492-a97c-27fc228e7fe7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/communication@actions-atomic@operations.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/communication@actions-b.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/communication@actions.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/2-emarsys.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/actions.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/actions_2.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/emarsys.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/mailchimp.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/marketo-um.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/marketo.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/query.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.api.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/template/components/schemas/interaction.template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api/template/components/schemas/interaction.template.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/channels.schema2.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/channels.schema2.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/account-subscription/paths/channels.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/channels.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/account-subscription/paths/channels@option2.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/channels@option2.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/channel-schema/paths/subscribtions@{subscriptionId}.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/channel-schema/paths/lists@{listId}.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/channel-schema/paths/subscribtions@{subscriptionId}@fields.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/channel-schema/paths/lists@{listId}@fields.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/channel-schema/paths/subscribtions@{subscriptionId}@fields@channel.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/channel-schema/paths/lists@{listId}@fields@channel.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/channel-schema/paths/subscribtions@{subscriptionId}@fields@{fieldId}.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/channel-schema/paths/lists@{listId}@fields@{fieldId}.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/channel-schema/paths/subscriptions.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/channel-schema/paths/lists.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openapi/communication.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/communication.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/communication.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/communication.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/interaction.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/interaction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/interaction.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/interaction.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="OpenAPI" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -52,7 +76,7 @@
       <option name="generatorPath" value="https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/5.0.0/openapi-generator-cli-5.0.0.jar" />
       <option name="jdkPath" value="" />
       <option name="language" value="java" />
-      <option name="specificationPath" value="C:\Users\I347305\Documents\Github.sap\api\api\template\subscribtions-api.yaml" />
+      <option name="specificationPath" value="C:\Users\I347305\Documents\Github.sap\api\api\template\components\schemas\interaction.template.yaml" />
       <method v="2" />
     </configuration>
   </component>
@@ -73,7 +97,11 @@
       <workItem from="1641387681632" duration="4236000" />
       <workItem from="1641824536745" duration="1896000" />
       <workItem from="1642354732792" duration="2674000" />
-      <workItem from="1642433308605" duration="17235000" />
+      <workItem from="1642433308605" duration="22801000" />
+      <workItem from="1642658416888" duration="1567000" />
+      <workItem from="1642665860544" duration="5592000" />
+      <workItem from="1643277633006" duration="11074000" />
+      <workItem from="1643531654746" duration="14456000" />
     </task>
     <task id="LOCAL-00001" summary="index">
       <created>1637103680273</created>
@@ -166,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637678930422</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="comm2">
+      <created>1642545857423</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1642545857423</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +236,7 @@
     <MESSAGE value="get" />
     <MESSAGE value="update communication api" />
     <MESSAGE value="communication" />
-    <option name="LAST_COMMIT_MESSAGE" value="communication" />
+    <MESSAGE value="comm2" />
+    <option name="LAST_COMMIT_MESSAGE" value="comm2" />
   </component>
 </project>

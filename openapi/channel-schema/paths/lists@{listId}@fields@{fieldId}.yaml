@@ -1,7 +1,7 @@
 put:
   tags:
     - Config
-  operationId: UpdateSubscriptionField
+  operationId: UpdateField
   description: Updates the specifys subscription field.
   summary: Updates the a subscription field.
   parameters:
@@ -34,7 +34,7 @@ put:
 get:
   tags:
     - Config
-  operationId: GetSubscriptionField
+  operationId: GetField
   description: Gets the specified subscription field.
   summary: Gets the specified subscription field.
   parameters:
@@ -46,7 +46,7 @@ get:
       example: frequency
   responses:
     '200':
-      description: Subscription field template
+      description: Field was found.
       content:
         application/json:
           schema:

@@ -1,0 +1,9 @@
+get:
+  tags:
+    - query
+
+  summary: 
+  operationId: communication.query
+  responses:
+    '200':
+      description: OK        

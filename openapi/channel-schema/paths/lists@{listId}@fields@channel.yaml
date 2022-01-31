@@ -1,9 +1,9 @@
 post:
   tags:
     - Config
-  operationId: SetSubscriptionChannel
-  description: Set the subscription channel.
-  summary: Set the subscription channel.
+  operationId: SetChannel
+  description: Set the channel.
+  summary: Set the channel.
   parameters:
     - in: path
       name: list
@@ -34,9 +34,9 @@ post:
 get:
   tags:
     - Config
-  operationId: GetSubscriptionChannel
-  description: Gets the subscribtion channel.
-  summary: Gets the subscribtion channel.
+  operationId: GetChannel
+  description: Gets the channel.
+  summary: Gets the channel.
   parameters:
     - in: path
       name: list
@@ -46,7 +46,7 @@ get:
       example: frequency
   responses:
     '200':
-      description: Subscription channel
+      description: Channel found
       content:
         application/json:
           schema:
