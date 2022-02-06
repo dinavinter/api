@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e206f023-fe88-4492-a97c-27fc228e7fe7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/openapi/account-subscription/components/responses/search.yaml" afterDir="false" />
+    <list default="true" id="e206f023-fe88-4492-a97c-27fc228e7fe7" name="Changes" comment="search communication">
+      <change afterPath="$PROJECT_DIR$/openapi/account-subscription/components/responses/search_group_by_user.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.api.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/openapi/account-subscription/components/responses/search.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/components/responses/search.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/communication@actions.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/components/schemas/communication@actions.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/openapi/account-subscription/paths/actions.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/account-subscription/paths/search.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openapi/communication.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/openapi/communication.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/communication.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/communication.html" afterDir="false" />
     </list>
@@ -86,7 +86,7 @@
       <workItem from="1642665860544" duration="5592000" />
       <workItem from="1643277633006" duration="11074000" />
       <workItem from="1643531654746" duration="20679000" />
-      <workItem from="1644165859654" duration="1388000" />
+      <workItem from="1644165859654" duration="3308000" />
     </task>
     <task id="LOCAL-00001" summary="index">
       <created>1637103680273</created>
@@ -207,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1643628675422</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="search communication">
+      <created>1644167277493</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1644167277493</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +251,7 @@
     <MESSAGE value="comm2" />
     <MESSAGE value="interaction self contaain" />
     <MESSAGE value="communication api" />
-    <option name="LAST_COMMIT_MESSAGE" value="communication api" />
+    <MESSAGE value="search communication" />
+    <option name="LAST_COMMIT_MESSAGE" value="search communication" />
   </component>
 </project>

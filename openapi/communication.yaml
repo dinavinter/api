@@ -129,6 +129,15 @@ tags:
     x-displayName: Communication Model
     description: |
       <SchemaDefinition schemaRef="#/components/schemas/communication" showReadOnly={true} showWriteOnly={true} />
+  - name: basic_search_response
+    x-displayName: Search Response
+    description: |
+      <OpenApiResponse schemaRef="#/components/schemas/basic_search_response" showReadOnly={true} showWriteOnly={true} />
+
+  - name: communication-entry
+    x-displayName: Communication Entry
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/communication-entry" showReadOnly={true} showWriteOnly={true} />
   - name: communication-model-cdp
     x-displayName: Communication CDP
     description: |
@@ -146,7 +155,15 @@ x-tagGroups:
   - name: Communication Search
     tags:
       - search
-      
+    
+  - name: Models
+    tags:
+      - communication-model
+      - communication-entry
+#      - basic_search_response
+#      - group_by_search_response
+  #      - search-respones-group-by   
+  
   - name: integrations
     description: |
       Integrations Open API
@@ -167,15 +184,8 @@ x-tagGroups:
 
 
       
-  - name: Models
-    tags:
-      - communication-model
-      - status_model 
-      - channel_model
-      - list_model
-      - lists_model
-      - communication-action-model-jsonpatch
-      - communication-action-model
+
+    
 
  
  

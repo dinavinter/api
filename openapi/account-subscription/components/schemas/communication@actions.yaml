@@ -7,6 +7,22 @@ $defs:
       - communication_actions 
     items:
       $ref: "#/$defs/communication-entry"
+    example:
+      - uid: URTSFS345
+        topic: news
+        channel: sms
+        status: opt-in
+        timestamp: 567003434
+      - uid: URTSFS345
+        topic: news
+        channel: email
+        status: opt-in
+        timestamp: 567003434
+      - uid: RGSA678
+        topic: news
+        channel: email
+        status: opt-in
+        timestamp: 567003434  
  
   communication:
     type: object

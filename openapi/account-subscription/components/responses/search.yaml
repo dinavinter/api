@@ -1,11 +1,45 @@
 $ref: "#/$defs/search_response"
 $defs:
-  search_response:
+  search_response: 
     description: Found Results
     content:
       application/json:
         schema:
-          allOf:
-            - $ref: ..\schemas\communication@actions.yaml/#/$defs/communication-actions-array
+          oneOf:
+            - $ref: "#/$defs/basic_search_response"
+            - $ref: "#/$defs/group_by_search_response"
+            
+              
+  basic_search_response:
+    tags:
+      - basic_search_response
+    description: basic search response
+    type: array
+    $ref: ..\schemas\communication@actions.yaml/#/$defs/communication-actions-array
+   
+     
+  group_by_search_response:
+    tags:
+      - search-response-group-by
+    description: response of 'group by uid'
+    type: object
+    additionalProperties:
+      $ref: ..\schemas\communication@actions.yaml/#/$defs/communication-actions-array
+      pattern: (\S+)(_)(sms+|email+)
+    example:
+      URTSFS345: 
+        - topic: news
+          channel: sms
+          status: opt-in
+          timestamp: 567003434
+        - topic: news
+          channel: email
+          status: opt-in
+          timestamp: 567003434
+      RGSA678: 
+        - topic: news
+          channel: email
+          status: opt-in
+          timestamp: 567003434 
 
  
