@@ -1,0 +1,27 @@
+summary:  Perform Communication Actions.
+post:
+  tags:
+    - search
+  summary: Communication Search API.
+  operationId: Communication.Search 
+  description:  Searches and retrieves data from communication Storage using an SQL-like query.  
+     <br />
+    <section > [Not Rest] ```accounts.search``` </section  >
+  parameters:
+    - in: query
+      name: query
+      required: true
+      description: an SQL-like query.
+      example:
+        select * from communication
+
+  responses:
+    '200':
+      $ref: ..\components\responses\search.yaml
+      
+      
+            
+                
+
+       
+        

@@ -1,0 +1,11 @@
+$ref: "#/$defs/search_response"
+$defs:
+  search_response:
+    description: Found Results
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: ..\schemas\communication@actions.yaml/#/$defs/communication-actions-array
+
+ 

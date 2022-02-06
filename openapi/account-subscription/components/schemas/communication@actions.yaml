@@ -6,7 +6,7 @@ $defs:
     tags:
       - communication_actions 
     items:
-      $ref: "#/$defs/communication-action"
+      $ref: "#/$defs/communication-entry"
  
   communication:
     type: object
@@ -34,6 +34,9 @@ $defs:
       - communication-action-model
     type: object
     properties:
+      uid:
+        description: Represents the user who subscribed to thos topic
+        type: string
       topic:
         description: Represents a unique id of a communication list 
         type: string

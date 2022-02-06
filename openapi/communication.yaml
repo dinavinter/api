@@ -33,8 +33,8 @@ security:
     basic: []
     
 paths:
-  '/actions':
-    $ref: 'account-subscription\paths\actions.yaml'
+  '/search':
+    $ref: 'account-subscription\paths\search.yaml'
   '/actions/patch':
     $ref: 'account-subscription\paths\actions_2.yaml'
 
@@ -86,6 +86,9 @@ tags:
     x-displayName: Communication
     description: |
       Operations to update communication properties
+      
+  - name: search
+    x-displayName: Search
 #  - name: actions
 #    x-displayName: Communication Actions
 #    description: |
@@ -122,10 +125,10 @@ tags:
 #    x-displayName: Status
 #    description: |
 #      <SchemaDefinition schemaRef="#/components/schemas/status" showReadOnly={true} showWriteOnly={true} />
-#  - name: communication-model
-#    x-displayName: Communication Model
-#    description: |
-#      <SchemaDefinition schemaRef="#/components/schemas/communication2" showReadOnly={true} showWriteOnly={true} />
+  - name: communication-model
+    x-displayName: Communication Model
+    description: |
+      <SchemaDefinition schemaRef="#/components/schemas/communication" showReadOnly={true} showWriteOnly={true} />
   - name: communication-model-cdp
     x-displayName: Communication CDP
     description: |
@@ -139,6 +142,10 @@ x-tagGroups:
   - name: Communication Management
     tags:
       - Config
+  
+  - name: Communication Search
+    tags:
+      - search
       
   - name: integrations
     description: |
@@ -152,11 +159,11 @@ x-tagGroups:
       - emarsys
       
       
-  - name: Communication Other
-    tags:
-      - Communication-2
-      - communication-model-2
-      - query
+#  - name: Communication Other
+#    tags:
+#      - Communication-2
+#      - communication-model-2
+#      - query
 
 
       
