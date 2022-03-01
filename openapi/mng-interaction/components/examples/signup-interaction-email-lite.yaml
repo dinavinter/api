@@ -22,7 +22,8 @@ value:
       authentication:
         output:
           type: auth
-          identity: '#/properties/identity'
+          identity:
+            $ref: '#/properties/identity'
       authorized:
         output:
           type: projection

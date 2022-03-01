@@ -1,0 +1,17 @@
+$ref: "#/$defs/search_response"
+$defs:
+  search_response:
+    tags:
+      - search-response-group-by
+    description: Found Results
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            additionalProperties:
+              $ref: ..\schemas\communication@actions.yaml/#/$defs/communication-actions-array
+              pattern: (\S+)(_)(sms+|email+)
+             
+
+ 

@@ -1,25 +1,24 @@
 summary: Create Communication List
-post:
+put:
   tags:
     - Config
   summary: Create a communication list.
   operationId: CreateCommunicationList
-  description: Create communication list
+  description: Creates a communication list
   requestBody:
     content:
       application/json:
         schema:
-          allOf:
-            - properties:
-                name: 
-                  type: string
-                  example: newslatter
-                schema:
-                  $ref: ..\components\schemas\fields.template.subscription.yaml 
+          properties:
+            name:
+              type: string
+              example: newslatter
+            schema:
+              $ref: ..\components\schemas\fields.template.subscription.yaml
           
   responses:
     '201':
-      description: List template was created successfully
+      description: Communication list was created successfully
       content:
         application/json:
           schema:
@@ -35,7 +34,7 @@ post:
           operationId: GetList
           parameters:
             subscriptionId: response.body#/name
-          description: Gets lis definition.
+          description: Gets list definition.
         update:
           operationId: UpdateList
           parameters:

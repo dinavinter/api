@@ -22,12 +22,12 @@ get:
       $ref: ..\..\shared\errors\not_found.yaml
     '503':
       $ref: ..\..\shared\errors\service_unavailable.yaml
-put:
+post:
   tags:
     - Config
   summary: "Updates List Definition".
   operationId: UpdateList
-  description: Update list sefenition.
+  description: Updates a list Definition.
   parameters:
     - in: path
       name: list
