@@ -5,14 +5,13 @@ properties:
     allOf:
       - $ref: .\fields.email.yaml
     
-  x-identifier:
-    readonly: true
+  identifier:
     enum:
       - email
       
-  x-verification-method:
+  provider:
     enum:
       - otp
       - link
-      - auto-bind
+      - lite
  

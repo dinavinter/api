@@ -4,4 +4,4 @@ properties:
   phonenumber:
     allOf:
       - $ref: .\fields.template.string.yaml
-      - format: email
+      - format: phonenumber

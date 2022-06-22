@@ -1,0 +1,10 @@
+summary: Mobile otp identity
+value:
+  properties:
+    phonenumber:
+      type: string
+      format: phonenumber
+  type: phonenumber
+  provider: otp 
+
+

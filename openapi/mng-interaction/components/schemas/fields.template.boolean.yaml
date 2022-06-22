@@ -1,9 +1,17 @@
 allOf:
-  - $ref: .\fields.template.basic.yaml
+  # - $ref: .\fields.template.basic.yaml
   - properties:
       type:
         type: string
         const: boolean
       default:
         type: boolean
+        default: false
+      widget:
+        type: string
+        default: checkbox
+        examples: 
+          - checkbox
+          - select
+      
            

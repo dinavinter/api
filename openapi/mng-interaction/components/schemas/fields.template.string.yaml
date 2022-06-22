@@ -5,3 +5,8 @@ allOf:
         type: string
         enum:
           - string
+      widget:
+        type: string
+        default: textbox
+    
+    

@@ -1,0 +1,18 @@
+summary: Mobile otp identity
+value:
+  properties:
+    property1:
+      type: string
+    data.property2:
+      type: string
+    profile.lastName:
+      type: string
+    identity:
+      properties:
+        phonenumber:
+          type: string
+          format: phonenumber
+      type: mobile
+      provider: otp 
+
+

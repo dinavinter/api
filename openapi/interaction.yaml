@@ -628,11 +628,13 @@ components:
                       - 503
 
 paths:
-  /interactions:
+  /interactions.create:
     $ref: mng-interaction\paths\interactions@templates.yaml
-  /interactions/{template}:
-    $ref: mng-interaction\paths\interactions@templates@{template}.yaml    
-   
+  /interactions.input.setSchema:
+    $ref: mng-interaction\paths\interactions@input@setSchema.yaml    
+  /interactions.input.setIdentity:
+    $ref: mng-interaction\paths\interactions@input@setIdentity.yaml    
+  
   /interactions/{template}/instances:
     $ref: interaction\paths\interactions@{template}.yaml
 

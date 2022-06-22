@@ -1,0 +1,28 @@
+put:
+  tags:
+    - Configuration
+  operationId: UpdateInteractionSchema
+  summary: Update Interaction Schema
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ..\components\schemas\template.schema.yaml
+        examples:
+          signup-input-schema:
+            $ref: ..\components\examples\signup-input-schema.yaml
+          signup-interaction-mobile-otp:
+            $ref: ..\components\examples\signup-mobile-otp-input-schema.yaml  
+  responses:
+    '200':
+      description: Schema Updated
+      content:
+        application/json:
+          schema:
+            $ref: ..\components\schemas\template.schema.yaml
+          examples:
+            signup-interaction-email-lite:
+              $ref: ..\components\examples\signup-input-schema.yaml
+            signup-interaction-mobile-otp:
+              $ref: ..\components\examples\signup-mobile-otp-input-schema.yaml
+
