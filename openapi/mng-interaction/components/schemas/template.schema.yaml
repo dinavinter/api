@@ -1,28 +1,7 @@
 $ref: "#/$defs/schema"
 
-$defs:
-  fieldsScchema:
-    anyOf:
-      - title: subscribtions fields
-        additionalProperties:
-          type: object
-          pattern: ^(subscriptions.*)
-          $ref: .\fields.template.boolean.yaml          
-        example:
-          subscriptions.newslatter:
-            type: boolean
-  
-      - title: profile fields
-        $ref: .\fields.sections.profile.yaml
+$defs: 
 
-      - title: consents fields
-        $ref: .\fields.template.consents.yaml
-
-      - title: any field
-        additionalProperties:
-          type: object
-          $ref: .\fields.template.basic.yaml 
-      
   schema:
     description: A set of key-value pairs that describe the schema input of an intraction.
     type: object
@@ -31,33 +10,26 @@ $defs:
     properties:
       properties:
           type: object
-          properties:
-            identity:
-              $ref: .\fields.sections.identity.yaml
-          required: 
-            - identity    
-          
-          additionalProperties: 
-            anyOf:
-              - title: subscribtions fields
-                additionalProperties:
-                  type: object
-                  pattern: ^(subscriptions.*)
-                  $ref: .\fields.template.boolean.yaml          
-                example:
-                  subscriptions.newslatter:
-                    type: boolean
-          
-              - title: profile fields
-                $ref: .\fields.sections.profile.yaml
+          anyOf:
+            - title: subscribtions fields
+              additionalProperties:
+                type: object
+                pattern: ^(subscriptions.*)
+                $ref: .\fields.template.boolean.yaml          
+              example:
+                subscriptions.newslatter:
+                  type: boolean
         
-              - title: consents fields
-                $ref: .\fields.template.consents.yaml
-        
-              - title: any field
-                additionalProperties:
-                  type: object
-                  $ref: .\fields.template.basic.yaml  
+            - title: profile fields
+              $ref: .\fields.sections.profile.yaml
+      
+            - title: consents fields
+              $ref: .\fields.template.consents.yaml
+      
+            - title: any field
+              additionalProperties:
+                type: object
+                $ref: .\fields.template.basic.yaml  
       required:
         type: array
         items:

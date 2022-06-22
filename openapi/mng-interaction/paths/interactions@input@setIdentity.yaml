@@ -7,22 +7,21 @@ put:
     content:
       application/json:
         schema:
-          $ref: ..\fields.sections.identity.yaml
-        examples:
-          identity-email-lite:
-            $ref: ..\components\examples\identity-email-lite.yaml
-          identity-mobile-otp:
-            $ref: ..\components\examples\identity-mobile-otp.yaml
+          $ref: ..\components\schemas\fields.sections.identity.yaml
+        # examples:
+        #   identity-email-lite:
+        #     $ref: ..\components\examples\identity-email-lite.yaml
+        #   identity-mobile-otp:
+        #     $ref: ..\components\examples\identity-mobile-otp.yaml
   responses:
     '200':
       description: Schema Updated
       content:
         application/json:
           schema:
-            $ref: ..\fields.sections.identity.yaml
-          examples:
-            identity-email-lite:
-              $ref: ..\components\examples\identity-email-lite.yaml
-            identity-mobile-otp:
-              $ref: ..\components\examples\identity-mobile-otp.yaml
-  
+            $ref: ..\components\schemas\fields.sections.identity.yaml
+          # examples:
+          #   identity-email-lite:
+          #     $ref: ..\components\examples\identity-email-lite.yaml
+          #   identity-mobile-otp:
+          #     $ref: ..\components\examples\identity-mobile-otp.yaml

@@ -1,18 +1,24 @@
-summary: Signup schema with lite email
+summary: Newslatter Signup - Input Schema
 value:
   properties:
-    property1:
+    subscriptions.newslatter.email:
+      type: boolean
+      widget: checkbox
+    profile.firstName:
       type: string
-    data.property2:
+    data.zip:
       type: string
-    profile.lastName:
+    intrests: 
       type: string
-    identity:
-      properties:
-        email:
-          type: string
-          format: email
-      type: email
-      provider: lite 
+      enum:
+        - pets 
+        - cildren
+        - tech
+    interaction-source:
+      type: string
+      widget: hidden
 
+  required:
+    - subscriptions.newslatter.email
+   
 

@@ -1,0 +1,17 @@
+summary: Missing Item Notifications - Input Schema
+value:
+  properties:
+    topics.missingItem:
+      type: boolean
+      widget: checkbox
+    item: 
+      type: string
+    size:
+      type: string
+    channel:
+      type: string
+
+  required:
+    - topics.missingItem
+   
+

@@ -12,7 +12,7 @@ put:
           signup-input-schema:
             $ref: ..\components\examples\signup-input-schema.yaml
           signup-interaction-mobile-otp:
-            $ref: ..\components\examples\signup-mobile-otp-input-schema.yaml  
+            $ref: ..\components\examples\missing-item-notifications.yaml  
   responses:
     '200':
       description: Schema Updated
@@ -24,5 +24,5 @@ put:
             signup-interaction-email-lite:
               $ref: ..\components\examples\signup-input-schema.yaml
             signup-interaction-mobile-otp:
-              $ref: ..\components\examples\signup-mobile-otp-input-schema.yaml
+              $ref: ..\components\examples\missing-item-notifications.yaml
 
