@@ -6,6 +6,6 @@ content:
         - $ref: .\basic-error.yaml
         - type: object
           properties:
-            code:
+            errorCode:
               enum:
                 - 503

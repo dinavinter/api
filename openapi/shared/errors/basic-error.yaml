@@ -4,11 +4,11 @@ required:
   - code
   - requestId
 properties:
-  message:
+  errorMessage:
     type: string
   callId:
     type: string
-  code:
+  errorCode:
     type: integer
     minimum: 100
     maximum: 600

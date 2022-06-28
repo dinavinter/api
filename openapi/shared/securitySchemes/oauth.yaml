@@ -2,7 +2,10 @@ type: oauth2
 description: This API uses OAuth 2 with the implicit grant flow. [More info](https://api.example.com/docs/auth)
 flows:
   password:
-    tokenUrl: /socialize.login
+    tokenUrl: /accounts.login
+   
   clientCredentials:
     tokenUrl: /socialize.getToken
+  
+  
  
