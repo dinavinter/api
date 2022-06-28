@@ -1,0 +1,18 @@
+summary:  Update Account's Communication Properties VIA set account info.
+post:
+  tags:
+    - communication
+  summary: Set Account Info.
+  operationId: Communication.Update.SetAccountInfo
+  description:  Update Communication Properties VIA set account info. <br />
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          properties:
+            communication:
+              $ref: ..\components\schemas\communication@actions.yaml
+          
+  responses:
+    '200':
+      description: Account's updated successfully

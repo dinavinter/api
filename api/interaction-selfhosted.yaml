@@ -1,0 +1,673 @@
+openapi: 3.1.0
+info:
+  title: Interaction Api
+  description: Api specification for manges customer interactions.
+  version: '1.0'
+servers:
+  - url: https://{gigya-domain}
+    variables:
+      gigya-domain:
+        default: accounts.gigya.com
+        enum:
+          - accounts.gigya.com
+          - accounts.eu1.gigya.com
+          - accounts.au1.gigya.com
+        description: giya domains
+components:
+  schemas:
+    fields:
+      properties:
+        type:
+          type: string
+          enum:
+            - string
+            - boolean
+            - integer
+            - number
+        default:
+          type: '#/properties/type'
+        widget:
+          type: string
+        format:
+          type: string
+      x-tags:
+        - field-template
+    fields-2:
+      allOf:
+        - $ref: '#/components/schemas/fields'
+        - properties:
+            widget:
+              enum:
+                - select
+            enum:
+              type: array
+              items:
+                type: '#/properties/type'
+      x-tags:
+        - field-template
+    channel:
+      allOf:
+        - $ref: '#/components/schemas/fields-2'
+        - properties:
+            enum:
+              type: array
+              items:
+                type: string
+                enum:
+                  - email
+                  - sms
+              default:
+                - email
+                - sms
+    channel-sms:
+      title: if-channel-sms
+      properties:
+        properties:
+          type: object
+          properties:
+            channel:
+              properties:
+                enum:
+                  type: string
+                  const:
+                    - sms
+    fields-3:
+      allOf:
+        - $ref: '#/components/schemas/fields'
+        - properties:
+            type:
+              type: string
+              enum:
+                - string
+    fields-4:
+      type: object
+      x-identifier: phonenumber
+      properties:
+        phonenumber:
+          allOf:
+            - $ref: '#/components/schemas/fields-3'
+            - format: email
+    identity:
+      type: object
+      title: mobile identity
+      properties:
+        properties:
+          $ref: '#/components/schemas/fields-4'
+        x-identifier:
+          enum:
+            - phonenumber
+          readonly: true
+        x-verification-method:
+          enum:
+            - otp
+            - auto-bind
+    if-channel-sms:
+      properties:
+        if:
+          type: object
+          $ref: '#/components/schemas/channel-sms'
+        then:
+          type: object
+          $ref: '#/components/schemas/identity'
+    fields-5:
+      allOf:
+        - $ref: '#/components/schemas/fields'
+        - properties:
+            type:
+              type: string
+              const: boolean
+            default:
+              type: boolean
+    opt-in-sms:
+      properties:
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/fields-5'
+            pattern: ^(subscriptions.sms.*)
+    channel-email:
+      title: if-channel-email
+      properties:
+        properties:
+          type: object
+          properties:
+            channel:
+              properties:
+                enum:
+                  const:
+                    - email
+    fields-6:
+      type: object
+      x-identifier: email
+      properties:
+        email:
+          $ref: '#/components/schemas/fields-3'
+    identity-2:
+      type: object
+      title: email identity
+      properties:
+        properties:
+          allOf:
+            - $ref: '#/components/schemas/fields-6'
+        x-identifier:
+          readonly: true
+          enum:
+            - email
+        x-verification-method:
+          enum:
+            - otp
+            - link
+            - auto-bind
+    if-channel-email:
+      properties:
+        if:
+          type: object
+          $ref: '#/components/schemas/channel-email'
+        then:
+          type: object
+          $ref: '#/components/schemas/identity-2'
+    opt-in-email:
+      properties:
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/fields-5'
+            pattern: ^(subscriptions.email.*)
+    selector:
+      type: object
+      properties:
+        channel:
+          $ref: '#/components/schemas/channel'
+        oneOf:
+          type: array
+          items:
+            anyOf:
+              - title: if-channel-sms
+                allOf:
+                  - $ref: '#/components/schemas/if-channel-sms'
+                  - properties:
+                      then:
+                        $ref: '#/components/schemas/opt-in-sms'
+              - title: if-channel-email
+                allOf:
+                  - $ref: '#/components/schemas/if-channel-email'
+                  - properties:
+                      then:
+                        $ref: '#/components/schemas/opt-in-email'
+    opt-in-field:
+      properties:
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/fields-5'
+            pattern: ^(subscriptions.*)
+    fields-7:
+      type: object
+      anyOf:
+        - title: channel selector
+          $ref: '#/components/schemas/selector'
+        - title: only mobile
+          allOf:
+            - $ref: '#/components/schemas/identity'
+            - $ref: '#/components/schemas/opt-in-sms'
+        - title: only email
+          allOf:
+            - $ref: '#/components/schemas/identity-2'
+            - $ref: '#/components/schemas/opt-in-email'
+          maxProperties: 5
+      required: subscribed
+      $defs:
+        opt-in:
+          type: object
+          $ref: '#/components/schemas/opt-in-field'
+          oneOf:
+            - title: by channel
+              $ref: '#/components/schemas/selector'
+            - title: const
+              $ref: '#/components/schemas/opt-in-field'
+        opt-in-field:
+          properties:
+            properties:
+              additionalProperties:
+                $ref: '#/components/schemas/fields-5'
+                pattern: ^(subscriptions.*)
+        opt-in-sms:
+          properties:
+            properties:
+              additionalProperties:
+                $ref: '#/components/schemas/fields-5'
+                pattern: ^(subscriptions.sms.*)
+        opt-in-email:
+          properties:
+            properties:
+              additionalProperties:
+                $ref: '#/components/schemas/fields-5'
+                pattern: ^(subscriptions.email.*)
+        selector:
+          type: object
+          properties:
+            channel:
+              $ref: '#/components/schemas/channel'
+            oneOf:
+              type: array
+              items:
+                anyOf:
+                  - title: if-channel-sms
+                    allOf:
+                      - $ref: '#/components/schemas/if-channel-sms'
+                      - properties:
+                          then:
+                            $ref: '#/components/schemas/opt-in-sms'
+                  - title: if-channel-email
+                    allOf:
+                      - $ref: '#/components/schemas/if-channel-email'
+                      - properties:
+                          then:
+                            $ref: '#/components/schemas/opt-in-email'
+        channel-email:
+          title: if-channel-email
+          allOf:
+            - $ref: '#/components/schemas/if-channel-email'
+            - properties:
+                then:
+                  $ref: '#/components/schemas/opt-in-email'
+        channel-sms:
+          title: if-channel-sms
+          allOf:
+            - $ref: '#/components/schemas/if-channel-sms'
+            - properties:
+                then:
+                  $ref: '#/components/schemas/opt-in-sms'
+    fields-8:
+      properties:
+        profile.lastName:
+          properties:
+            type:
+              enum:
+                - string
+    fields-9:
+      title: Profile Fields
+      description: Profile fields to collect during interaction.
+      type: object
+      anyOf:
+        - $ref: '#/components/schemas/fields-8'
+        - $ref: '#/components/schemas/fields-8'
+        - additionalProperties:
+            type: object
+            pattern: ^(profile.*)
+            properties:
+              properties:
+                $ref: '#/components/schemas/fields'
+            example:
+              profile.zip:
+                type: string
+    fields-10:
+      title: Object Schema Template
+      description: Describes schema's properties for a section.
+      type: object
+      properties:
+        properties:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/fields'
+        required:
+          type: array
+          items:
+            type: string
+      maxProperties: 5
+    fields-11:
+      type: object
+      properties:
+        identity:
+          type: object
+          properties:
+            dependentRequired:
+              type: object
+              properties:
+                properties:
+                  type: object
+                  additionalProperties:
+                    type: array
+                    examples:
+                      channel:
+                        - email
+          anyOf:
+            - $ref: '#/components/schemas/identity'
+            - $ref: '#/components/schemas/identity-2'
+    fields-12:
+      title: Custom data fields
+      description: Custom data fields to collect during interaction.
+      type: object
+      properties:
+        properties:
+          type: object
+          additionalProperties:
+            type: object
+            pattern: ^(data.*)
+            properties:
+              properties:
+                $ref: '#/components/schemas/fields'
+          example:
+            data.zip:
+              type: string
+            data.it-dep:
+              type: boolean
+    fields-13:
+      title: Subscriptions Fields
+      description: Subscribtions fields to collect during interaction.
+      type: object
+      properties:
+        properties:
+          type: object
+          additionalProperties:
+            type: object
+            pattern: ^(subscriptions.*)
+            properties:
+              properties:
+                $ref: '#/components/schemas/fields-7'
+            example:
+              subscriptions.newslatter:
+                type: boolean
+    fields-14:
+      title: Consents Fields
+      description: Consents to collect during interaction.
+      type: object
+      properties:
+        properties:
+          type: object
+          additionalProperties:
+            type: object
+            pattern: ^(consents.*)
+            properties:
+              properties:
+                $ref: '#/components/schemas/fields-5'
+            example:
+              consents.tos:
+                type: boolean
+    schema:
+      description: >-
+        A set of key-value pairs that describe the schema input of an
+        intraction.
+      type: object
+      anyOf:
+        - title: subscribtions fields
+          $ref: '#/components/schemas/fields-7'
+        - title: profile fields
+          $ref: '#/components/schemas/fields-9'
+        - title: any field
+          $ref: '#/components/schemas/fields-10'
+        - properties:
+            identity:
+              $ref: '#/components/schemas/fields-11'
+            data:
+              $ref: '#/components/schemas/fields-12'
+            profile:
+              $ref: '#/components/schemas/fields-9'
+            subscriptions:
+              $ref: '#/components/schemas/fields-13'
+            consents:
+              $ref: '#/components/schemas/fields-14'
+      required: identity
+    transitions:
+      type: object
+      tags:
+        - interaction-transitions-model
+      readOnly: true
+      description: >-
+        A set of key-value pairs that describe the possible outcomes of the
+        interactions.
+      properties:
+        authentication:
+          type: object
+          readOnly: false
+          properties:
+            output:
+              readOnly: true
+              type: object
+              properties:
+                type:
+                  type: string
+                  readOnly: true
+                  default: auth
+                identity:
+                  type: string
+                  readOnly: true
+                  default: '#/properties/identity'
+        authorized:
+          type: object
+          readOnly: true
+          properties:
+            output:
+              type: object
+              readOnly: true
+              properties:
+                type:
+                  type: string
+                  readOnly: true
+                  default: projection
+                identity:
+                  type: string
+                  readOnly: true
+                  default: '#/properties/identity'
+                profile:
+                  type: string
+                  readOnly: true
+                  default: '#/properties/profile'
+                subscriptions:
+                  type: string
+                  readOnly: true
+                  default: '#/properties/subscriptions'
+                consents:
+                  type: string
+                  readOnly: true
+                  default: '#/properties/consents'
+    Link:
+      title: Hypermedia Link Relationship
+      description: >-
+        The target URL indicated in the `href` property is related to the
+        current\nresource according to the defined semantics of the link
+        relationship name.
+      oneOf:
+        - type: object
+          title: Single Link
+          properties:
+            href:
+              description: The hypertext reference to a related resource.
+              type: string
+              format: uri
+            title:
+              description: A descriptive title for the link.
+              type: string
+            type:
+              description: A media type hint for the resource identified by the href.
+              type: string
+              default: application/json
+            templated:
+              description: >-
+                Whether the given href is a templated URL using
+                [RFC\n6570](https://tools.ietf.org/html/rfc6570) format.
+              default: false
+        - type: array
+          title: Array of Links
+          items:
+            $ref: '#/components/schemas/Link/oneOf/0'
+    template:
+      type: object
+      tags:
+        - interaction-template-model
+      description: >-
+        An interaction machine object encapsulates a complete set of objects->
+        that define an interaction  Triggers, Outcomes, Schema, and metadata.  
+      properties:
+        name:
+          description: A human readable label for the intraction to be used in interfaces.
+          type: string
+          x-examples:
+            - sigh-up
+            - order-checkout
+        class:
+          description: >-
+            Describes the nature of an interaction content based on the current
+            representation.
+          type: array
+          items:
+            type: string
+            x-examples:
+              - screen-set
+              - checkout-api
+              - subscribtion-collection-form
+              - lite-sign-up
+        schema:
+          $ref: '#/components/schemas/schema'
+        outcomes:
+          $ref: '#/components/schemas/transitions'
+        links:
+          type: array
+          readOnly: true
+          items:
+            $ref: '#/components/schemas/Link'
+    basic-error:
+      type: object
+      required:
+        - message
+        - code
+        - requestId
+      properties:
+        message:
+          type: string
+        callId:
+          type: string
+        code:
+          type: integer
+          minimum: 100
+          maximum: 600
+  examples:
+    signup-interaction-email-lite:
+      summary: Lite email identity.
+      value:
+        properties:
+          name: signup
+          class: screen-set
+          schema:
+            properties:
+              property1:
+                type: string
+              data.property2:
+                type: string
+              profile.lastName:
+                type: string
+            identity:
+              properties:
+                email:
+                  type: string
+                  format: email
+              type: email
+              provider: lite
+          outcomes:
+            authentication:
+              output:
+                type: auth
+                identity: '#/properties/identity'
+            authorized:
+              output:
+                type: projection
+                identity: '#/properties/identity'
+          links:
+            - rel: self
+              title: string
+              type: application/json
+              templated: true
+              href: /templates/signup
+            - rel: post
+              class: form
+              title: string
+              type: application/json
+              templated: true
+              href: /signup
+            - rel: lookup
+              class: auth
+              href: /auth/lookup/token
+              templated: true
+    signup-interaction-selector:
+      summary: Represents a signup to a newsletter flow entry point.
+      value:
+        properties:
+          name: signup
+          class: screen-set
+          schema:
+            properties:
+              property1:
+                type: string
+              channel:
+                type: string
+                enum: email sms
+              data.property2:
+                type: string
+              profile.lastName:
+                type: string
+            required:
+              - channel
+            identity:
+              $comment: should be changed to real json schema
+              oneOf:
+                - properties:
+                    email:
+                      type: string
+                      format: email
+                  type: email
+                  provider: lite
+                  selector:
+                    channel: email
+                - properties:
+                    phonenumber:
+                      type: string
+                  type: phonenumber
+                  provider: otp
+                  selector:
+                    channel: sms
+          outcomes:
+            authentication:
+              output:
+                type: authN
+                identity: '#/properties/identity'
+                callback: /bind
+            authorized:
+              output:
+                type: projection
+                identity: '#/properties/identity'
+                profile: '#/properties/profile'
+                subscriptions: '#/properties/subscriptions'
+                consents: '#/properties/consents'
+          links:
+            - rel: self
+              title: string
+              type: application/json
+              templated: true
+              href: /templates/signup
+            - rel: post
+              title: string
+              type: application/json
+              templated: true
+              href: /signup
+  responses:
+    errors:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/basic-error'
+    errors-2:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/basic-error'
+    errors-3:
+      description: Service unavailable
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/basic-error'
+              - type: object
+                properties:
+                  code:
+                    enum:
+                      - 503

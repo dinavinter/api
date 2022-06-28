@@ -1,5 +1,5 @@
 summary:  Update Account's Communication Properties.
-post:
+put:
   tags:
     - communication
   summary: Update Communication Properties.
@@ -31,6 +31,7 @@ get:
   operationId: Communication.Get 
   description:  Get Communication Properties. <br />
     <section > [Not Rest] ```accounts.communication.get``` </section  >
+    <section > [Rest] ```accounts/{_me}/communication/{v1}/{channel}``` </section  >
   parameters:
     - in: query
       name: selector

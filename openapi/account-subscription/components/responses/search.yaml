@@ -19,7 +19,7 @@ $defs:
    
      
   group_by_search_response:
-    tags:
+    x-tags:
       - search-response-group-by
     description: response of 'group by uid'
     type: object

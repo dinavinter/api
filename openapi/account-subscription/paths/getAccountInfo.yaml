@@ -1,0 +1,36 @@
+summary:  Get Account's Communication Properties VIA get account info.   
+get:
+  tags:
+    - communication
+  summary: Get Account Info.
+  operationId: Communication.Get.GetAccountInfo 
+  description:  Get Communication Properties. <br />
+  parameters:
+    - in: query
+      name: communication_selector
+      required: true
+      description: Comma seperated list to specify the communications defentions to retrive.
+      example:
+        news_sms,news_email,deals_sms
+      schema:
+        type: string
+        pattern: ((\S+)(_)(sms+|email+),?)+
+  responses:
+    '200':
+      description: Account's channel updated successfully
+      content:
+        application/json:
+          schema:
+            properties:
+              communication:
+                $ref: ..\components\schemas\communication@actions.yaml
+    '400':
+        $ref: ..\..\shared\errors\bad_request.yaml
+    '401':
+      $ref: ..\..\shared\errors\requires_authentication.yaml
+    '403':
+      $ref: ..\..\shared\errors\forbidden.yaml
+    '503':
+      $ref: ..\..\shared\errors\service_unavailable.yaml
+    
+       

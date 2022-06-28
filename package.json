@@ -23,6 +23,7 @@
     "workflow-elsa-build": "redoc-cli bundle openapi/elsa.yaml -t ./docs/index.html -o public/elsa.html",
     "build": "npm run copy-src && npm run copy-style && npm run workflow-build && npm run channel-build && npm run interaction-build",
     "test": "openapi lint",
+    "gh": " gh-pages -d public -t true" ,
 
     "deploy": "npm run build && gh-pages -d public -t true" 
 

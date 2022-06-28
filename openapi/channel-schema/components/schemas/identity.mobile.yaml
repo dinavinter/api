@@ -6,7 +6,7 @@ properties:
   x-identifier:
     enum:
       - phonenumber
-    readonly: true
+    readOnly: true
   x-verification-method:
     enum:
       - otp

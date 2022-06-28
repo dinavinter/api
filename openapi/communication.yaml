@@ -2,7 +2,7 @@ openapi: 3.1.0
 info:
   title: Communication Channel Api
   description: Manage account's communication properties
-  version: '1.0'
+  version: '1.0-preview'  
 servers:
   - url: 'https://{gigya-domain}'
     variables:
@@ -33,54 +33,28 @@ security:
     basic: []
     
 paths:
-  '/accounts.search':
+ 
+  /accounts.setAccountInfo:
+    $ref: account-subscription\paths\setAccountInfo.yaml
+  
+  /accounts.getAccountInfo:
+    $ref: account-subscription\paths\getAccountInfo.yaml
+  
+  /accounts.search:
     $ref: 'account-subscription\paths\search.yaml'
-  '/actions/patch':
-    $ref: 'account-subscription\paths\actions_2.yaml'
-
-  /accounts/{_me}/communication/{v1}/:
-    $ref: account-subscription\paths\channels.yaml
-#  /channels:
-#    $ref: account-subscription\paths\channels@option2.yaml
-  '/accounts/{_me}/communication/{v1}/lists/{list}/channels/{channel}/opt-in':
-    $ref: 'account-subscription\paths\channels@{channel}@lists@{list}@opt-in.yaml'
-  '/accounts/{_me}/communication/{v1}/lists/{list}/channels/{channel}/opt-out':
-    $ref: 'account-subscription\paths\channels@{channel}@lists@{list}@opt-out.yaml'
-  '/accounts/{_me}/communication/{v1}/lists/{list}/channels/{channel}/notice':
-    $ref: 'account-subscription\paths\channels@{channel}@lists@{list}@notice.yaml'
-  'accounts/{_me}/communication/{v1}/lists/channels/{channel}/opt-out':
-    $ref: 'account-subscription\paths\channels@{channel}@lists@opt-out.yaml'
-  'accounts/{_me}/communication/{v1}/channels/{channel}/opt-in':
-    $ref: 'account-subscription\paths\channels@{channel}@opt-in.yaml'
-  '/{channel}/opt-out':
-    $ref: 'account-subscription\paths\channels@{channel}@opt-out.yaml'
-  '/{channel}/notice':
-    $ref: 'account-subscription\paths\channels@{channel}@notice.yaml'
-   
-  '/config/communication/{v1}/':
+  
+  '/config/communication/v1/':
     $ref: 'channel-schema\paths\lists.yaml'
-  '/config/communication/{v1}/lists/{listId}':
+  '/config/communication/v1/lists/{listId}':
     $ref: 'channel-schema\paths\lists@{listId}.yaml'
-  '/config/communication/{v1}/lists/{listId}/fields':
+  '/config/communication/v1/lists/{listId}/fields':
     $ref: 'channel-schema\paths\lists@{listId}@fields.yaml'
-  '/config/communication/{v1}/lists/{listId}/channel':
+  '/config/communication/v1/lists/{listId}/channel':
     $ref: 'channel-schema\paths\lists@{listId}@fields@channel.yaml'
-  '/config/communication/{v1}/lists/{listId}/fields/{fieldId}':
+  '/config/communication/v1/lists/{listId}/fields/{fieldId}':
     $ref: 'channel-schema\paths\lists@{listId}@fields@{fieldId}.yaml'
-  '/topics/{listId}?$filter=channel(email)&$expand=Account($select=firstName,email)':
-    $ref: account-subscription\paths\query.yaml 
-
-  '/channel-as-attribute':
-    $ref: account-subscription\paths\channels@option2.yaml
-  '/integrations/mailchimp/lists/{list_id}':                          
-    $ref: 'account-subscription\paths\mailchimp.yaml'
-  '/integrations/marketo/rest/v1/lists/{listId}/leads.json':
-    $ref: account-subscription\paths\marketo.yaml
-  '/integrations/marketo/userservice/management/v1/users/{userid}/update.json':
-    $ref: account-subscription\paths\marketo-um.yaml
-  '/integrations/emarsys/api/v2/contact':
-    $ref: 'account-subscription\paths\emarsys.yaml'
-
+  
+ 
 tags:
   - name: communication
     x-displayName: Communication
@@ -89,42 +63,8 @@ tags:
       
   - name: search
     x-displayName: Search
-#  - name: actions
-#    x-displayName: Communication Actions
-#    description: |
-#      Operations to update communication properties
-  - name: integrations
-    x-displayName: Integrations
     description: |
-      Integrations Open API
-      https://dev.emarsys.com/docs/emarsys-api/b3A6MjQ4OTk4MDc-create-contacts
-
-#  - name: list
-#    x-displayName: Lists
-#    description:  Operations to update communication lists of account
-#  - name: channel
-#    x-displayName: Channel
-#    description: Operations to update communication channels 
-#  - name: communication-model-2
-#    x-displayName: Communication-2
-#    description: |
-#      <SchemaDefinition schemaRef="#/components/schemas/communication" />
-#  - name: channel_model
-#    x-displayName:  Channel 
-#    description: |
-#      <SchemaDefinition schemaRef="#/components/schemas/channel" />
-#  - name: lists_model
-#    x-displayName: Lists 
-#    description: |
-#      <SchemaDefinition schemaRef="#/components/schemas/lists" showReadOnly={true} showWriteOnly={true} />
-#  - name: list_model
-#    x-displayName: List
-#    description: |
-#      <SchemaDefinition schemaRef="#/components/schemas/list"  showReadOnly={true} showWriteOnly={true} />
-#  - name: status_model
-#    x-displayName: Status
-#    description: |
-#      <SchemaDefinition schemaRef="#/components/schemas/status" showReadOnly={true} showWriteOnly={true} />
+      Search communication preferences
   - name: communication-model
     x-displayName: Communication Model
     description: |
@@ -151,40 +91,16 @@ x-tagGroups:
   - name: Communication Search
     tags:
       - search
-  - name: Communication Management
-    tags:
-      - Config
-  
 
+  # - name: Communication Management
+  #   tags:
+  #     - Config
     
   - name: Models
     tags:
       - communication-model
       - communication-entry
-#      - basic_search_response
-#      - group_by_search_response
-  #      - search-respones-group-by   
-  
-#  - name: integrations
-#    description: |
-#      Integrations Open API
-#      https://dev.emarsys.com/docs/emarsys-api/b3A6MjQ4OTk4MDc-create-contacts
-#
-#    tags:
-#      - communication-model-cdp
-#      - mailchimp  
-#      - marketo
-#      - emarsys
-#      
-      
-#  - name: Communication Other
-#    tags:
-#      - Communication-2
-#      - communication-model-2
-#      - query
-
-
-      
+ 
 
     
 

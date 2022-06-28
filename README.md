@@ -144,7 +144,7 @@ You will use `$ref`s to reference schema from your path definitions.
 
 #### Editing Schemas
 
-1. Navigate to the `openapi/components/schemas` folder.
+1. Navigate to the `openapi/<*>/schemas` folder.
 2. Open the file you wish to edit.
 3. Edit.
 

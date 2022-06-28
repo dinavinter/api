@@ -25,12 +25,12 @@ get:
 post:
   tags:
     - Config
-  summary: "Updates List Definition".
+  summary: "Updates List Definition"
   operationId: UpdateList
   description: Updates a list Definition.
   parameters:
     - in: path
-      name: list
+      name: listId
       example: newslatter
   requestBody:
     content:

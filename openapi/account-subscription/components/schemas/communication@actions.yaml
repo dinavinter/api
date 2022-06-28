@@ -1,52 +1,7 @@
 $ref: "#/$defs/communication"
 $defs:
-
-  communication-actions-array:
-    type: array
-    tags:
-      - communication_actions 
-    items:
-      $ref: "#/$defs/communication-entry"
-    example:
-      - uid: URTSFS345
-        topic: news
-        channel: sms
-        status: opt-in
-        timestamp: 567003434
-      - uid: URTSFS345
-        topic: news
-        channel: email
-        status: opt-in
-        timestamp: 567003434
-      - uid: RGSA678
-        topic: news
-        channel: email
-        status: opt-in
-        timestamp: 567003434  
- 
-  communication:
-    type: object
-    tags:
-      - communication
-    additionalProperties: 
-      $ref: "#/$defs/communication-entry"
-      pattern: (\S+)(_)(sms+|email+)
-    example:
-      news_sms:
-        topic: news
-        channel: sms
-        status: opt-in
-      news_email:
-        topic: news
-        channel: email
-        status: opt-out
-      deals_email:
-        topic: deals
-        channel: email
-        status: noticed
-    
   communication-entry:
-    tags:
+    x-tags:
       - communication-action-model
     type: object
     properties:
@@ -82,13 +37,59 @@ $defs:
       timestamp:
         type: integer
         readOnly: true
-        interaction:
-          description: Corrolation id to the interaction which the status was updated with , i.e. callId
-          type: string
-          readOnly: true
-          examples:
-            - <call id>
-            - <interaction - id>
+      interaction:
+        description: Corrolation id to the interaction which the status was updated with , i.e. callId
+        type: string
+        readOnly: true
+        examples:
+          - <call id>
+          - <interaction - id>
+          
+  communication-actions-array:
+    type: array
+    x-tags:
+      - communication_actions 
+    items:
+      $ref: "#/$defs/communication-entry"
+    example:
+      - uid: URTSFS345
+        topic: news
+        channel: sms
+        status: opt-in
+        timestamp: 567003434
+      - uid: URTSFS345
+        topic: news
+        channel: email
+        status: opt-in
+        timestamp: 567003434
+      - uid: RGSA678
+        topic: news
+        channel: email
+        status: opt-in
+        timestamp: 567003434  
+ 
+  communication:
+    type: object
+    x-tags:
+      - communication
+    additionalProperties: 
+      $ref: "#/$defs/communication-entry"
+      pattern: (\S+)(_)(sms+|email+)
+    example:
+      news_sms:
+        topic: news
+        channel: sms
+        status: opt-in
+      news_email:
+        topic: news
+        channel: email
+        status: opt-out
+      deals_email:
+        topic: deals
+        channel: email
+        status: noticed
+    
+  
 
   opt-in:
     description: "Opt-In to a communication topic, updates the  status to 'opt-in'" 

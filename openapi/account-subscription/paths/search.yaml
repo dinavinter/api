@@ -1,12 +1,9 @@
-summary:  Perform Communication Actions.
 post:
   tags:
     - search
   summary: Communication Search API.
   operationId: Communication.Search 
   description:  Searches and retrieves data from communication Storage using an SQL-like query.  
-     <br />
-    <section > [Not Rest] ```accounts.search``` </section  >
   parameters:
     - in: query
       name: query
@@ -18,7 +15,15 @@ post:
   responses:
     '200':
       $ref: ..\components\responses\search.yaml
-      
+    '400':
+      $ref: ..\..\shared\errors\bad_request.yaml
+    '401':
+      $ref: ..\..\shared\errors\requires_authentication.yaml
+    '403':
+      $ref: ..\..\shared\errors\forbidden.yaml
+    '503':
+      $ref: ..\..\shared\errors\service_unavailable.yaml
+    
       
             
                 

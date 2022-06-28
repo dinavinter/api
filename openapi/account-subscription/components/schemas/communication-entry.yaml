@@ -1,0 +1,49 @@
+$ref: "#/$defs/communication-entry"
+$defs:
+  communication-entry:
+    
+      x-tags:
+        - communication-action-model
+      type: object
+      properties:
+        uid:
+          description: Represents the user who subscribed to thos topic
+          type: string
+        topic:
+          description: Represents a unique id of a communication list 
+          type: string
+          examples:
+            - newslatter
+            - special-offers
+        status:
+          oneOf:
+            - $ref: "$defs/opt-in"
+            - $ref: "$defs/opt-out"
+            - $ref: "$defs/notice"
+          enum:
+            - opt-in
+            - opt-out
+            - notice
+          examples:
+            - opt-in
+            - opt-out
+            - notice 
+      $defs:  
+        opt-in:
+          description: "Opt-In to a communication topic, updates the  status to 'opt-in'" 
+          type: string
+          enum:
+            - opt-in
+              
+        opt-out:
+          description: "Opt-Out from a communication topic, updates the  status to 'opt-out'"
+          type: string
+          enum:
+            - opt-out
+      
+        notice:
+          description: "Notice a communication topic opt-in request without performing any choice, updates the  status to 'noticed'"
+          type: string
+          enum:
+            - notice          
+ 
