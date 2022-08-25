@@ -1,0 +1,145 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome7",
+    "definitions": {
+        "Welcome7": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "summary": {
+                    "type": "string"
+                },
+                "properties": {
+                    "type": "null"
+                },
+                "firstName": {
+                    "$ref": "#/definitions/StName"
+                },
+                "channel": {
+                    "$ref": "#/definitions/Channel"
+                },
+                "profile.lastName": {
+                    "$ref": "#/definitions/StName"
+                },
+                "oneOf": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/OneOf"
+                    }
+                },
+                "required": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "channel",
+                "firstName",
+                "oneOf",
+                "profile.lastName",
+                "properties",
+                "required",
+                "summary"
+            ],
+            "title": "Welcome7"
+        },
+        "Channel": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "enum": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "enum",
+                "type"
+            ],
+            "title": "Channel"
+        },
+        "StName": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "type"
+            ],
+            "title": "StName"
+        },
+        "OneOf": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "properties": {
+                    "$ref": "#/definitions/Properties"
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "title": "OneOf"
+        },
+        "Properties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "email": {
+                    "$ref": "#/definitions/Email"
+                },
+                "selector": {
+                    "$ref": "#/definitions/Selector"
+                },
+                "phonenumber": {
+                    "$ref": "#/definitions/Email"
+                }
+            },
+            "required": [
+                "selector"
+            ],
+            "title": "Properties"
+        },
+        "Email": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "format": {
+                    "type": "string"
+                },
+                "provider": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "format",
+                "provider",
+                "type"
+            ],
+            "title": "Email"
+        },
+        "Selector": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "channel": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "channel"
+            ],
+            "title": "Selector"
+        }
+    }
+}
