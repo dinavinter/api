@@ -24,10 +24,11 @@ components:
             - boolean
             - integer
             - number
+        required:
+          type: boolean
         default:
-          type: '#/properties/type'
-        widget:
-          type: string
+          type: '${{.properties.type}}'
+      
         format:
           type: string
       x-tags:
