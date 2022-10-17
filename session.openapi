@@ -1,0 +1,26 @@
+openapi: 3.0.3
+info:
+  title: Session Aggregation API
+  description: Session Aggregation API
+  version: 1.0.0
+servers:
+  - url: 'https://{gigya-domain}'
+    variables:
+      gigya-domain:
+        default: accounts.gigya.com
+        enum:
+          - accounts.gigya.com
+          - accounts.eu1.gigya.com
+          - accounts.au1.gigya.com
+        description: giya domains
+components:
+  securitySchemes:
+    apiKey:
+      $ref: ./shared/securitySchemes/apiKey.yaml
+    uid:
+      $ref: ./shared/securitySchemes/uid.yaml
+    basic:
+      $ref: ./shared/securitySchemes/basic.yaml
+    oauth:
+      $ref: ./shared/securitySchemes/oauth.yaml
+paths: null
