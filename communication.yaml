@@ -1,0 +1,858 @@
+openapi: 3.1.0
+info:
+  title: Communication Channel Api
+  description: Manage account's communication properties
+  version: 1.0-preview
+servers:
+  - url: 'https://{gigya-domain}'
+    variables:
+      gigya-domain:
+        default: accounts.gigya.com
+        enum:
+          - accounts.gigya.com
+          - accounts.eu1.gigya.com
+          - accounts.au1.gigya.com
+        description: giya domains
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: query
+      name: apiKey
+    uid:
+      type: apiKey
+      in: query
+      name: uid
+    basic:
+      type: http
+      scheme: basic
+      name: Authorization
+      in: header
+      description: Basic Authorization header using the Basic scheme.
+    oauth:
+      type: oauth2
+      description: >-
+        This API uses OAuth 2 with the implicit grant flow. [More
+        info](https://api.example.com/docs/auth)
+      flows:
+        password:
+          tokenUrl: /accounts.login
+        clientCredentials:
+          tokenUrl: /socialize.getToken
+  schemas:
+    opt-in:
+      description: 'Opt-In to a communication topic, updates the  status to ''opt-in'''
+      type: string
+      enum:
+        - opt-in
+    opt-out:
+      description: 'Opt-Out from a communication topic, updates the  status to ''opt-out'''
+      type: string
+      enum:
+        - opt-out
+    notice:
+      description: >-
+        Notice a communication topic opt-in request without performing any
+        choice, updates the  status to 'noticed'
+      type: string
+      enum:
+        - notice
+    communication-entry:
+      x-tags:
+        - communication-action-model
+      type: object
+      properties:
+        uid:
+          description: Represents the user who subscribed to thos topic
+          type: string
+        topic:
+          description: Represents a unique id of a communication list
+          type: string
+          examples:
+            - newslatter
+            - special-offers
+        status:
+          oneOf:
+            - $ref: '#/components/schemas/opt-in'
+            - $ref: '#/components/schemas/opt-out'
+            - $ref: '#/components/schemas/notice'
+          enum:
+            - opt-in
+            - opt-out
+            - notice
+          examples:
+            - opt-in
+            - opt-out
+            - notice
+        channel:
+          description: Specifies user's preferred channel.
+          enum:
+            - email
+            - sms
+        timestamp:
+          type: integer
+          readOnly: true
+        interaction:
+          description: >-
+            Corrolation id to the interaction which the status was updated with
+            , i.e. callId
+          type: string
+          readOnly: true
+          examples:
+            - <call id>
+            - <interaction - id>
+    communication:
+      type: object
+      x-tags:
+        - communication
+      additionalProperties:
+        $ref: '#/components/schemas/communication-entry'
+        pattern: (\S+)(_)(sms+|email+)
+      example:
+        news_sms:
+          topic: news
+          channel: sms
+          status: opt-in
+        news_email:
+          topic: news
+          channel: email
+          status: opt-out
+        deals_email:
+          topic: deals
+          channel: email
+          status: noticed
+    basic-error:
+      type: object
+      required:
+        - message
+        - code
+        - requestId
+      properties:
+        errorMessage:
+          type: string
+        callId:
+          type: string
+        errorCode:
+          type: integer
+          minimum: 100
+          maximum: 600
+    group_by_search_response:
+      x-tags:
+        - search-response-group-by
+      description: response of 'group by uid'
+      type: object
+      additionalProperties:
+        $ref: >-
+          ..\schemas\communication@actions.yaml/#/$defs/communication-actions-array
+        pattern: (\S+)(_)(sms+|email+)
+      example:
+        URTSFS345:
+          - topic: news
+            channel: sms
+            status: opt-in
+            timestamp: 567003434
+          - topic: news
+            channel: email
+            status: opt-in
+            timestamp: 567003434
+        RGSA678:
+          - topic: news
+            channel: email
+            status: opt-in
+            timestamp: 567003434
+    fields.template.basic:
+      properties:
+        type:
+          type: string
+          enum:
+            - string
+            - boolean
+            - integer
+            - number
+        default:
+          type: '#/properties/type'
+        widget:
+          type: string
+        format:
+          type: string
+      x-tags:
+        - field-template
+    fields.template.boolean:
+      allOf:
+        - $ref: '#/components/schemas/fields.template.basic'
+        - properties:
+            type:
+              type: string
+              const: boolean
+            default:
+              type: boolean
+    opt-in-sms: &ref_1
+      properties:
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/fields.template.boolean'
+            pattern: ^(subscriptions.sms.*)
+    opt-in-email: &ref_2
+      properties:
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/fields.template.boolean'
+            pattern: ^(subscriptions.email.*)
+    selector: &ref_3
+      type: object
+      properties:
+        channel:
+          $ref: .\fields.template.channel.yaml/#/$defs/channel
+        oneOf:
+          type: array
+          items:
+            anyOf:
+              - title: if-channel-sms
+                allOf:
+                  - $ref: .\fields.template.channel.yaml/#/$defs/if-channel-sms
+                  - properties:
+                      then:
+                        $ref: '#/components/schemas/opt-in-sms'
+              - title: if-channel-email
+                allOf:
+                  - $ref: .\fields.template.channel.yaml/#/$defs/if-channel-email
+                  - properties:
+                      then:
+                        $ref: '#/components/schemas/opt-in-email'
+    opt-in-field: &ref_0
+      properties:
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/fields.template.boolean'
+            pattern: ^(subscriptions.*)
+    fields.template.string:
+      allOf:
+        - $ref: '#/components/schemas/fields.template.basic'
+        - properties:
+            type:
+              type: string
+              enum:
+                - string
+    fields.phone_number:
+      type: object
+      x-identifier: phonenumber
+      properties:
+        phonenumber:
+          allOf:
+            - $ref: '#/components/schemas/fields.template.string'
+            - format: email
+    identity.mobile:
+      type: object
+      title: mobile identity
+      properties:
+        properties:
+          $ref: '#/components/schemas/fields.phone_number'
+        x-identifier:
+          enum:
+            - phonenumber
+          readOnly: true
+        x-verification-method:
+          enum:
+            - otp
+            - auto-bind
+    fields.email:
+      type: object
+      x-identifier: email
+      properties:
+        email:
+          $ref: '#/components/schemas/fields.template.string'
+    identity.email:
+      type: object
+      title: email identity
+      properties:
+        properties:
+          allOf:
+            - $ref: '#/components/schemas/fields.email'
+        x-identifier:
+          readonly: true
+          enum:
+            - email
+        x-verification-method:
+          enum:
+            - otp
+            - link
+            - auto-bind
+    fields.template.subscription:
+      type: object
+      anyOf:
+        - title: channel selector
+          $ref: '#/components/schemas/selector'
+        - title: only mobile
+          allOf:
+            - $ref: '#/components/schemas/identity.mobile'
+            - $ref: '#/components/schemas/opt-in-sms'
+        - title: only email
+          allOf:
+            - $ref: '#/components/schemas/identity.email'
+            - $ref: '#/components/schemas/opt-in-email'
+          maxProperties: 5
+      required: subscribed
+      $defs:
+        opt-in:
+          type: object
+          $ref: '#/components/schemas/opt-in-field'
+          oneOf:
+            - title: by channel
+              $ref: '#/components/schemas/selector'
+            - title: const
+              $ref: '#/components/schemas/opt-in-field'
+        opt-in-field: *ref_0
+        opt-in-sms: *ref_1
+        opt-in-email: *ref_2
+        selector: *ref_3
+        channel-email:
+          title: if-channel-email
+          allOf:
+            - $ref: .\fields.template.channel.yaml/#/$defs/if-channel-email
+            - properties:
+                then:
+                  $ref: '#/components/schemas/opt-in-email'
+        channel-sms:
+          title: if-channel-sms
+          allOf:
+            - $ref: .\fields.template.channel.yaml/#/$defs/if-channel-sms
+            - properties:
+                then:
+                  $ref: '#/components/schemas/opt-in-sms'
+    fields.template.select:
+      allOf:
+        - $ref: '#/components/schemas/fields.template.basic'
+        - properties:
+            widget:
+              enum:
+                - select
+            enum:
+              type: array
+              items:
+                type: '#/properties/type'
+      x-tags:
+        - field-template
+    channel: &ref_4
+      allOf:
+        - $ref: '#/components/schemas/fields.template.select'
+        - properties:
+            enum:
+              type: array
+              items:
+                type: string
+                enum:
+                  - email
+                  - sms
+              default:
+                - email
+                - sms
+    channel-sms: &ref_9
+      title: if-channel-sms
+      properties:
+        properties:
+          type: object
+          properties:
+            channel:
+              properties:
+                enum:
+                  type: string
+                  const:
+                    - sms
+    if-channel-sms: &ref_7
+      properties:
+        if:
+          type: object
+          $ref: '#/components/schemas/channel-sms'
+        then:
+          type: object
+          $ref: '#/components/schemas/identity.mobile'
+    channel-email: &ref_8
+      title: if-channel-email
+      properties:
+        properties:
+          type: object
+          properties:
+            channel:
+              properties:
+                enum:
+                  const:
+                    - email
+    if-channel-email: &ref_6
+      properties:
+        if:
+          type: object
+          $ref: '#/components/schemas/channel-email'
+        then:
+          type: object
+          $ref: '#/components/schemas/identity.email'
+    $defs-selector: &ref_5
+      properties:
+        properties:
+          type: object
+          properties:
+            channel:
+              $ref: '#/components/schemas/channel'
+        oneOf:
+          type: array
+          items:
+            anyOf:
+              - title: if-channel-sms
+                $ref: '#/components/schemas/if-channel-sms'
+              - title: if-channel-email
+                $ref: '#/components/schemas/if-channel-email'
+    fields.template.channel:
+      $schema: 'https://json-schema.org/draft/2020-12/schema'
+      type: object
+      oneOf:
+        - title: channel selector
+          $ref: '#/components/schemas/$defs-selector'
+        - title: only mobile
+          $ref: '#/components/schemas/identity.mobile'
+        - title: only email
+          $ref: '#/components/schemas/identity.email'
+      $defs:
+        channel: *ref_4
+        selector: *ref_5
+        if-channel-email: *ref_6
+        if-channel-sms: *ref_7
+        channel-email: *ref_8
+        channel-sms: *ref_9
+  responses:
+    bad_request:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/basic-error'
+    forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/basic-error'
+    service_unavailable:
+      description: Service unavailable
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/basic-error'
+              - type: object
+                properties:
+                  errorCode:
+                    enum:
+                      - 503
+    search_response:
+      description: Found Results
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: '#/$defs/basic_search_response'
+              - $ref: '#/components/schemas/group_by_search_response'
+    not_found:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/basic-error'
+              - type: object
+                properties:
+                  errorCode:
+                    enum:
+                      - 403
+security:
+  - oauth: []
+  - apiKey: []
+    uid: []
+    basic: []
+paths:
+  /accounts.setAccountInfo:
+    summary: Update Account's Communication Properties VIA set account info.
+    post:
+      tags:
+        - communication
+      summary: Set Account Info.
+      operationId: Communication.Update.SetAccountInfo
+      description: Update Communication Properties VIA set account info. <br />
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                communication:
+                  $ref: '#/components/schemas/communication'
+      responses:
+        '200':
+          description: Account's updated successfully
+  /accounts.getAccountInfo:
+    summary: Get Account's Communication Properties VIA get account info.
+    get:
+      tags:
+        - communication
+      summary: Get Account Info.
+      operationId: Communication.Get.GetAccountInfo
+      description: Get Communication Properties. <br />
+      parameters:
+        - in: query
+          name: communication_selector
+          required: true
+          description: >-
+            Comma seperated list to specify the communications defentions to
+            retrive.
+          example: 'news_sms,news_email,deals_sms'
+          schema:
+            type: string
+            pattern: '((\S+)(_)(sms+|email+),?)+'
+      responses:
+        '200':
+          description: Account's channel updated successfully
+          content:
+            application/json:
+              schema:
+                properties:
+                  communication:
+                    $ref: '#/components/schemas/communication'
+        '400':
+          $ref: '#/components/responses/bad_request'
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: '#/components/responses/forbidden'
+        '503':
+          $ref: '#/components/responses/service_unavailable'
+  /accounts.search:
+    post:
+      tags:
+        - search
+      summary: Communication Search API.
+      operationId: Communication.Search
+      description: >-
+        Searches and retrieves data from communication Storage using an SQL-like
+        query.
+      parameters:
+        - in: query
+          name: query
+          required: true
+          description: an SQL-like query.
+          example: select * from communication
+      responses:
+        '200':
+          $ref: '#/components/responses/search_response'
+        '400':
+          $ref: '#/components/responses/bad_request'
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: '#/components/responses/forbidden'
+        '503':
+          $ref: '#/components/responses/service_unavailable'
+  /config/communication/v1/:
+    summary: Create Communication List
+    put:
+      tags:
+        - Config
+      summary: Create a communication list.
+      operationId: CreateCommunicationList
+      description: Creates a communication list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                  example: newslatter
+                schema:
+                  $ref: '#/components/schemas/fields.template.subscription'
+      responses:
+        '201':
+          description: Communication list was created successfully
+          content:
+            application/json:
+              schema:
+                properties:
+                  name:
+                    type: string
+                    example: newslatter
+                  schema:
+                    $ref: '#/components/schemas/fields.template.subscription'
+          links:
+            get:
+              operationId: GetList
+              parameters:
+                subscriptionId: response.body#/name
+              description: Gets list definition.
+            update:
+              operationId: UpdateList
+              parameters:
+                subscriptionId: $response.body#/name
+              description: Updates list definition.
+            channel:
+              operationId: SetListChannel
+              parameters:
+                subscriptionId: $response.body#/name
+              description: Updates list definition.
+        '400':
+          $ref: '#/components/responses/bad_request'
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: '#/components/responses/forbidden'
+        '503':
+          $ref: '#/components/responses/service_unavailable'
+  '/config/communication/v1/lists/{listId}':
+    get:
+      tags:
+        - Config
+      operationId: GetList
+      summary: Gets the schema
+      parameters:
+        - in: path
+          name: list
+          example: newslatter
+      responses:
+        '200':
+          description: schema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fields.template.subscription'
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: '#/components/responses/forbidden'
+        '404':
+          $ref: '#/components/responses/not_found'
+        '503':
+          $ref: '#/components/responses/service_unavailable'
+    post:
+      tags:
+        - Config
+      summary: Updates List Definition
+      operationId: UpdateList
+      description: Updates a list Definition.
+      parameters:
+        - in: path
+          name: listId
+          example: newslatter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/fields.template.subscription'
+      responses:
+        '200':
+          description: List was updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fields.template.subscription'
+          links:
+            listLinks:
+              operationId: GetList
+              parameters:
+                listId: $response.body#/listId
+              description: A refrence to the specific list template.
+        '400':
+          $ref: '#/components/responses/bad_request'
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: '#/components/responses/forbidden'
+        '503':
+          $ref: '#/components/responses/service_unavailable'
+  '/config/communication/v1/lists/{listId}/fields':
+    post:
+      tags:
+        - Config
+      operationId: CreateField
+      summary: Create Field
+      parameters:
+        - in: path
+          name: list
+          example: newslatter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/fields.template.basic'
+      responses:
+        '201':
+          description: Add field
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fields.template.basic'
+          links:
+            updateField:
+              operationId: UpdateField
+              parameters:
+                fieldId: $response.body#/fieldId
+                listId: $request.path#/listId
+              description: Updates the specifys list field.
+            getField:
+              operationId: UpdateField
+              parameters:
+                fieldId: $response.body#/fieldId
+                listId: $request.path#/listId
+              description: Updates the field.
+        '400':
+          $ref: '#/components/responses/bad_request'
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: '#/components/responses/forbidden'
+        '404':
+          $ref: '#/components/responses/not_found'
+        '503':
+          $ref: '#/components/responses/service_unavailable'
+  '/config/communication/v1/lists/{listId}/channel':
+    post:
+      tags:
+        - Config
+      operationId: SetChannel
+      description: Set the channel.
+      summary: Set the channel.
+      parameters:
+        - in: path
+          name: list
+          example: newslatter
+        - in: path
+          name: fieldId
+          example: frequency
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/fields.template.channel'
+      responses:
+        '200':
+          description: channel updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fields.template.channel'
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: '#/components/responses/forbidden'
+        '404':
+          $ref: '#/components/responses/not_found'
+        '503':
+          $ref: '#/components/responses/service_unavailable'
+    get:
+      tags:
+        - Config
+      operationId: GetChannel
+      description: Gets the channel.
+      summary: Gets the channel.
+      parameters:
+        - in: path
+          name: list
+          example: newslatter
+        - in: path
+          name: fieldId
+          example: frequency
+      responses:
+        '200':
+          description: Channel found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fields.template.channel'
+  '/config/communication/v1/lists/{listId}/fields/{fieldId}':
+    put:
+      tags:
+        - Config
+      operationId: UpdateField
+      description: Updates the specifys subscription field.
+      summary: Updates the a subscription field.
+      parameters:
+        - in: path
+          name: list
+          example: newslatter
+        - in: path
+          name: fieldId
+          example: frequency
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/fields.template.basic'
+      responses:
+        '200':
+          description: Add subscription field
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fields.template.basic'
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: '#/components/responses/forbidden'
+        '404':
+          $ref: '#/components/responses/not_found'
+        '503':
+          $ref: '#/components/responses/service_unavailable'
+    get:
+      tags:
+        - Config
+      operationId: GetField
+      description: Gets the specified subscription field.
+      summary: Gets the specified subscription field.
+      parameters:
+        - in: path
+          name: list
+          example: newslatter
+        - in: path
+          name: fieldId
+          example: frequency
+      responses:
+        '200':
+          description: Field was found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fields.template.basic'
+tags:
+  - name: communication
+    x-displayName: Communication
+    description: |
+      Operations to update communication properties
+  - name: search
+    x-displayName: Search
+    description: |
+      Search communication preferences
+  - name: communication-model
+    x-displayName: Communication Model
+    description: >
+      <SchemaDefinition schemaRef="#/components/schemas/communication"
+      showReadOnly={true} showWriteOnly={true} />
+  - name: basic_search_response
+    x-displayName: Search Response
+    description: >
+      <OpenApiResponse schemaRef="#/components/schemas/basic_search_response"
+      showReadOnly={true} showWriteOnly={true} />
+  - name: communication-entry
+    x-displayName: Communication Entry
+    description: >
+      <SchemaDefinition schemaRef="#/components/schemas/communication-entry"
+      showReadOnly={true} showWriteOnly={true} />
+  - name: communication-model-cdp
+    x-displayName: Communication CDP
+    description: >
+      <SchemaDefinition schemaRef="#/components/schemas/communication-cdp"
+      showReadOnly={true} showWriteOnly={true} />
+x-tagGroups:
+  - name: Communication Runtime
+    tags:
+      - communication
+  - name: Communication Search
+    tags:
+      - search
+  - name: Models
+    tags:
+      - communication-model
+      - communication-entry
