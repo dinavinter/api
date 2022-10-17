@@ -1,0 +1,770 @@
+openapi: 3.1.0
+info:
+  title: Account Subscribtions Api
+  description: Api specification for manges customer interactions.
+  version: '1.0'
+servers:
+  - url: 'https://{gigya-domain}/me'
+    variables:
+      gigya-domain:
+        default: admin.gigya.com
+        enum:
+          - admin.gigya.com
+          - admin.eu1.gigya.com
+          - admin.au1.gigya.com
+        description: giya domains
+paths:
+  /channels:
+    summary: Update account subscriptions.
+    put:
+      tags:
+        - Channels
+      summary: Update account's channels.
+      operationId: ChannelsUpdate
+      description: Update account's channels
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/channels.schema'
+      responses:
+        '200':
+          description: Account's channel updated successfully
+          content:
+            application/json:
+              schema:
+                properties:
+                  name:
+                    type: string
+                    example: newslatter
+                  schema:
+                    $ref: '#/components/schemas/channels.schema'
+  /channels-option2:
+    summary: Update account channel.
+    put:
+      tags:
+        - Channels
+      summary: Channels Option2.
+      operationId: ChannelsUpdate-O2
+      description: Update account's channels
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/channels.schema2'
+      responses:
+        '200':
+          description: Account's channel updated successfully
+          content:
+            application/json:
+              schema:
+                properties:
+                  name:
+                    type: string
+                    example: newslatter
+                  schema:
+                    $ref: '#/components/schemas/channels.schema2'
+  '/channels/{channel}/lists/{list}/opt-in':
+    summary: OptIn subscribtion list
+    get:
+      parameters:
+        - in: path
+          name: channel
+          example: sms
+        - in: path
+          name: list
+          example: newslatter
+      tags:
+        - List
+      summary: OptIn subscribtion list
+      operationId: Subscribe
+      description: Subscribe account to a specific subscribtion list
+      responses:
+        '200':
+          description: Account subscribed
+        '400':
+          $ref: ..\..\shared\errors\bad_request.yaml
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: ..\..\shared\errors\forbidden.yaml
+        '503':
+          $ref: ..\..\shared\errors\service_unavailable.yaml
+  '/channels/{channel}/lists/{list}/opt-out':
+    summary: Opt-out subscribtion list
+    get:
+      parameters:
+        - in: path
+          name: channel
+          example: sms
+        - in: path
+          name: list
+          example: newslatter
+      tags:
+        - List
+      summary: OptOut subscribtion list
+      operationId: OptOut
+      description: Subscribe account to a specific subscribtion list
+      responses:
+        '200':
+          description: Account subscribed
+        '400':
+          $ref: ..\..\shared\errors\bad_request.yaml
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: ..\..\shared\errors\forbidden.yaml
+        '503':
+          $ref: ..\..\shared\errors\service_unavailable.yaml
+  '/channels/{channel}/opt-in':
+    summary: OptIn subscribtion channel
+    get:
+      parameters:
+        - in: path
+          name: channel
+          enum:
+            - sms
+            - email
+          example: sms
+      tags:
+        - Channel
+      summary: Opt-In all subscribtion channel
+      operationId: OptInChannel
+      description: 'Opt-In account to a specific channel, general subscribtions'
+      responses:
+        '200':
+          description: Account subscribed
+        '400':
+          $ref: ..\..\shared\errors\bad_request.yaml
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: ..\..\shared\errors\forbidden.yaml
+        '503':
+          $ref: ..\..\shared\errors\service_unavailable.yaml
+  '/channels/{channel}/opt-out':
+    summary: OptOut subscribtion channel
+    get:
+      parameters:
+        - in: path
+          name: channel
+          example: sms
+      tags:
+        - Channel
+      summary: Opt-Out all subscribtions in channel
+      operationId: OptOutChannel
+      description: Opt-Out account from all subscribtion lists in a specific channel
+      responses:
+        '200':
+          description: Account subscribed
+        '400':
+          $ref: ..\..\shared\errors\bad_request.yaml
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: ..\..\shared\errors\forbidden.yaml
+        '503':
+          $ref: ..\..\shared\errors\service_unavailable.yaml
+  /subscribtions:
+    summary: Create Subscription Schema
+    post:
+      tags:
+        - Subscription
+      summary: Create subscription schema.
+      operationId: CreateSubscription
+      description: Create subscription schema
+      requestBody:
+        content:
+          application/json:
+            schema:
+              allOf:
+                - properties:
+                    name:
+                      type: string
+                      example: newslatter
+                    schema:
+                      $ref: '#/components/schemas/fields.template.subscription'
+      responses:
+        '201':
+          description: Subscription template was created successfully
+          content:
+            application/json:
+              schema:
+                properties:
+                  name:
+                    type: string
+                    example: newslatter
+                  schema:
+                    $ref: '#/components/schemas/fields.template.subscription'
+          links:
+            get:
+              operationId: GetSubscriptionTemplate
+              parameters:
+                subscriptionId: response.body#/name
+              description: Gets subscription definition.
+            update:
+              operationId: UpdateSubscription
+              parameters:
+                subscriptionId: $response.body#/name
+              description: Updates subscription definition.
+            channel:
+              operationId: SetSubscriptionChannel
+              parameters:
+                subscriptionId: $response.body#/name
+              description: Updates subscription definition.
+        '400':
+          $ref: ..\..\shared\errors\bad_request.yaml
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: ..\..\shared\errors\forbidden.yaml
+        '503':
+          $ref: ..\..\shared\errors\service_unavailable.yaml
+  '/subscribtions/{list}':
+    get:
+      tags:
+        - Config
+      operationId: GetSubscriptionTemplate
+      summary: Gets subscription definition
+      parameters:
+        - in: path
+          name: list
+          example: newslatter
+      responses:
+        '200':
+          description: Subscription template
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fields.template.subscription'
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: ..\..\shared\errors\forbidden.yaml
+        '404':
+          $ref: ..\..\shared\errors\not_found.yaml
+        '503':
+          $ref: ..\..\shared\errors\service_unavailable.yaml
+    put:
+      tags:
+        - Config
+      summary: Updates subscription template.
+      operationId: UpdateSubscription
+      description: Update subscription template
+      parameters:
+        - in: path
+          name: list
+          example: newslatter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/fields.template.subscription'
+      responses:
+        '200':
+          description: Subscription template was updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fields.template.subscription'
+          links:
+            subscriptionLinks:
+              operationId: GetSubscriptionTemplate
+              parameters:
+                subscriptionId: $response.body#/subscriptionId
+              description: A refrence to the specific subscription template.
+        '400':
+          $ref: ..\..\shared\errors\bad_request.yaml
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: ..\..\shared\errors\forbidden.yaml
+        '503':
+          $ref: ..\..\shared\errors\service_unavailable.yaml
+  '/subscribtions/{list}/fields':
+    post:
+      tags:
+        - Config
+      operationId: CreateSubscriptionField
+      summary: Create Subscription Field
+      parameters:
+        - in: path
+          name: list
+          example: newslatter
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/fields.template.basic'
+      responses:
+        '201':
+          description: Add subscription field
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fields.template.basic'
+          links:
+            updateSubscriptionField:
+              operationId: UpdateSubscriptionField
+              parameters:
+                fieldId: $response.body#/fieldId
+                subscriptionId: $request.path#/subscriptionId
+              description: Updates the specifys subscription field.
+            getSubscriptionField:
+              operationId: UpdateSubscriptionField
+              parameters:
+                fieldId: $response.body#/fieldId
+                subscriptionId: $request.path#/subscriptionId
+              description: Updates the specifys subscription field.
+        '400':
+          $ref: ..\..\shared\errors\bad_request.yaml
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: ..\..\shared\errors\forbidden.yaml
+        '404':
+          $ref: ..\..\shared\errors\not_found.yaml
+        '503':
+          $ref: ..\..\shared\errors\service_unavailable.yaml
+  '/template/{list}/fields/{fieldId}':
+    put:
+      tags:
+        - Config
+      operationId: UpdateSubscriptionField
+      description: Updates the specifys subscription field.
+      summary: Updates the a subscription field.
+      parameters:
+        - in: path
+          name: list
+          example: newslatter
+        - in: path
+          name: fieldId
+          example: frequency
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/fields.template.basic'
+      responses:
+        '200':
+          description: Add subscription field
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fields.template.basic'
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: ..\..\shared\errors\forbidden.yaml
+        '404':
+          $ref: ..\..\shared\errors\not_found.yaml
+        '503':
+          $ref: ..\..\shared\errors\service_unavailable.yaml
+    get:
+      tags:
+        - Subscription
+      operationId: GetSubscriptionField
+      description: Gets the specified subscription field.
+      summary: Gets the specified subscription field.
+      parameters:
+        - in: path
+          name: subscriptionId
+          example: newslatter
+        - in: path
+          name: fieldId
+          example: frequency
+      responses:
+        '200':
+          description: Subscription field template
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fields.template.basic'
+  '/subscribtions/{list}/fields/channel':
+    post:
+      tags:
+        - Config
+      operationId: SetSubscriptionChannel
+      description: Set the subscription channel.
+      summary: Set the subscription channel.
+      parameters:
+        - in: path
+          name: list
+          example: newslatter
+        - in: path
+          name: fieldId
+          example: frequency
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/fields.template.channel'
+      responses:
+        '200':
+          description: channel updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fields.template.channel'
+        '401':
+          $ref: ..\..\shared\errors\requires_authentication.yaml
+        '403':
+          $ref: ..\..\shared\errors\forbidden.yaml
+        '404':
+          $ref: ..\..\shared\errors\not_found.yaml
+        '503':
+          $ref: ..\..\shared\errors\service_unavailable.yaml
+    get:
+      tags:
+        - Config
+      operationId: GetSubscriptionChannel
+      description: Gets the subscribtion channel.
+      summary: Gets the subscribtion channel.
+      parameters:
+        - in: path
+          name: list
+          example: newslatter
+        - in: path
+          name: fieldId
+          example: frequency
+      responses:
+        '200':
+          description: Subscription channel
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fields.template.channel'
+tags: []
+components:
+  schemas:
+    status: &ref_0
+      properties:
+        status:
+          type: string
+          enum:
+            - opt-in
+            - opt-out
+            - noticed
+        status-updated:
+          type: date
+          readonly: true
+        interaction-id:
+          descreption: >-
+            Corrolation id to the interaction which the status was updated with
+            , i.e. callId
+          type: string
+          readonly: true
+          examples:
+            - <call id>
+            - <interaction - id>
+        data:
+          additionalProperties: true
+    channels.schema:
+      properties:
+        email:
+          allOf:
+            - $ref: '#/components/schemas/status'
+            - properties:
+                list:
+                  type: array
+                  items:
+                    allOf:
+                      - properties:
+                          id:
+                            type: string
+                      - $ref: '#/components/schemas/status'
+        sms:
+          allOf:
+            - $ref: '#/components/schemas/status'
+            - properties:
+                list:
+                  type: array
+                  items:
+                    properties:
+                      id:
+                        type: string
+                    allOf:
+                      - properties:
+                          id:
+                            type: string
+                      - $ref: '#/components/schemas/status'
+      $defs:
+        status: *ref_0
+    channels.schema2:
+      properties:
+        email:
+          $ref: '#/$defs/status'
+        sms:
+          $ref: '#/$defs/status'
+      additionalProperties:
+        pattern: ^(email.*|sms.*)
+        $ref: '#/$defs/status'
+      $defs:
+        channel:
+          properties:
+            communication:
+              allOf:
+                - $ref: '#/$defs/status'
+                - additionalProperties:
+                    $ref: '#/$defs/status'
+        status:
+          type: object
+          title: opt in status
+          $ref: .\channels.schema.yaml/#/$defs/status
+    fields.template.basic:
+      properties:
+        type:
+          type: string
+          enum:
+            - string
+            - boolean
+            - integer
+            - number
+        default:
+          type: '#/properties/type'
+        widget:
+          type: string
+        format:
+          type: string
+      x-tags:
+        - field-template
+    fields.template.boolean:
+      allOf:
+        - $ref: '#/components/schemas/fields.template.basic'
+        - properties:
+            type:
+              type: string
+              const: boolean
+            default:
+              type: boolean
+    opt-in-sms: &ref_2
+      properties:
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/fields.template.boolean'
+            pattern: ^(subscriptions.sms.*)
+    opt-in-email: &ref_3
+      properties:
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/fields.template.boolean'
+            pattern: ^(subscriptions.email.*)
+    selector: &ref_4
+      type: object
+      properties:
+        channel:
+          $ref: .\fields.template.channel.yaml/#/$defs/channel
+        oneOf:
+          type: array
+          items:
+            anyOf:
+              - title: if-channel-sms
+                allOf:
+                  - $ref: .\fields.template.channel.yaml/#/$defs/if-channel-sms
+                  - properties:
+                      then:
+                        $ref: '#/components/schemas/opt-in-sms'
+              - title: if-channel-email
+                allOf:
+                  - $ref: .\fields.template.channel.yaml/#/$defs/if-channel-email
+                  - properties:
+                      then:
+                        $ref: '#/components/schemas/opt-in-email'
+    opt-in-field: &ref_1
+      properties:
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/fields.template.boolean'
+            pattern: ^(subscriptions.*)
+    fields.template.string:
+      allOf:
+        - $ref: '#/components/schemas/fields.template.basic'
+        - properties:
+            type:
+              type: string
+              enum:
+                - string
+    fields.phone_number:
+      type: object
+      x-identifier: phonenumber
+      properties:
+        phonenumber:
+          allOf:
+            - $ref: '#/components/schemas/fields.template.string'
+            - format: email
+    identity.mobile:
+      type: object
+      title: mobile identity
+      properties:
+        properties:
+          $ref: '#/components/schemas/fields.phone_number'
+        x-identifier:
+          enum:
+            - phonenumber
+          readonly: true
+        x-verification-method:
+          enum:
+            - otp
+            - auto-bind
+    fields.email:
+      type: object
+      x-identifier: email
+      properties:
+        email:
+          $ref: '#/components/schemas/fields.template.string'
+    identity.email:
+      type: object
+      title: email identity
+      properties:
+        properties:
+          allOf:
+            - $ref: '#/components/schemas/fields.email'
+        x-identifier:
+          readonly: true
+          enum:
+            - email
+        x-verification-method:
+          enum:
+            - otp
+            - link
+            - auto-bind
+    fields.template.subscription:
+      type: object
+      anyOf:
+        - title: channel selector
+          $ref: '#/components/schemas/selector'
+        - title: only mobile
+          allOf:
+            - $ref: '#/components/schemas/identity.mobile'
+            - $ref: '#/components/schemas/opt-in-sms'
+        - title: only email
+          allOf:
+            - $ref: '#/components/schemas/identity.email'
+            - $ref: '#/components/schemas/opt-in-email'
+          maxProperties: 5
+      required: subscribed
+      $defs:
+        opt-in:
+          type: object
+          $ref: '#/components/schemas/opt-in-field'
+          oneOf:
+            - title: by channel
+              $ref: '#/components/schemas/selector'
+            - title: const
+              $ref: '#/components/schemas/opt-in-field'
+        opt-in-field: *ref_1
+        opt-in-sms: *ref_2
+        opt-in-email: *ref_3
+        selector: *ref_4
+        channel-email:
+          title: if-channel-email
+          allOf:
+            - $ref: .\fields.template.channel.yaml/#/$defs/if-channel-email
+            - properties:
+                then:
+                  $ref: '#/components/schemas/opt-in-email'
+        channel-sms:
+          title: if-channel-sms
+          allOf:
+            - $ref: .\fields.template.channel.yaml/#/$defs/if-channel-sms
+            - properties:
+                then:
+                  $ref: '#/components/schemas/opt-in-sms'
+    fields.template.select:
+      allOf:
+        - $ref: '#/components/schemas/fields.template.basic'
+        - properties:
+            widget:
+              enum:
+                - select
+            enum:
+              type: array
+              items:
+                type: '#/properties/type'
+      x-tags:
+        - field-template
+    channel: &ref_5
+      allOf:
+        - $ref: '#/components/schemas/fields.template.select'
+        - properties:
+            enum:
+              type: array
+              items:
+                type: string
+                enum:
+                  - email
+                  - sms
+              default:
+                - email
+                - sms
+    channel-sms: &ref_10
+      title: if-channel-sms
+      properties:
+        properties:
+          type: object
+          properties:
+            channel:
+              properties:
+                enum:
+                  type: string
+                  const:
+                    - sms
+    if-channel-sms: &ref_8
+      properties:
+        if:
+          type: object
+          $ref: '#/components/schemas/channel-sms'
+        then:
+          type: object
+          $ref: '#/components/schemas/identity.mobile'
+    channel-email: &ref_9
+      title: if-channel-email
+      properties:
+        properties:
+          type: object
+          properties:
+            channel:
+              properties:
+                enum:
+                  const:
+                    - email
+    if-channel-email: &ref_7
+      properties:
+        if:
+          type: object
+          $ref: '#/components/schemas/channel-email'
+        then:
+          type: object
+          $ref: '#/components/schemas/identity.email'
+    $defs-selector: &ref_6
+      properties:
+        properties:
+          type: object
+          properties:
+            channel:
+              $ref: '#/components/schemas/channel'
+        oneOf:
+          type: array
+          items:
+            anyOf:
+              - title: if-channel-sms
+                $ref: '#/components/schemas/if-channel-sms'
+              - title: if-channel-email
+                $ref: '#/components/schemas/if-channel-email'
+    fields.template.channel:
+      $schema: 'https://json-schema.org/draft/2020-12/schema'
+      type: object
+      oneOf:
+        - title: channel selector
+          $ref: '#/components/schemas/$defs-selector'
+        - title: only mobile
+          $ref: '#/components/schemas/identity.mobile'
+        - title: only email
+          $ref: '#/components/schemas/identity.email'
+      $defs:
+        channel: *ref_5
+        selector: *ref_6
+        if-channel-email: *ref_7
+        if-channel-sms: *ref_8
+        channel-email: *ref_9
+        channel-sms: *ref_10
