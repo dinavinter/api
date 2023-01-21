@@ -3,7 +3,7 @@ info:
   title: Session Aggregation API
   description: Session Aggregation API
   version: 1.0.0
-servers:
+servers: 
   - url: 'https://{gigya-domain}'
     variables:
       gigya-domain:
@@ -16,7 +16,7 @@ servers:
 components:
   securitySchemes:
     apiKey:
-      $ref: ./shared/securitySchemes/apiKey.yaml
+      $ref:   ./shared/securitySchemes/apiKey.yaml
     uid:
       $ref: ./shared/securitySchemes/uid.yaml
     basic:
