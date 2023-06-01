@@ -1,0 +1,442 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "FidoService",
+    "description": "Service Endpoints",
+    "version": "0.1"
+  },
+  "paths": {
+    "/accounts.auth.fido.getAssertionOptions": {
+      "post": {
+        "tags": [
+          "V1.ICredentialsService"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SiteId": {
+                    "type": "integer"
+                  },
+                  "Apikey": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "options": {
+                      "type": "string"
+                    },
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts.auth.fido.getConfig": {
+      "post": {
+        "tags": [
+          "V1.IFidoService"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SiteId": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rpDomain": {
+                      "type": "string"
+                    },
+                    "authenticatorAttachment": {
+                      "type": "string"
+                    },
+                    "rpName": {
+                      "type": "string"
+                    },
+                    "userVerificationRequirement": {
+                      "type": "string"
+                    },
+                    "androidApplicationHash": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts.auth.fido.getCredentials": {
+      "post": {
+        "tags": [
+          "V1.ICredentialsService"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SiteId": {
+                    "type": "integer"
+                  },
+                  "SiteGroupId": {
+                    "type": "integer"
+                  },
+                  "EffectiveSiteId": {
+                    "type": "integer"
+                  },
+                  "Uuid": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "credentials": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts.auth.fido.initRegisterCredentials": {
+      "post": {
+        "tags": [
+          "V1.ICredentialsService"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SiteId": {
+                    "type": "integer"
+                  },
+                  "SiteGroupId": {
+                    "type": "integer"
+                  },
+                  "EffectiveSiteId": {
+                    "type": "integer"
+                  },
+                  "Uuid": {
+                    "type": "string"
+                  },
+                  "Apikey": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "options": {
+                      "type": "string"
+                    },
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts.auth.fido.registerCredentials": {
+      "post": {
+        "tags": [
+          "V1.ICredentialsService"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SiteId": {
+                    "type": "integer"
+                  },
+                  "SiteGroupId": {
+                    "type": "integer"
+                  },
+                  "EffectiveSiteId": {
+                    "type": "integer"
+                  },
+                  "Uuid": {
+                    "type": "string"
+                  },
+                  "Apikey": {
+                    "type": "string"
+                  },
+                  "UserAgent": {
+                    "type": "object"
+                  },
+                  "Token": {
+                    "type": "string"
+                  },
+                  "Attestation": {
+                    "type": "string"
+                  },
+                  "DeviceName": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "idToken": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts.auth.fido.removeCredential": {
+      "post": {
+        "tags": [
+          "V1.ICredentialsService"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "Uuid": {
+                    "type": "string"
+                  },
+                  "Apikey": {
+                    "type": "string"
+                  },
+                  "SiteId": {
+                    "type": "integer"
+                  },
+                  "SiteGroupId": {
+                    "type": "integer"
+                  },
+                  "EffectiveSiteId": {
+                    "type": "integer"
+                  },
+                  "CredentialId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "idToken": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts.auth.fido.setConfig": {
+      "post": {
+        "tags": [
+          "V1.IFidoService"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SiteId": {
+                    "type": "integer"
+                  },
+                  "RpDomain": {
+                    "type": "string"
+                  },
+                  "AuthenticatorAttachment": {
+                    "type": "string"
+                  },
+                  "RpName": {
+                    "type": "string"
+                  },
+                  "UserVerificationRequirement": {
+                    "type": "string"
+                  },
+                  "AndroidApplicationHash": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/accounts.auth.fido.verifyAssertion": {
+      "post": {
+        "tags": [
+          "V1.ICredentialsService"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "SiteId": {
+                    "type": "integer"
+                  },
+                  "SiteGroupId": {
+                    "type": "integer"
+                  },
+                  "EffectiveSiteId": {
+                    "type": "integer"
+                  },
+                  "Apikey": {
+                    "type": "string"
+                  },
+                  "ClientIp": {
+                    "type": "string"
+                  },
+                  "UserAgent": {
+                    "type": "object"
+                  },
+                  "Token": {
+                    "type": "string"
+                  },
+                  "AuthenticatorAssertion": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "idToken": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "V1.ICredentialsService"
+    },
+    {
+      "name": "V1.IFidoService"
+    }
+  ]
+}
