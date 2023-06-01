@@ -1,0 +1,220 @@
+---
+openapi: 3.0.1
+info:
+  title: LoginAuthorizationService
+  description: Service Endpoints
+  contact:
+    name: "@Gigya"
+paths:
+  authorization.login.generateCode:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                siteId:
+                  type: integer
+                uuid:
+                  type: string
+                loginId:
+                  type: string
+                authMethod:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Token:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  oauth.token:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                AccessToken:
+                  type: string
+                grant_type:
+                  type: string
+                Code:
+                  type: string
+                TargetEnv:
+                  type: string
+                Include:
+                  type: string
+                SessionExpiration:
+                  type: integer
+                Cid:
+                  type: string
+                Context:
+                  type: string
+                Format:
+                  type: string
+                callback:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Items:
+                    type: System.Collections.Generic.Dictionary`2[[System.String,
+                      System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Newtonsoft.Json.Linq.JToken,
+                      Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]],
+                      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+                  sessionInfo:
+                    type: OneTimeCodeLoginService.Interface.V1.Model.SessionInfoResponse,
+                      LoginAuthorizationService.Interface, Version=1.0.51.295, Culture=neutral,
+                      PublicKeyToken=null
+                  GigyaUserId:
+                    type: Gigya.Common.Contracts.PublicEndpoint.GigyaUserId, Gigya.Common.Contracts,
+                      Version=4.0.7.43, Culture=neutral, PublicKeyToken=null
+                  regToken:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+                  context:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+                  CoppaCookie:
+                    type: Gigya.Common.Contracts.PublicEndpoint.NamedHttpCookie, Gigya.Common.Contracts,
+                      Version=4.0.7.43, Culture=neutral, PublicKeyToken=null
+      security:
+      - apiKey:
+        - default
+      - device:
+        - default
+      - partner:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  authorization.login.getMissingFields:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                CalculatedSiteId:
+                  type: integer
+                Lang:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  RequiredFields:
+                    type: System.String[], mscorlib
+      security:
+      - user:
+        - default
+      - apiKey:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  oauth.authorize:
+    post:
+      parameters:
+      - name: Authorization
+        in: header
+        schema: {}
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                response_type:
+                  type: string
+                id_token:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  code:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+      security:
+      - apiKey:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  oauth.connect:
+    post:
+      parameters:
+      - name: Authorization
+        in: header
+        schema: {}
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                id_token:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - user:
+        - default
+      - apiKey:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+components:
+  securitySchemes:
+    apiKey:
+      type: http
+      description: apiKey
+    uid:
+      type: http
+      description: uid
+    device:
+      type: http
+      description: gmid
+    risk:
+      type: http
+      description: risk score
+    application:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://acconts.gigya.com/acconts.getToken
+          scopes:
+            openid: openid
+            email: email
+            profile: profile
