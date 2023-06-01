@@ -1,0 +1,355 @@
+---
+openapi: 3.0.1
+info:
+  title: OtpService
+  description: Service Endpoints
+  contact:
+    name: "@Gigya"
+paths:
+  accounts.otp.sendCode:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                PhoneNumber:
+                  type: string
+                PhvToken:
+                  type: string
+                LoginId:
+                  type: string
+                Email:
+                  type: string
+                CaptchaToken:
+                  type: string
+                CaptchaText:
+                  type: string
+                Lang:
+                  type: string
+                SendCode:
+                  type: boolean
+                IsInviteMagicLink:
+                  type: boolean
+                gmid:
+                  type: string
+                CalculatedSiteId:
+                  type: integer
+                Context:
+                  type: string
+                DataCenter:
+                  type: string
+      responses: {}
+    x-cache: false
+    x-security:
+      sensitive: false
+      private: false
+      skip-permissions: false
+  accounts.auth.magiclink.email.send:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                LoginId:
+                  type: string
+                LandingPage:
+                  type: string
+                Expiration:
+                  type: integer
+                Email:
+                  type: string
+                CaptchaToken:
+                  type: string
+                CaptchaText:
+                  type: string
+                Lang:
+                  type: string
+                SendCode:
+                  type: boolean
+                IsInviteMagicLink:
+                  type: boolean
+                gmid:
+                  type: string
+                CalculatedSiteId:
+                  type: integer
+                Context:
+                  type: string
+                DataCenter:
+                  type: string
+      responses: {}
+    x-cache: false
+    x-security:
+      sensitive: false
+      private: false
+      skip-permissions: false
+  accounts.otp.login:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                Include:
+                  type: string
+                RegSource:
+                  type: string
+                TargetEnv:
+                  type: string
+                SessionExpiration:
+                  type: integer
+                IncludeUserInfo:
+                  type: boolean
+                gmid:
+                  type: string
+                CurrentSiteId:
+                  type: integer
+                Cid:
+                  type: string
+                Context:
+                  type: string
+                VToken:
+                  type: string
+                Code:
+                  type: string
+                AuthMethodType:
+                  type: object
+      responses: {}
+    x-cache: false
+    x-security:
+      sensitive: false
+      private: false
+      skip-permissions: false
+  accounts.auth.magiclink.email.login:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                Include:
+                  type: string
+                RegSource:
+                  type: string
+                TargetEnv:
+                  type: string
+                SessionExpiration:
+                  type: integer
+                IncludeUserInfo:
+                  type: boolean
+                gmid:
+                  type: string
+                CurrentSiteId:
+                  type: integer
+                Cid:
+                  type: string
+                Context:
+                  type: string
+                VToken:
+                  type: string
+                Code:
+                  type: string
+                AuthMethodType:
+                  type: object
+      responses: {}
+    x-cache: false
+    x-security:
+      sensitive: false
+      private: false
+      skip-permissions: false
+  accounts.auth.magiclink.getlink:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                LoginId:
+                  type: string
+                LandingPage:
+                  type: string
+                Expiration:
+                  type: integer
+                Email:
+                  type: string
+                CaptchaToken:
+                  type: string
+                CaptchaText:
+                  type: string
+                Lang:
+                  type: string
+                SendCode:
+                  type: boolean
+                IsInviteMagicLink:
+                  type: boolean
+                gmid:
+                  type: string
+                CalculatedSiteId:
+                  type: integer
+                Context:
+                  type: string
+                DataCenter:
+                  type: string
+      responses: {}
+    x-cache: false
+    x-security:
+      sensitive: false
+      private: false
+      skip-permissions: false
+  accounts.otp.update:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                ConflictHandling:
+                  type: string
+                gmid:
+                  type: string
+                Cid:
+                  type: string
+                Context:
+                  type: string
+                CurrentSiteId:
+                  type: integer
+                VToken:
+                  type: string
+                Code:
+                  type: string
+      responses: {}
+    x-cache: false
+    x-security:
+      sensitive: false
+      private: false
+      skip-permissions: false
+  accounts.otp.delete:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+      responses: {}
+    x-cache: false
+    x-security:
+      sensitive: false
+      private: false
+      skip-permissions: false
+  accounts.auth.otp.email.getConfig:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+      responses: {}
+    x-cache: false
+    x-security:
+      sensitive: false
+      private: false
+      skip-permissions: false
+  accounts.auth.otp.email.setConfig:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                IsEnabled:
+                  type: boolean
+      responses: {}
+    x-cache: false
+    x-security:
+      sensitive: false
+      private: false
+      skip-permissions: false
+  accounts.auth.magiclink.email.getConfig:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+      responses: {}
+    x-cache: false
+    x-security:
+      sensitive: false
+      private: false
+      skip-permissions: false
+  accounts.auth.magiclink.email.setConfig:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                IsEnabled:
+                  type: boolean
+                LandingPageUrl:
+                  type: string
+                Expiration:
+                  type: integer
+      responses: {}
+    x-cache: false
+    x-security:
+      sensitive: false
+      private: false
+      skip-permissions: false
+  accounts.auth.otp.authenticate:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                VToken:
+                  type: string
+                Code:
+                  type: string
+                gmid:
+                  type: string
+                ClientIp:
+                  type: string
+                CurrentSiteId:
+                  type: integer
+                Cid:
+                  type: string
+                Context:
+                  type: string
+      responses: {}
+    x-cache: false
+    x-security:
+      sensitive: false
+      private: false
+      skip-permissions: false
+  accounts.dev.otp.pingHades:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                cluster:
+                  type: string
+                index:
+                  type: string
+                type:
+                  type: string
+      responses: {}
+    x-cache: false
+    x-security:
+      sensitive: false
+      private: false
+      skip-permissions: true
