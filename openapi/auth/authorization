@@ -1,0 +1,179 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "LoginAuthorizationService",
+    "description": "Service Endpoints",
+    "contact": {
+      "name": "@Gigya"
+    }
+  },
+  "paths": {
+    "authorization.login.generateCode": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "siteId": {
+                    "type": "integer"
+                  },
+                  "uuid": {
+                    "type": "string"
+                  },
+                  "loginId": {
+                    "type": "string"
+                  },
+                  "authMethod": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": { }
+      },
+      "x-cache": false,
+      "x-security": {
+        "sensitive": false,
+        "private": false,
+        "skip-permissions": false
+      }
+    },
+    "oauth.token": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "AccessToken": {
+                    "type": "string"
+                  },
+                  "grant_type": {
+                    "type": "string"
+                  },
+                  "Code": {
+                    "type": "string"
+                  },
+                  "TargetEnv": {
+                    "type": "string"
+                  },
+                  "Include": {
+                    "type": "string"
+                  },
+                  "SessionExpiration": {
+                    "type": "integer"
+                  },
+                  "Cid": {
+                    "type": "string"
+                  },
+                  "Context": {
+                    "type": "string"
+                  },
+                  "Format": {
+                    "type": "string"
+                  },
+                  "callback": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": { }
+      },
+      "x-cache": false,
+      "x-security": {
+        "sensitive": false,
+        "private": false,
+        "skip-permissions": false
+      }
+    },
+    "authorization.login.getMissingFields": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "CalculatedSiteId": {
+                    "type": "integer"
+                  },
+                  "Lang": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": { }
+      },
+      "x-cache": false,
+      "x-security": {
+        "sensitive": false,
+        "private": false,
+        "skip-permissions": false
+      }
+    },
+    "oauth.authorize": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "response_type": {
+                    "type": "string"
+                  },
+                  "id_token": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": { }
+      },
+      "x-cache": false,
+      "x-security": {
+        "sensitive": false,
+        "private": false,
+        "skip-permissions": false
+      }
+    },
+    "oauth.connect": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id_token": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": { }
+      },
+      "x-cache": false,
+      "x-security": {
+        "sensitive": false,
+        "private": false,
+        "skip-permissions": false
+      }
+    }
+  }
+}
