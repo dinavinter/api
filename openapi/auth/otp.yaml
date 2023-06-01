@@ -1,0 +1,660 @@
+openapi: 3.0.1
+info:
+  title: OtpService
+  description: Service Endpoints
+  contact:
+    name: "@Gigya"
+paths:
+  accounts.otp.sendCode:
+    post:
+      parameters:
+      - name: gmid
+        in: header
+        schema: {}
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                PhoneNumber:
+                  type: string
+                PhvToken:
+                  type: string
+                LoginId:
+                  type: string
+                Email:
+                  type: string
+                CaptchaToken:
+                  type: string
+                CaptchaText:
+                  type: string
+                Lang:
+                  type: string
+                SendCode:
+                  type: boolean
+                IsInviteMagicLink:
+                  type: boolean
+                gmid:
+                  type: string
+                CalculatedSiteId:
+                  type: integer
+                Context:
+                  type: string
+                DataCenter:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vToken:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+                  code:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+      security:
+      - user:
+        - default
+      - apiKey:
+        - default
+      - device:
+        - default
+      - partner:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  accounts.auth.magiclink.email.send:
+    post:
+      parameters:
+      - name: gmid
+        in: header
+        schema: {}
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                LoginId:
+                  type: string
+                LandingPage:
+                  type: string
+                Expiration:
+                  type: integer
+                Email:
+                  type: string
+                CaptchaToken:
+                  type: string
+                CaptchaText:
+                  type: string
+                Lang:
+                  type: string
+                SendCode:
+                  type: boolean
+                IsInviteMagicLink:
+                  type: boolean
+                gmid:
+                  type: string
+                CalculatedSiteId:
+                  type: integer
+                Context:
+                  type: string
+                DataCenter:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vToken:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+                  code:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+                  magicLink:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+      security:
+      - user:
+        - default
+      - apiKey:
+        - default
+      - device:
+        - default
+      - partner:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  accounts.otp.login:
+    post:
+      parameters:
+      - name: gmid
+        in: header
+        schema: {}
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                Include:
+                  type: string
+                RegSource:
+                  type: string
+                TargetEnv:
+                  type: string
+                SessionExpiration:
+                  type: integer
+                IncludeUserInfo:
+                  type: boolean
+                gmid:
+                  type: string
+                CurrentSiteId:
+                  type: integer
+                Cid:
+                  type: string
+                Context:
+                  type: string
+                VToken:
+                  type: string
+                Code:
+                  type: string
+                AuthMethodType:
+                  type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Items:
+                    type: System.Collections.Generic.Dictionary`2[[System.String,
+                      System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Newtonsoft.Json.Linq.JToken,
+                      Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]],
+                      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+                  sessionInfo:
+                    type: Gigya.OtpService.Messages.SessionInfoResponse, OtpService.Interface,
+                      Version=2.1.58.300, Culture=neutral, PublicKeyToken=null
+                  MetaData:
+                    type: Gigya.Common.Contracts.PublicEndpoint.GigyaUserId, Gigya.Common.Contracts,
+                      Version=4.0.9.52, Culture=neutral, PublicKeyToken=null
+                  regToken:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+                  context:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+                  CoppaCookie:
+                    type: Gigya.Common.Contracts.PublicEndpoint.NamedHttpCookie, Gigya.Common.Contracts,
+                      Version=4.0.9.52, Culture=neutral, PublicKeyToken=null
+      security:
+      - apiKey:
+        - default
+      - partner:
+        - default
+      - device:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  accounts.auth.magiclink.email.login:
+    post:
+      parameters:
+      - name: gmid
+        in: header
+        schema: {}
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                Include:
+                  type: string
+                RegSource:
+                  type: string
+                TargetEnv:
+                  type: string
+                SessionExpiration:
+                  type: integer
+                IncludeUserInfo:
+                  type: boolean
+                gmid:
+                  type: string
+                CurrentSiteId:
+                  type: integer
+                Cid:
+                  type: string
+                Context:
+                  type: string
+                VToken:
+                  type: string
+                Code:
+                  type: string
+                AuthMethodType:
+                  type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Items:
+                    type: System.Collections.Generic.Dictionary`2[[System.String,
+                      System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[Newtonsoft.Json.Linq.JToken,
+                      Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed]],
+                      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+                  sessionInfo:
+                    type: Gigya.OtpService.Messages.SessionInfoResponse, OtpService.Interface,
+                      Version=2.1.58.300, Culture=neutral, PublicKeyToken=null
+                  MetaData:
+                    type: Gigya.Common.Contracts.PublicEndpoint.GigyaUserId, Gigya.Common.Contracts,
+                      Version=4.0.9.52, Culture=neutral, PublicKeyToken=null
+                  regToken:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+                  context:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+                  CoppaCookie:
+                    type: Gigya.Common.Contracts.PublicEndpoint.NamedHttpCookie, Gigya.Common.Contracts,
+                      Version=4.0.9.52, Culture=neutral, PublicKeyToken=null
+      security:
+      - apiKey:
+        - default
+      - partner:
+        - default
+      - device:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  accounts.auth.magiclink.getlink:
+    post:
+      parameters:
+      - name: gmid
+        in: header
+        schema: {}
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                LoginId:
+                  type: string
+                LandingPage:
+                  type: string
+                Expiration:
+                  type: integer
+                Email:
+                  type: string
+                CaptchaToken:
+                  type: string
+                CaptchaText:
+                  type: string
+                Lang:
+                  type: string
+                SendCode:
+                  type: boolean
+                IsInviteMagicLink:
+                  type: boolean
+                gmid:
+                  type: string
+                CalculatedSiteId:
+                  type: integer
+                Context:
+                  type: string
+                DataCenter:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  magicLink:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+      security:
+      - user:
+        - default
+      - apiKey:
+        - default
+      - device:
+        - default
+      - partner:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  accounts.otp.update:
+    post:
+      parameters:
+      - name: gmid
+        in: header
+        schema: {}
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                ConflictHandling:
+                  type: string
+                gmid:
+                  type: string
+                Cid:
+                  type: string
+                Context:
+                  type: string
+                CurrentSiteId:
+                  type: integer
+                VToken:
+                  type: string
+                Code:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  NewLoginIdAcquired:
+                    type: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+                  Uid:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+                  Uuid:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+      security:
+      - user:
+        - default
+      - apiKey:
+        - default
+      - partner:
+        - default
+      - device:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  accounts.otp.delete:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  OperationStatus:
+                    type: Gigya.OtpService.Messages.Admin.DeletePhoneResponse+DeleteOperationStatus,
+                      OtpService.Interface, Version=2.1.58.300, Culture=neutral, PublicKeyToken=null
+      security:
+      - apiKey:
+        - default
+      - user:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  accounts.auth.otp.email.getConfig:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isEnabled:
+                    type: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+      security:
+      - apiKey:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  accounts.auth.otp.email.setConfig:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                IsEnabled:
+                  type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - apiKey:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  accounts.auth.magiclink.email.getConfig:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  landingPageUrl:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+                  expiration:
+                    type: System.UInt64, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+                  isEnabled:
+                    type: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+      security:
+      - apiKey:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  accounts.auth.magiclink.email.setConfig:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                IsEnabled:
+                  type: boolean
+                LandingPageUrl:
+                  type: string
+                Expiration:
+                  type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+      security:
+      - apiKey:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  accounts.auth.otp.authenticate:
+    post:
+      parameters:
+      - name: gmid
+        in: header
+        schema: {}
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                VToken:
+                  type: string
+                Code:
+                  type: string
+                gmid:
+                  type: string
+                ClientIp:
+                  type: string
+                CurrentSiteId:
+                  type: integer
+                Cid:
+                  type: string
+                Context:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+      security:
+      - apiKey:
+        - default
+      - partner:
+        - default
+      - device:
+        - default
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: false
+  accounts.dev.otp.pingHades:
+    post:
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                cluster:
+                  type: string
+                index:
+                  type: string
+                type:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Type:
+                    type: Newtonsoft.Json.Linq.JTokenType, Newtonsoft.Json, Version=13.0.0.0,
+                      Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed
+                  Item:
+                    type: Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=13.0.0.0,
+                      Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed
+                  HasValues:
+                    type: System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+                  First:
+                    type: Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=13.0.0.0,
+                      Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed
+                  Last:
+                    type: Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=13.0.0.0,
+                      Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed
+                  Count:
+                    type: System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+                  Parent:
+                    type: Newtonsoft.Json.Linq.JContainer, Newtonsoft.Json, Version=13.0.0.0,
+                      Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed
+                  Root:
+                    type: Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=13.0.0.0,
+                      Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed
+                  Next:
+                    type: Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=13.0.0.0,
+                      Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed
+                  Previous:
+                    type: Newtonsoft.Json.Linq.JToken, Newtonsoft.Json, Version=13.0.0.0,
+                      Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed
+                  Path:
+                    type: System.String, mscorlib, Version=4.0.0.0, Culture=neutral,
+                      PublicKeyToken=b77a5c561934e089
+    x-cache: false
+    x-sensitive: none
+    x-skip-permissions: true
+components:
+  securitySchemes:
+    apiKey:
+      type: http
+      description: apiKey
+    uid:
+      type: http
+      description: uid
+    device:
+      type: http
+      description: gmid
+    risk:
+      type: http
+      description: risk score
+    application:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://acconts.gigya.com/acconts.getToken
+          scopes:
+            openid: openid
+            email: email
+            profile: profile
