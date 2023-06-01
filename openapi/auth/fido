@@ -3,236 +3,81 @@
   "info": {
     "title": "FidoService",
     "description": "Service Endpoints",
-    "version": "0.1"
+    "contact": {
+      "name": "@Gigya"
+    }
   },
   "paths": {
-    "/accounts.auth.fido.getAssertionOptions": {
+    "accounts.auth.fido.initRegisterCredentials": {
       "post": {
-        "tags": [
-          "V1.ICredentialsService"
-        ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/x-www-form-urlencoded": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "SiteId": {
-                    "type": "integer"
-                  },
-                  "Apikey": {
-                    "type": "string"
-                  }
+                
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
-            "description": "OK Response",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "options": {
-                      "type": "string"
+                      "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
                     },
                     "token": {
-                      "type": "string"
+                      "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
                     }
                   }
                 }
               }
             }
           }
-        }
-      }
-    },
-    "/accounts.auth.fido.getConfig": {
-      "post": {
-        "tags": [
-          "V1.IFidoService"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "SiteId": {
-                    "type": "integer"
-                  }
-                }
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "rpDomain": {
-                      "type": "string"
-                    },
-                    "authenticatorAttachment": {
-                      "type": "string"
-                    },
-                    "rpName": {
-                      "type": "string"
-                    },
-                    "userVerificationRequirement": {
-                      "type": "string"
-                    },
-                    "androidApplicationHash": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/accounts.auth.fido.getCredentials": {
-      "post": {
-        "tags": [
-          "V1.ICredentialsService"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "SiteId": {
-                    "type": "integer"
-                  },
-                  "SiteGroupId": {
-                    "type": "integer"
-                  },
-                  "EffectiveSiteId": {
-                    "type": "integer"
-                  },
-                  "Uuid": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+        "security": [
+          {
+            "apiKey": [
+              "default"
+            ]
           },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "credentials": {
-                      "type": "object"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/accounts.auth.fido.initRegisterCredentials": {
-      "post": {
-        "tags": [
-          "V1.ICredentialsService"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "SiteId": {
-                    "type": "integer"
-                  },
-                  "SiteGroupId": {
-                    "type": "integer"
-                  },
-                  "EffectiveSiteId": {
-                    "type": "integer"
-                  },
-                  "Uuid": {
-                    "type": "string"
-                  },
-                  "Apikey": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
+          {
+            "apiKey": [
+              "default"
+            ]
           },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "options": {
-                      "type": "string"
-                    },
-                    "token": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
+          {
+            "user": [
+              "default"
+            ]
+          },
+          {
+            "apiKey": [
+              "default"
+            ]
           }
-        }
-      }
+        ]
+      },
+      "x-cache": false,
+      "x-sensitive": "none",
+      "x-skip-permissions": false
     },
-    "/accounts.auth.fido.registerCredentials": {
+    "accounts.auth.fido.registerCredentials": {
       "post": {
-        "tags": [
-          "V1.ICredentialsService"
-        ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/x-www-form-urlencoded": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "SiteId": {
-                    "type": "integer"
-                  },
-                  "SiteGroupId": {
-                    "type": "integer"
-                  },
-                  "EffectiveSiteId": {
-                    "type": "integer"
-                  },
-                  "Uuid": {
-                    "type": "string"
-                  },
-                  "Apikey": {
-                    "type": "string"
-                  },
-                  "UserAgent": {
-                    "type": "object"
-                  },
+                
                   "Token": {
                     "type": "string"
                   },
@@ -245,51 +90,224 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
-            "description": "OK Response",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "idToken": {
-                      "type": "string"
+                      "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
                     }
                   }
                 }
               }
             }
           }
-        }
-      }
+        },
+        "security": [
+          {
+            "apiKey": [
+              "default"
+            ]
+          },
+          {
+            "apiKey": [
+              "default"
+            ]
+          },
+          {
+            "user": [
+              "default"
+            ]
+          },
+          {
+            "apiKey": [
+              "default"
+            ]
+          }
+        ]
+      },
+      "x-cache": false,
+      "x-sensitive": "none",
+      "x-skip-permissions": false
     },
-    "/accounts.auth.fido.removeCredential": {
+    "accounts.auth.fido.getAssertionOptions": {
       "post": {
-        "tags": [
-          "V1.ICredentialsService"
-        ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "options": {
+                      "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+                    },
+                    "token": {
+                      "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": [
+              "default"
+            ]
+          },
+          {
+            "apiKey": [
+              "default"
+            ]
+          }
+        ]
+      },
+      "x-cache": false,
+      "x-sensitive": "none",
+      "x-skip-permissions": false
+    },
+    "accounts.auth.fido.verifyAssertion": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "Uuid": {
-                    "type": "string"
-                  },
-                  "Apikey": {
-                    "type": "string"
-                  },
-                  "SiteId": {
+                  "EffectiveSiteId": {
                     "type": "integer"
                   },
-                  "SiteGroupId": {
-                    "type": "integer"
+                  "Token": {
+                    "type": "string"
                   },
+                  "AuthenticatorAssertion": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "idToken": {
+                      "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": [
+              "default"
+            ]
+          },
+          {
+            "apiKey": [
+              "default"
+            ]
+          },
+          {
+            "apiKey": [
+              "default"
+            ]
+          }
+        ]
+      },
+      "x-cache": false,
+      "x-sensitive": "none",
+      "x-skip-permissions": false
+    },
+    "accounts.auth.fido.getCredentials": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "EffectiveSiteId": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "credentials": {
+                      "type": "FidoService.Interface.V1.Responses.Models.Credential[], FidoService.Interface, Version=2.0.54.107, Culture=neutral, PublicKeyToken=null"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKey": [
+              "default"
+            ]
+          },
+          {
+            "apiKey": [
+              "default"
+            ]
+          },
+          {
+            "user": [
+              "default"
+            ]
+          }
+        ]
+      },
+      "x-cache": false,
+      "x-sensitive": "none",
+      "x-skip-permissions": false
+    },
+    "accounts.auth.fido.removeCredential": {
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
                   "EffectiveSiteId": {
                     "type": "integer"
                   },
@@ -299,42 +317,60 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
-            "description": "OK Response",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "idToken": {
-                      "type": "string"
+                      "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
                     }
                   }
                 }
               }
             }
           }
-        }
-      }
+        },
+        "security": [
+          {
+            "user": [
+              "default"
+            ]
+          },
+          {
+            "apiKey": [
+              "default"
+            ]
+          },
+          {
+            "apiKey": [
+              "default"
+            ]
+          },
+          {
+            "apiKey": [
+              "default"
+            ]
+          }
+        ]
+      },
+      "x-cache": false,
+      "x-sensitive": "none",
+      "x-skip-permissions": false
     },
-    "/accounts.auth.fido.setConfig": {
+    "accounts.auth.fido.setConfig": {
       "post": {
-        "tags": [
-          "V1.IFidoService"
-        ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/x-www-form-urlencoded": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "SiteId": {
-                    "type": "integer"
-                  },
                   "RpDomain": {
                     "type": "string"
                   },
@@ -353,12 +389,11 @@
                 }
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
-            "description": "OK Response",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -367,76 +402,103 @@
               }
             }
           }
-        }
-      }
+        },
+        "security": [
+          {
+            "apiKey": [
+              "default"
+            ]
+          }
+        ]
+      },
+      "x-cache": false,
+      "x-sensitive": "none",
+      "x-skip-permissions": false
     },
-    "/accounts.auth.fido.verifyAssertion": {
+    "accounts.auth.fido.getConfig": {
       "post": {
-        "tags": [
-          "V1.ICredentialsService"
-        ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "application/x-www-form-urlencoded": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "SiteId": {
-                    "type": "integer"
-                  },
-                  "SiteGroupId": {
-                    "type": "integer"
-                  },
-                  "EffectiveSiteId": {
-                    "type": "integer"
-                  },
-                  "Apikey": {
-                    "type": "string"
-                  },
-                  "ClientIp": {
-                    "type": "string"
-                  },
-                  "UserAgent": {
-                    "type": "object"
-                  },
-                  "Token": {
-                    "type": "string"
-                  },
-                  "AuthenticatorAssertion": {
-                    "type": "string"
-                  }
-                }
+                "type": "object"
               }
             }
-          },
-          "required": true
+          }
         },
         "responses": {
           "200": {
-            "description": "OK Response",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "idToken": {
-                      "type": "string"
+                    "rpDomain": {
+                      "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+                    },
+                    "authenticatorAttachment": {
+                      "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+                    },
+                    "rpName": {
+                      "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+                    },
+                    "userVerificationRequirement": {
+                      "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+                    },
+                    "androidApplicationHash": {
+                      "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
                     }
                   }
                 }
               }
             }
           }
+        },
+        "security": [
+          {
+            "apiKey": [
+              "default"
+            ]
+          }
+        ]
+      },
+      "x-cache": false,
+      "x-sensitive": "none",
+      "x-skip-permissions": false
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKey": {
+        "type": "http",
+        "description": "apiKey"
+      },
+      "uid": {
+        "type": "http",
+        "description": "uid"
+      },
+      "device": {
+        "type": "http",
+        "description": "gmid"
+      },
+      "risk": {
+        "type": "http",
+        "description": "risk score"
+      },
+      "application": {
+        "type": "oauth2",
+        "flows": {
+          "implicit": {
+            "authorizationUrl": "https://acconts.gigya.com/acconts.getToken",
+            "scopes": {
+              "openid": "openid",
+              "email": "email",
+              "profile": "profile"
+            }
+          }
         }
       }
     }
-  },
-  "tags": [
-    {
-      "name": "V1.ICredentialsService"
-    },
-    {
-      "name": "V1.IFidoService"
-    }
-  ]
+  }
 }
