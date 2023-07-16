@@ -5,16 +5,16 @@
   "type": "object",
   "properties": {
     "profile": {
-      "$ref": "./profile.json"
+      "$ref": "https://raw.githubusercontent.com/dinavinter/api/main/schemas/account/profile.json"
     },
     "data": {
-      "$ref": "./data.json"
+      "$ref": "https://raw.githubusercontent.com/dinavinter/api/main/schemas/account/data.json"
     },
     "subscriptions": {
-      "$ref": "./subscriptions.json"
+      "$ref": "https://raw.githubusercontent.com/dinavinter/api/main/schemas/account/subscriptions.json"
     },
     "preferences": {
-      "$ref": "./preferences.json"
+      "$ref": "https://raw.githubusercontent.com/dinavinter/api/main/schemas/account/preferences.json"
     }
   }
 }
