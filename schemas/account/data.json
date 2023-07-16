@@ -1,0 +1,25 @@
+{
+
+   "path" : "/schemas/data",
+
+
+  
+
+    
+"$id": "https://example.com/schemas/data",
+ 
+
+   
+"type": "object",
+"properties" :
+        {
+             
+             
+                "interestedIn" : {"type":["string","null"]},
+                "children" : {"type":["int","null"]}
+                
+            
+        }
+    
+
+}

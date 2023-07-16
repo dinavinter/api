@@ -1,0 +1,35 @@
+{
+
+   "path" : "/schemas/preferences",
+
+
+  
+
+    
+"$id": "https://example.com/schemas/preferences",
+ 
+
+   
+"type": "object",
+"properties" :
+        {
+             
+                "test1" : {"format":"regex","pattern":"true","type":["consent"]}
+                , 
+             
+                "terms.newsletter" : {"format":"regex","pattern":"true","type":["consent"]}
+                , 
+             
+                "terms.marketing" : {"format":"regex","pattern":"true","type":["consent"]}
+                , 
+             
+                "other.news" : {"type":["consent"]}
+                , 
+             
+                "other.marketing" : {"format":"regex","pattern":"true","type":["consent"]}
+                
+            
+        }
+    
+
+}
