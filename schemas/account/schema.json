@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Account Schema",
+  "description": "Account Schema",
+  "type": "object",
+  "properties": {
+    "profile": {
+      "$ref": "./profile.json"
+    },
+    "data": {
+      "$ref": "./data.json"
+    },
+    "subscriptions": {
+      "$ref": "./subscriptions.json"
+    },
+    "preferences": {
+      "$ref": "./preferences.json"
+    }
+  }
+}
+
